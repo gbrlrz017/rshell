@@ -1,4 +1,5 @@
 #include <iostream>
+#include <string.h>
 #include <cstring>
 
 using namespace std; 
@@ -7,8 +8,20 @@ using namespace std;
 
 
 
-int main(int argc, char** argv)
+int main()
 {
+    //declaring argc and argv as local variables (as arguments to main too complicated)
+    int argc = 0;
+    char** argv;
+
+    //reading in arguments and keeping count
+    unsigned i = 0; //keep track of index
+    while (cin >> argv[i])
+    {
+        
+    }
+
+
 	cout << "argc: " << argc << "   " <<  endl;
     cout << " argv:" << endl;
 
@@ -26,6 +39,7 @@ int main(int argc, char** argv)
     //execvp(argv);
     
     cout << "||" << endl;
+    
 
 	return 0; 
 }
