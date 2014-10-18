@@ -7,20 +7,27 @@ using namespace std;
 
 
 
+//taking in commands as arguments to main
+//need to figure out how to parse!!
+int main(int argc, char** argv)
 
-int main()
+
 {
     //declaring argc and argv as local variables (as arguments to main too complicated)
-    int argc = 0;
-    char** argv;
+ /*   int argc = 0;
+    char* argv[100];
 
     //reading in arguments and keeping count
     unsigned i = 0; //keep track of index
-    while (cin >> argv[i])
+    while ()
     {
-        
-    }
+       argc +=1; 
+         i += 1; 
 
+       cin >> argv[i]; 
+
+    }
+*/
 
 	cout << "argc: " << argc << "   " <<  endl;
     cout << " argv:" << endl;
