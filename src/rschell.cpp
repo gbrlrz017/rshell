@@ -2,9 +2,9 @@
 #include <string.h>
 #include <istream>   
 #include <cstring>
-
+#include <unistd.h>
 using namespace std; 
-
+#include <cstdio>
 #include <stdio.h>
 #include <string.h>
 
@@ -48,9 +48,12 @@ int main()
     {
         printf ("%s\n",tmp);
         tmp = strtok (NULL,delims);  
-    }
-                      
+        printf ("%s\n",tmp);
 
+    }
+    cout << endl << "tmp: " << endl; 
+    printf ("%s\n",tmp);
+    cout << endl; 
 
     //checking everything was read in 
     cout << "argc: " << argc << "   " <<  endl;
