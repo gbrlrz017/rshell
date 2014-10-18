@@ -9,9 +9,8 @@ using namespace std;
 
 //taking in commands as arguments to main
 //need to figure out how to parse!!
+//see boost library's TOKENIZER !!!!!
 int main(int argc, char** argv)
-
-
 {
     //declaring argc and argv as local variables (as arguments to main too complicated)
  /*   int argc = 0;
