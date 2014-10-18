@@ -1,34 +1,59 @@
 #include <iostream>
 #include <string.h>
+#include <istream>   
 #include <cstring>
 
 using namespace std; 
 
+#include <stdio.h>
+#include <string.h>
 
-
-
-//taking in commands as arguments to main
-//need to figure out how to parse!!
-//see boost library's TOKENIZER !!!!!
-int main(int argc, char** argv)
+/*
+int main ()
 {
-    //declaring argc and argv as local variables (as arguments to main too complicated)
- /*   int argc = 0;
-    char* argv[100];
-
-    //reading in arguments and keeping count
-    unsigned i = 0; //keep track of index
-    while ()
-    {
-       argc +=1; 
-         i += 1; 
-
-       cin >> argv[i]; 
-
-    }
+      char str[] ="- This, a sample string.";
+        char * pch;
+          printf ("Splitting string \"%s\" into tokens:\n",str);
+            pch = strtok (str," ,.-");
+              while (pch != NULL)
+                    {
+                            printf ("%s\n",pch);
+                                pch = strtok (NULL, " ,.-");
+                                  }
+                                    return 0;
+}
 */
 
-	cout << "argc: " << argc << "   " <<  endl;
+//need to figure out how to parse!!
+//see boost library's TOKENIZER !!!!!
+int main()
+{
+    string input; 
+   
+    //taking input as a c++ string; will convert to c_str later
+    cout << "$: "; //command prompt
+    getline (cin,input);
+    cout << endl << "outputting input: " << endl << input << endl; 
+    
+    //these will be the arguments to my shell after parsing
+    int argc;
+    char** argv;
+
+    char * tmp; //cstring to not deal with memory management for now
+    char delims[] = " &&||;.-";
+    char input2[9999]; 
+    strcpy(input2, input.c_str() );
+    tmp = strtok(input2,delims); 
+    while (tmp != NULL)
+    {
+        printf ("%s\n",tmp);
+        tmp = strtok (NULL,delims);  
+    }
+                      
+
+
+    //checking everything was read in 
+    cout << "argc: " << argc << "   " <<  endl;
     cout << " argv:" << endl;
 
     for(unsigned i = 0; argv[i]!='\0'; ++i){
