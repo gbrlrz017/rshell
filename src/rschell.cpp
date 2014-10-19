@@ -8,29 +8,13 @@ using namespace std;
 #include <stdio.h>
 #include <string.h>
 
-/*
-int main ()
-{
-      char str[] ="- This, a sample string.";
-        char * pch;
-          printf ("Splitting string \"%s\" into tokens:\n",str);
-            pch = strtok (str," ,.-");
-              while (pch != NULL)
-                    {
-                            printf ("%s\n",pch);
-                                pch = strtok (NULL, " ,.-");
-                                  }
-                                    return 0;
-}
-*/
 
-//need to figure out how to parse!!
-//see boost library's TOKENIZER !!!!!
+
 int main()
 {
     string input; 
-   
     //taking input as a c++ string; will convert to c_str later
+
     cout << "$ "; //command prompt
     getline (cin,input);
     cout << endl << "outputting input: " << endl << input << endl; 
@@ -44,7 +28,8 @@ int main()
     char delims[] = " &&||;-"; // connectors we are looking out for.
                                 //FIXME: may not be exactly what we want since may have 
                                 //to be arguments too
-    char input2[9999]; 
+
+    char input2[9999]; //will take copy of input from std::string input
     strcpy(input2, input.c_str() );
 
     cout << "about to run strtok 1st time" << endl; 
