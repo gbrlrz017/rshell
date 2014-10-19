@@ -47,26 +47,19 @@ int main()
     char input2[9999]; 
     strcpy(input2, input.c_str() );
 
-/*
-char *argv[3];
-argv[0]=new char[3];
-strcpy(argv[0],"ls");
-argv[1]="-a";
-argv[2]="-l";
-*/
-
     cout << "about to run strtok 1st time" << endl; 
     tmp = strtok(input2,delims) ; 
     strcpy( argv[argc] , tmp ); //copying first token 
-    argc += 1; 
+    
     cout << "about to run strtok In while loop." << endl; 
     while (tmp != NULL)
     {
-        argv[argc] = tmp; // copying tokens into argv one at a time 
-        argc +=1; // argument count increases.  
+        argc +=1; // argument count increases. 
         printf ("%s\n",tmp) ;
         tmp = strtok (NULL,delims);  
-
+        argv[argc] = tmp; // copying tokens into argv one at a time 
+         
+        
     }
     /* cerr << "copying tmp into argv..." << endl; 
     strcpy(*argv,tmp );
