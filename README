@@ -1,3 +1,52 @@
 -summarize project
 -list known bugs
 
+Figuring out way to handle cases with connectors: && || ;
+
+pseudo-code: 
+//pass in code through std::string
+//did this to read in using getline(cin, std::string ) (probably alternatives)
+
+//copy std::string used for input to cstring 
+//(used strcpy to deal with conversion from const char* (input.c_str()) to char*)
+//probably a better way
+
+//I then tokenize all the input and place it in char** argv (have var called tmp)
+//tokenizer function is strtok
+//using " &&||;" as delimiters (but do I need to do this??)
+//left with same input, minus the connectors
+// do this in while loop
+
+//call fork and make sure no error (that doesn't return -1)
+//in child: 
+    //is where I'm calling execvp
+    //however, only works for one call not any with connectors
+//parent waits for child. Is it supposed to execute anything or just wait? 
+
+//remember case with # comments!
+
+
+//possible new parsing method: 
+//see: strstr function
+
+    1. find occurrence of && || or ; 
+    2. Anything before this connector is now an unparsed/untokenized argv1
+    3. Anything after this is now an unparsed/untokenized argv2
+    4. Repeat steps 1-3 as neccessary to create argv'i' for i = {1, 2, ..., n}
+        for n necessary inputted commands. 
+ 
+    QUESTION: How to declare new argv'i'? 
+    ANSWER (potentially): declare "big" char* args [9999]?
+    OR: count the number of occurences of connecters in input (DUH)
+        then declare (maybe not as big) char* args [n+1]
+        ~this could get ugly~
+        -each element will contain one unparsed/untokenized argv'i'
+
+    5. Parse/tokenize each argv'i' 
+
+
+
+
+
+
+
