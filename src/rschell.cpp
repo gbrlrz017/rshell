@@ -31,29 +31,47 @@ int main()
     string input; 
    
     //taking input as a c++ string; will convert to c_str later
-    cout << "$: "; //command prompt
+    cout << "$ "; //command prompt
     getline (cin,input);
     cout << endl << "outputting input: " << endl << input << endl; 
     
     //these will be the arguments to my shell after parsing
-    int argc;
-    char** argv;
+    int argc = 0; // no arguments (yet) 
+    char* argv[99999];
+    argv[0] = new char[9999];
 
     char * tmp; //cstring to not deal with memory management for now
-    char delims[] = " &&||;.-";
+    char delims[] = " &&||;-"; // connectors we are looking out for.
+                                //FIXME: may not be exactly what we want since may have 
+                                //to be arguments too
     char input2[9999]; 
     strcpy(input2, input.c_str() );
-    tmp = strtok(input2,delims); 
+
+/*
+char *argv[3];
+argv[0]=new char[3];
+strcpy(argv[0],"ls");
+argv[1]="-a";
+argv[2]="-l";
+*/
+
+    cout << "about to run strtok 1st time" << endl; 
+    tmp = strtok(input2,delims) ; 
+    strcpy( argv[argc] , tmp ); //copying first token 
+    argc += 1; 
+    cout << "about to run strtok In while loop." << endl; 
     while (tmp != NULL)
     {
-        printf ("%s\n",tmp);
+        argv[argc] = tmp; // copying tokens into argv one at a time 
+        argc +=1; // argument count increases.  
+        printf ("%s\n",tmp) ;
         tmp = strtok (NULL,delims);  
-        printf ("%s\n",tmp);
 
     }
-    cout << endl << "tmp: " << endl; 
-    printf ("%s\n",tmp);
-    cout << endl; 
+    /* cerr << "copying tmp into argv..." << endl; 
+    strcpy(*argv,tmp );
+    cout << "strcpy successful!! (maybe LOL)" << endl; 
+    */
 
     //checking everything was read in 
     cout << "argc: " << argc << "   " <<  endl;
