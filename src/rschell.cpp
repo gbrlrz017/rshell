@@ -6,9 +6,11 @@
 using namespace std; 
 #include <cstdio>
 #include <stdio.h>
-#include <string.h>
-
-
+#include <sys/types.h>
+#include <sys/wait.h>
+#include <string>
+#include <errno.h>
+#include <cstdlib>
 
 int main()
 {
@@ -62,14 +64,37 @@ int main()
     //need to figure out a way to read in commands with ';' in between
     //and white space in between
 
-    if (argv[1]=='\0'){
-        cout << "Null man. " << endl; 
-    }
     
-    //execvp(argv);
     
-    cout << "||" << endl;
-    
+    int pid=fork();
+    if(pid == -1)
+    {
+        perror("There was an error with fork(). " ); 
+        exit(1); 
 
-	return 0; 
+    }
+    //child process
+    if (pid==0) {
+        cout << "i'm a child" << endl;
+
+        cout <<" before" << endl;
+        if(-1 == execvp(argv[0], argv))
+        {
+            perror("Error: execvp didn't run as expected. Commands may not exist.");
+        }
+        exit(1); //avoid zombies    
+
+    }
+    //pid now > 0 so we are in parent process. 
+    else{
+        if( wait(NULL) == -1 ){
+            perror("Error: wait() did not wait!! :o ");
+    }
+
+        cout << "I'm a parent." << endl; 
+        exit(1); 
+    }
+
+
+    return 0; 
 }
