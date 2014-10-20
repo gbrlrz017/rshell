@@ -27,7 +27,7 @@ int main()
     argv[0] = new char[9999];
 
     char * tmp; //cstring to not deal with memory management for now
-    char delims[] = " &&||;-"; // connectors we are looking out for.
+    char delims[] = " "; // connectors we are looking out for.
                                 //FIXME: may not be exactly what we want since may have 
                                 //to be arguments too
 
@@ -63,10 +63,30 @@ int main()
     
     //need to figure out a way to read in commands with ';' in between
     //and white space in between
+    
+    //checking how execvp works (dummy variables)
+    char * aargv[4]; 
+    aargv[0] = new char[4]; 
+    aargv[1] = new char[4]; 
+    aargv[2] = new char[4]; 
+    strcpy( aargv[0] , "pwd"); //copying first token 
+    cout << "first copy. \n" << endl; 
+    strcpy( aargv[1] , " ; " ); 
+    cout << "about tho start third..." << endl; 
+    strcpy( aargv[2] , "ls"); 
+    cout << "done copying... " << endl; 
 
-    
-    
+
+    //beginning fork, execpv processes
+    //may need to creat multiple forks to run input with connectors
     int pid=fork();
+    int pid2 = fork(); 
+    cout << "pid2: " << pid2 << endl << "getpid() " << getpid() << endl;  
+    if(pid2 == getpid() ){
+
+        cout << "PID 2!!!!!";
+        exit(1); 
+    }
     if(pid == -1)
     {
         perror("There was an error with fork(). " ); 
