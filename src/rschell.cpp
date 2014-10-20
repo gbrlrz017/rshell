@@ -80,13 +80,7 @@ int main()
     //beginning fork, execpv processes
     //may need to creat multiple forks to run input with connectors
     int pid=fork();
-    int pid2 = fork(); 
-    cout << "pid2: " << pid2 << endl << "getpid() " << getpid() << endl;  
-    if(pid2 == getpid() ){
 
-        cout << "PID 2!!!!!";
-        exit(1); 
-    }
     if(pid == -1)
     {
         perror("There was an error with fork(). " ); 
