@@ -213,7 +213,7 @@ cout << "arg_count " << arg_count << endl;
 		cout << "first while, i = " << i << endl; 
 	}
 	cout << "skipped for loop...." << endl; 
-
+/*
 	cout << endl << endl << endl << "printing out contents..." << endl; 
 	for(unsigned i = 0; i < arg_count; ++i)
 	{
@@ -225,7 +225,7 @@ cout << "arg_count " << arg_count << endl;
 		}
 	}
 	cout << endl << "Done." << endl << endl << endl; 
-   
+ */  
 
 
     //beginning fork, execpv processes
@@ -240,6 +240,7 @@ cout << "arg_count " << arg_count << endl;
 	cout << endl << endl << "Now executing fork & execvp...." << endl << endl; 	
 	for(unsigned i = 0; i < argv.size(); ++i )
 	{ 
+		int status; 
 		int pid=fork(); //stores child's pid .. will use for connector cases in parent!
 		if(pid == -1)
 		{
@@ -263,24 +264,26 @@ cout << "arg_count " << arg_count << endl;
 		
 		//pid now > 0 so we are in parent process. 
 		else{
-			if( wait(NULL) == -1 ){
+			if( wait(&status) == -1 ){
 				perror("Error: wait() did not wait!! Not good: Check Code in parent process...");
 			}
 			cout << "I'm a parent." << endl; 
 			
-			if ( pid == 0 ) //
+			if (status == 0 ) //
 			{
 				if ( OR ) 
 				{
 					//must only execute once so exit(1)
+					cout << "OR and child did not fail" << endl; 
 					exit(1); // no more looping!!
 				}
 			}
 
-			if ( pid == -1 ) //means child process failed 
+			if ( status != 0) //means child process failed 
 			{
 				if ( AND ) 
 				{
+					cout << "AND and child failed..." << endl; 
 					exit(1); // c1 in "c1 && ..." failed so done
 				}	
 			}			

@@ -1,5 +1,7 @@
 -summarize project
--list known bugs
+-list known bugs: 
+	- when entering " ; pwd" runs pwd instead of failing 
+		bc '; ' not a command like bash does. 
 
 Figuring out way to handle cases with connectors: && || ;
 
