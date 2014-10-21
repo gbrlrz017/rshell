@@ -128,8 +128,14 @@ int main()
     string input; 
 	    //taking input as a c++ string; will convert to c_str later
 
+
     cout << "$ "; //command prompt
     getline (cin,input);
+
+while ( input != "exit" ) //bug if enters: "     exit" ->anything with exit and spaces
+{
+
+
     cout << endl << "outputting input: " << endl << input << endl; 
     cout << "input.size() (raw): " << input.size() << endl; 
 	// trying to see if space adds size
@@ -292,6 +298,17 @@ cout << "arg_count " << arg_count << endl;
 		}
 	
 	}
+
+    cout << "$ "; //command prompt
+    getline (cin,input);
+
+
+
+}
+
+
+
+
 
 	return 0; 
 }
