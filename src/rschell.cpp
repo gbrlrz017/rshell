@@ -16,13 +16,13 @@ using namespace std;
 
 
 //Counts number of arguments 
-int count_args( const string & input ) {
+unsigned count_args( const string & input ) {
 	if (input.size() == 0 )
 	{
 		return 0; 
 	}
 
-	int count = 1; 
+	unsigned count = 1; 
 	
 	for(unsigned i = 0; i < input.size(); ++i)
 	{
@@ -42,6 +42,33 @@ int count_args( const string & input ) {
 	}
 	return count; 
 }
+
+unsigned count_args_space( const char input[] ) {
+	if ( strlen(input) == 0 ||  strlen(input) == 1 )
+	{
+		return 3; 
+	}
+
+	unsigned count = 1; 
+	
+	for(unsigned i = 0; input[i] != '\0';  ++i)
+	{
+		if ( input[i] == ' '  )
+		{
+			i+=1; 
+			count +=1; 
+			//can have multiple whitespaes: ~ "       "
+			while( input[i] != '\0' && input[i] == ' ' )
+			{
+				i+=1; 
+			}
+		}
+
+	}
+	return count; 
+}
+
+
 
 vector<unsigned> con_pos( const string & input ) {
 	vector<unsigned> x; 
@@ -141,17 +168,16 @@ cout << "arg_count " << arg_count << endl;
 		}
 	}
 	cout << "outta the loop; " << endl; 
+//count_args_space
 
-	//unsigned i_pos = 0;
-	//unsigned i_inp2 = 0; 
 	for(unsigned i = 0; i < arg_count; ++i)
 	{
 		int argc = 0 ; // no arguments (yet) 
 		tmp = strtok(inp.at(i)," ") ; 
 		cout << "strtok, i = " << i << endl; 
 		if(tmp != NULL){
-			argv.at(i) = new char* [ strlen(inp.at(i) ) + 3 ];
-			argv.at(i)[argc] = new char[strlen(tmp) +1]; 
+			argv.at(i) = new char* [ count_args_space(inp.at(i) ) + 3 ];
+			argv.at(i)[argc] = new char[strlen(tmp) +4]; 
 			strcpy( (argv.at(i)[argc] ) , tmp ); //copying first token 
 			cout << "strcpy, i = " << i << endl;  
 		}
@@ -169,40 +195,18 @@ cout << "arg_count " << arg_count << endl;
 	}
 	cout << "skipped for loop...." << endl; 
 
-
-
-
-//FIXME
-//SEGMENTATION FAULT SOMEWHERE AFTER HERE!!!! CASE: PRESSING ENTER , input.size() == 0
-
-
-	    /* cerr << "copying tmp into argv..." << endl; 
-    strcpy(*argv,tmp );
-    cout << "strcpy successful!! (maybe LOL)" << endl; 
-    */
-
-    //checking everything was read in 
-    //cout << "argc: " << argc << "   " <<  endl;
-    //cout << " argv:" << endl;
-
-//    for(unsigned i = 0; argv[i]!='\0'; ++i){
- //       cout << i << ": " << argv[i] << endl; 
-  //  }
-    
-    //need to figure out a way to read in commands with ';' in between
-    //and white space in between
-    
-    //checking how execvp works (dummy variables)
-    char * aargv[4]; 
-    aargv[0] = new char[4]; 
-    aargv[1] = new char[4]; 
-    aargv[2] = new char[4]; 
-    strcpy( aargv[0] , "pwd"); //copying first token 
-    cout << "first copy. \n" << endl; 
-    strcpy( aargv[1] , " ; " ); 
-    cout << "about tho start third..." << endl; 
-    strcpy( aargv[2] , "ls"); 
-    cout << "done copying... " << endl; 
+	cout << endl << endl << endl << "printing out contents..." << endl; 
+	for(unsigned i = 0; i < arg_count; ++i)
+	{
+		cout << "argv.at( " << i << " ): " ; 
+		for(unsigned j = 0; argv.at(i)[j] != '\0'; ++j )	
+		{
+			puts( argv.at(i)[j] ); 
+			cout << " "; 
+		}
+	}
+	cout << endl << "Done." << endl << endl << endl; 
+   
 
 
     //beginning fork, execpv processes
@@ -210,37 +214,40 @@ cout << "arg_count " << arg_count << endl;
 
 	//will now make changes
 	//execute multiple commands through for loop (similar to lab02)
-
-	int pid=fork();
-	if(pid == -1)
-	{
-		perror("There was an error with fork(). " ); 
-		exit(1); 
-
-	}
-	//child process
-	if (pid==0) {
-		cout << "i'm a child" << endl;
-	
-/*
-		if(-1 == execvp(*argv.at(0)[0] ,  *argv.at(0) )
+	cout << endl << endl << "Now executing fork & execvp...." << endl << endl; 	
+	for(unsigned i = 0; i < argv.size(); ++i )
+	{ 
+		int pid=fork();
+		if(pid == -1)
 		{
-			perror("Error: execvp didn't run as expected. Commands may not exist.");
-		
-			exit(1); //avoid zombies    
+			perror("There was an error with fork(). Go back and check " ); 
+			exit(1); 
 
-		}*/
-	}
-	//pid now > 0 so we are in parent process. 
-	else{
-		if( wait(NULL) == -1 ){
-			perror("Error: wait() did not wait!! :o ");
 		}
+		//child process
+		if (pid==0) {
+			cout << "i'm a child" << endl;
+		
+			if(-1 == execvp(argv.at(i)[0] ,  argv.at(i) )  )
+			{
+				perror("Error: execvp didn't run as expected. Commands may not exist.");
+			
+				exit(1); //avoid zombies    
 
-		cout << "I'm a parent." << endl; 
-		exit(1); 
+			}
+		}
+		
+		//pid now > 0 so we are in parent process. 
+		else{
+			if( wait(NULL) == -1 ){
+				perror("Error: wait() did not wait!! :o ");
+			}
+
+			cout << "I'm a parent." << endl; 
+			//no exit to continue loop as necesary. 
+		}
+	
 	}
-
 
 	return 0; 
 }
