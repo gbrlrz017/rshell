@@ -43,8 +43,8 @@ int count_args( const string & input ) {
 	return count; 
 }
 
-vector<int> con_pos( const string & input ) {
-	vector<int> x; 
+vector<unsigned> con_pos( const string & input ) {
+	vector<unsigned> x; 
 	if (input.size() == 0 )
 	{
 		return x; 
@@ -95,44 +95,87 @@ int main()
 	argv.resize( arg_count ); 
 
     char * tmp; //cstring to not deal with memory management for now
-    char delims[] = " "; // connectors we are looking out for.
-                                //FIXME: may not be exactly what we want since may have 
-                                //to be arguments too
 	int inp_sz = input.size()+1;
     char* input2 = new char[inp_sz]; //will take copy of input from std::string input
     strcpy(input2, input.c_str() );
 	cout << "input2 done. no seg fault here. " << endl; 	
-	
-	vector <int> pos = con_pos(  input ); //contains positions of delimiters 
-	//printing elements in pos
+
+	vector <unsigned> pos; 
+	if(con_pos(input).size() != 0 ) 
+	{	
+		vector <unsigned> pos = con_pos(  input ); //contains positions of delimiters 
+	}	
+	cout << "printing elements in pos " << endl; 
 	if(pos.size() != 0 ){
 		for(unsigned i = 0; i < pos.size(); ++i){
 			cout << pos.at(i) << " "; 
 		}
 		cout << endl; 
 	}
-//	
+
+	vector <char*> inp;
+	inp.resize(arg_count+1); 
+	
+	//loop to get substrings of input with "&&||;" as delimiters
+	int argc = 0 ; // no arguments (yet) 
+	tmp = strtok(input2,"&&||;"); 
+	
+	if(tmp != NULL)
+	{
+		inp.at(0) = new char[strlen(tmp) +1]; 
+		strcpy( inp.at(0) , tmp ); //copying first token 
+	}
+
+cout << "arg_count " << arg_count << endl; 
+	while (tmp != NULL)
+	{
+		argc +=1; // argument count increases. 
+		printf ("%s\n",tmp) ;
+		tmp = strtok (NULL,"&&||;");  
+		cout << "before new char, argc: " << argc << endl; 
+		if(tmp != NULL){
+			inp.at(argc) = new char[strlen(tmp) +1]; 
+			cout << "before ...." << endl; 
+			inp.at(argc) = tmp; // copying tokens into argv one at a time 
+			cout << "after .... " << endl; 
+		}
+	}
+	cout << "outta the loop; " << endl; 
+
+	//unsigned i_pos = 0;
+	//unsigned i_inp2 = 0; 
 	for(unsigned i = 0; i < arg_count; ++i)
 	{
 		int argc = 0 ; // no arguments (yet) 
-		tmp = strtok(input2,delims) ; 
+		tmp = strtok(inp.at(i)," ") ; 
 		cout << "strtok, i = " << i << endl; 
-		argv.at(i) = new char* [999];
-		argv.at(i)[argc] = new char[strlen(tmp) +1]; 
-    		strcpy( (argv.at(i)[argc] ) , tmp ); //copying first token 
-   		cout << "strcpy, i = " << i << endl;  
-
+		if(tmp != NULL){
+			argv.at(i) = new char* [ strlen(inp.at(i) ) + 3 ];
+			argv.at(i)[argc] = new char[strlen(tmp) +1]; 
+			strcpy( (argv.at(i)[argc] ) , tmp ); //copying first token 
+			cout << "strcpy, i = " << i << endl;  
+		}
 		while (tmp != NULL)
 		{
-			argc +=1; // argument count increases. 
-			printf ("%s\n",tmp) ;
-			tmp = strtok (NULL,delims);  
-			argv.at(i)[argc] = tmp; // copying tokens into argv one at a time 
-			 
+			if(tmp != NULL){
+				argc +=1; // argument count increases. 
+				printf ("%s\n",tmp) ;
+				tmp = strtok (NULL," ");  
+				argv.at(i)[argc] = tmp; // copying tokens into argv one at a time 
+			} 
 
 		}
 		cout << "first while, i = " << i << endl; 
 	}
+	cout << "skipped for loop...." << endl; 
+
+
+
+
+//FIXME
+//SEGMENTATION FAULT SOMEWHERE AFTER HERE!!!! CASE: PRESSING ENTER , input.size() == 0
+
+
 	    /* cerr << "copying tmp into argv..." << endl; 
     strcpy(*argv,tmp );
     cout << "strcpy successful!! (maybe LOL)" << endl; 
@@ -142,9 +185,9 @@ int main()
     //cout << "argc: " << argc << "   " <<  endl;
     //cout << " argv:" << endl;
 
-    for(unsigned i = 0; argv[i]!='\0'; ++i){
-        cout << i << ": " << argv[i] << endl; 
-    }
+//    for(unsigned i = 0; argv[i]!='\0'; ++i){
+ //       cout << i << ": " << argv[i] << endl; 
+  //  }
     
     //need to figure out a way to read in commands with ';' in between
     //and white space in between
@@ -165,7 +208,7 @@ int main()
     //beginning fork, execpv processes
     //may need to creat multiple forks to run input with connectors
 
-	//will now make major changes
+	//will now make changes
 	//execute multiple commands through for loop (similar to lab02)
 
 	int pid=fork();
