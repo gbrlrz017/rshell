@@ -14,6 +14,25 @@ using namespace std;
 #include <cstdlib>
 #include <vector>
 
+//returns true if 1 '&&' is found
+const bool is_and (const string & input )
+{
+	if ( input.find( "&&", 0 ) != string::npos )
+	{
+		return true; 
+	}
+	return false; 
+}
+
+const bool is_or (const string & input )
+{
+	if ( input.find( "||", 0 ) != string::npos )
+	{
+		return true; 
+	}
+	return false; 
+}
+
 
 //Counts number of arguments 
 unsigned count_args( const string & input ) {
@@ -212,12 +231,16 @@ cout << "arg_count " << arg_count << endl;
     //beginning fork, execpv processes
     //may need to creat multiple forks to run input with connectors
 
+	//tells us if have && or ||
+	const bool AND = is_and(input); 
+	const bool OR = is_or(input); 
+	
 	//will now make changes
 	//execute multiple commands through for loop (similar to lab02)
 	cout << endl << endl << "Now executing fork & execvp...." << endl << endl; 	
 	for(unsigned i = 0; i < argv.size(); ++i )
 	{ 
-		int pid=fork();
+		int pid=fork(); //stores child's pid .. will use for connector cases in parent!
 		if(pid == -1)
 		{
 			perror("There was an error with fork(). Go back and check " ); 
@@ -230,8 +253,9 @@ cout << "arg_count " << arg_count << endl;
 		
 			if(-1 == execvp(argv.at(i)[0] ,  argv.at(i) )  )
 			{
-				perror("Error: execvp didn't run as expected. Commands may not exist.");
-			
+				perror("Error: execvp didn't run as expected. Command may not exist.");
+				
+	
 				exit(1); //avoid zombies    
 
 			}
@@ -240,11 +264,28 @@ cout << "arg_count " << arg_count << endl;
 		//pid now > 0 so we are in parent process. 
 		else{
 			if( wait(NULL) == -1 ){
-				perror("Error: wait() did not wait!! :o ");
+				perror("Error: wait() did not wait!! Not good: Check Code in parent process...");
+			}
+			cout << "I'm a parent." << endl; 
+			
+			if ( pid == 0 ) //
+			{
+				if ( OR ) 
+				{
+					//must only execute once so exit(1)
+					exit(1); // no more looping!!
+				}
 			}
 
-			cout << "I'm a parent." << endl; 
-			//no exit to continue loop as necesary. 
+			if ( pid == -1 ) //means child process failed 
+			{
+				if ( AND ) 
+				{
+					exit(1); // c1 in "c1 && ..." failed so done
+				}	
+			}			
+
+			//no exit so continue loop as necesary. 
 		}
 	
 	}
