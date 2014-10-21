@@ -43,6 +43,37 @@ int count_args( const string & input ) {
 	return count; 
 }
 
+vector<int> con_pos( const string & input ) {
+	vector<int> x; 
+	if (input.size() == 0 )
+	{
+		return x; 
+	}
+
+	//int count = 1; 
+	
+	for(unsigned i = 0; i < input.size(); ++i)
+	{
+		if ( input.at(i) == '&' || input.at(i) == '|' )
+		{
+			x.push_back(i); 
+			x.push_back(i+1); 
+			i+=1; // first '&' or '|' will be followed by another
+			
+			//count +=1; 
+		}
+
+		if ( input.at(i) == ';' && i+1 != input.size() )//can have command: pwd;  
+		{
+			x.push_back(i); 
+	//BUG: will give greater size than should be when have input: "ls ; pwd;   "
+	//will count white space unfortunately.....
+	//will say extra argument than there is..
+		}
+	}
+	return x; 
+}
+
 
 
 
@@ -54,7 +85,9 @@ int main()
     cout << "$ "; //command prompt
     getline (cin,input);
     cout << endl << "outputting input: " << endl << input << endl; 
-    cout << "input.size() (raw): " << input.size() << endl; // trying to see if space adds size 
+    cout << "input.size() (raw): " << input.size() << endl; 
+	// trying to see if space adds size
+	// Answer: IT DOES -_____- 	 
 
     //these will be the arguments to my shell after parsing
     	unsigned arg_count = count_args(input);  	
@@ -69,6 +102,15 @@ int main()
     char* input2 = new char[inp_sz]; //will take copy of input from std::string input
     strcpy(input2, input.c_str() );
 	cout << "input2 done. no seg fault here. " << endl; 	
+	
+	vector <int> pos = con_pos(  input ); //contains positions of delimiters 
+	//printing elements in pos
+	if(pos.size() != 0 ){
+		for(unsigned i = 0; i < pos.size(); ++i){
+			cout << pos.at(i) << " "; 
+		}
+		cout << endl; 
+	}
 	
 	for(unsigned i = 0; i < arg_count; ++i)
 	{
