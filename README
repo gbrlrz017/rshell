@@ -1,7 +1,40 @@
--summarize project
 -list known bugs: 
+	- To exit my rshell program, must type "exit" exactly, no white space. 
+		~"      exit" or "exit    " or "   exit    " do not work.
 	- when entering " ; pwd" runs pwd instead of failing 
 		bc '; ' not a command like bash does. 
+	- cannot run for loop in my rshell terminal, so cannot run many commands at same time
+		~ cannot run "pwd && pwd .....&& pwd" 10000 times
+		~ I'm sure if I typed all 10000 commands down then it would work (too inefficient though)
+		~ So Did not test this.
+
+
+
+
+-summarize project:
+	- A basic bash terminal that is able to run any command with any arguments passed that are in ./bin
+	- There are a few cases where this program fails (namely those listed above)
+	- Code: 
+		~ user inputs commands into pseudo-terminal. Input is saved in c++ std::string
+		~ Input is then parsed accordingly, using " &&;||" as delimiters
+		~ Program then runs for child/parent processes
+		~ commands are executed in execvp, which is called during child process
+		~ parent process waits for child
+		~ Fork is called in a loop so after child exits, the parent continues the looping
+		~ Fork is in loop to handle case of multiple args w/connectors && || ;
+		~ Entire program is in a while loop, which keeps the "$" prompt going
+			to keep receiving user input. 
+		~ Program is terminated with input of "exit" (see bugs for this special case)
+
+
+
+
+
+
+
+
+
+
 
 Figuring out way to handle cases with connectors: && || ;
 
