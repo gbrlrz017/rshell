@@ -75,9 +75,6 @@ unsigned count_args( const string & input ) {
 		if ( input.at(i) == ';' && i+1 != input.size() )//can have command: pwd;  
 		{
 			count +=1; 
-	//BUG: will give greater size than should be when have input: "ls ; pwd;   "
-	//will count white space unfortunately.....
-	//will say extra argument than there is..
 		}
 	}
 	return count; 
@@ -109,15 +106,10 @@ unsigned count_args_space( const char input[] ) {
 }
 
 
-
-
-
-
 int main()
 {
     string input; 
 	    //taking input as a c++ string; will convert to c_str later
-
 
     cout << "$ "; //command prompt
     getline (cin,input);
@@ -128,23 +120,18 @@ while ( input != "exit" ) //bug if enters: "     exit" ->anything with exit and 
 	//removing comments
 	rm_comment (input); 
 
-    cout << endl << "outputting input: " << endl << input << endl; 
-    cout << "input.size() (raw): " << input.size() << endl; 
-	// trying to see if space adds size
-	// Answer: IT DOES -_____- 	 
 
     //these will be the arguments to my shell after parsing
     	unsigned arg_count = count_args(input);  	
 	vector <char**> argv; 
 	argv.resize( arg_count ); 
 
-    char * tmp; //cstring to not deal with memory management for now
+    	char * tmp; //cstring to not deal with memory management for now
 	int inp_sz = input.size()+1;
-    char* input2 = new char[inp_sz]; //will take copy of input from std::string input
-    strcpy(input2, input.c_str() );
-	cout << "input2 done. no seg fault here. " << endl; 	
-
+    	char* input2 = new char[inp_sz]; //will take copy of input from std::string input
+    	strcpy(input2, input.c_str() );
 	
+	//stores strings of diff command/argument groups . Parses with connectors as delims	
 	vector <char*> inp;
 	inp.resize(arg_count+1); 
 	
@@ -158,60 +145,39 @@ while ( input != "exit" ) //bug if enters: "     exit" ->anything with exit and 
 		strcpy( inp.at(0) , tmp ); //copying first token 
 	}
 
-cout << "arg_count " << arg_count << endl; 
+	//further parses with connectors as delims
 	while (tmp != NULL)
 	{
 		argc +=1; // argument count increases. 
-		printf ("%s\n",tmp) ;
 		tmp = strtok (NULL,"&&||;");  
-		cout << "before new char, argc: " << argc << endl; 
 		if(tmp != NULL){
 			inp.at(argc) = new char[strlen(tmp) +1]; 
-			cout << "before ...." << endl; 
 			inp.at(argc) = tmp; // copying tokens into argv one at a time 
-			cout << "after .... " << endl; 
 		}
 	}
-	cout << "outta the loop; " << endl; 
-//count_args_space
 
+	//here we have a vector of char** with each element of argv (the vector)
+	//containing one commands with parameters for execvp
 	for(unsigned i = 0; i < arg_count; ++i)
 	{
 		int argc = 0 ; // no arguments (yet) 
 		tmp = strtok(inp.at(i)," ") ; 
-		cout << "strtok, i = " << i << endl; 
 		if(tmp != NULL){
 			argv.at(i) = new char* [ count_args_space(inp.at(i) ) + 3 ];
 			argv.at(i)[argc] = new char[strlen(tmp) +4]; 
 			strcpy( (argv.at(i)[argc] ) , tmp ); //copying first token 
-			cout << "strcpy, i = " << i << endl;  
 		}
 		while (tmp != NULL)
 		{
 			if(tmp != NULL){
 				argc +=1; // argument count increases. 
-				printf ("%s\n",tmp) ;
 				tmp = strtok (NULL," ");  
 				argv.at(i)[argc] = tmp; // copying tokens into argv one at a time 
 			} 
 
 		}
-		cout << "first while, i = " << i << endl; 
 	}
-	cout << "skipped for loop...." << endl; 
-/*
-	cout << endl << endl << endl << "printing out contents..." << endl; 
-	for(unsigned i = 0; i < arg_count; ++i)
-	{
-		cout << "argv.at( " << i << " ): " ; 
-		for(unsigned j = 0; argv.at(i)[j] != '\0'; ++j )	
-		{
-			puts( argv.at(i)[j] ); 
-			cout << " "; 
-		}
-	}
-	cout << endl << "Done." << endl << endl << endl; 
- */  
+
 
 
     //beginning fork, execpv processes
@@ -221,30 +187,23 @@ cout << "arg_count " << arg_count << endl;
 	const bool AND = is_and(input); 
 	const bool OR = is_or(input); 
 	
-	//will now make changes
 	//execute multiple commands through for loop (similar to lab02)
-	cout << endl << endl << "Now executing fork & execvp...." << endl << endl; 	
 	for(unsigned i = 0; i < argv.size(); ++i )
 	{ 
 		int status; 
 		int pid=fork(); //stores child's pid .. will use for connector cases in parent!
 		if(pid == -1)
 		{
-			perror("There was an error with fork(). Go back and check " ); 
+			perror("There was an error with fork(). Go back and check. " ); 
 			exit(1); 
-
 		}
 		//child process
 		if (pid==0) {
-			cout << "i'm a child" << endl;
 		
 			if(-1 == execvp(argv.at(i)[0] ,  argv.at(i) )  )
 			{
 				perror("Error: execvp didn't run as expected. Command may not exist.");
-				
-	
 				exit(1); //avoid zombies    
-
 			}
 		}
 		
@@ -253,14 +212,12 @@ cout << "arg_count " << arg_count << endl;
 			if( wait(&status) == -1 ){
 				perror("Error: wait() did not wait!! Not good: Check Code in parent process...");
 			}
-			cout << "I'm a parent." << endl; 
 			
-			if (status == 0 ) //
+			if (status == 0 ) //OR, and first command did not fail so do not execute next cmd
 			{
 				if ( OR ) 
 				{
 					//must only execute once so exit(1)
-					cout << "OR and child did not fail" << endl; 
 					exit(1); // no more looping!!
 				}
 			}
@@ -269,11 +226,9 @@ cout << "arg_count " << arg_count << endl;
 			{
 				if ( AND ) 
 				{
-					cout << "AND and child failed..." << endl; 
 					exit(1); // c1 in "c1 && ..." failed so done
 				}	
 			}			
-
 			//no exit so continue loop as necesary. 
 		}
 	
