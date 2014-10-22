@@ -1,0 +1,209 @@
+Script started on Tue 21 Oct 2014 11:14:31 PM PDT
+~
+gruiz007@hammer $ pwd
+/class/classes/gruiz007
+~
+gruiz007@hammer $ cd [K[K[Kcs100
+[0;91m
+===============================================================================
+|                                                                             |
+| You have enabled settings specific for cs100.                               |
+|                                                                             |
+===============================================================================
+[0m
+[s%%%%%%%%%%[u[0;32mgruiz007[0;36m@[0;32mcs100[0;36m:[0;32m~[0;95m [0;36m$[0m cd rse[Khell
+[s%%%%%%%%%%[u[0;32mgruiz007[0;36m@[0;32mcs100[0;36m:[0;32m~/rshell[0;95m (exec) [0;36m$[0m make
+g++ -Werror -ansi -pedantic -Wall src/rschell.cpp 
+mv a.out ./bin
+./bin/a.out		
+$ pwd
+/class/classes/gruiz007/rshell
+$ echo "hello world"
+"hello world"
+$ ls -a -f
+.  ..  .git  LICENSE  README  Makefile	src  tests  bin  exec.script
+$ ls -a || echo Hello,    theer  re
+.  ..  bin  exec.script  .git  LICENSE	Makefile  README  src  tests
+make: *** [all] Error 1
+[s%%%%%%%%%%[u[0;32mgruiz007[0;36m@[0;32mcs100[0;36m:[0;32m~/rshell[0;95m (exec) [0;36m$[0m make[K[K[K[K#this is error is mentioned in my README
+[s%%%%%%%%%%[u[0;32mgruiz007[0;36m@[0;32mcs100[0;36m:[0;32m~/rshell[0;95m (exec) [0;36m$[0m make
+g++ -Werror -ansi -pedantic -Wall src/rschell.cpp 
+mv a.out ./bin
+./bin/a.out		
+$ ls -a || echo howdy, bud || pwd||hello||ls
+.  ..  bin  exec.script  .git  LICENSE	Makefile  README  src  tests
+make: *** [all] Error 1
+[s%%%%%%%%%%[u[0;32mgruiz007[0;36m@[0;32mcs100[0;36m:[0;32m~/rshell[0;95m (exec) [0;36m$[0m make
+g++ -Werror -ansi -pedantic -Wall src/rschell.cpp 
+mv a.out ./bin
+./bin/a.out		
+$ ls;pwd;echo hey there;ls -a -f;
+bin  exec.script  LICENSE  Makefile  README  src  tests
+/class/classes/gruiz007/rshell
+hey there
+.  ..  .git  LICENSE  README  Makefile	src  tests  bin  exec.script
+$ ls  ;p   ; pwd
+bin  exec.script  LICENSE  Makefile  README  src  tests
+/class/classes/gruiz007/rshell
+$ sleep --help && mv --help && mailx --help
+Usage: sleep NUMBER[SUFFIX]...
+  or:  sleep OPTION
+Pause for NUMBER seconds.  SUFFIX may be `s' for seconds (the default),
+`m' for minutes, `h' for hours or `d' for days.  Unlike most implementations
+that require NUMBER be an integer, here NUMBER may be an arbitrary floating
+point number.  Given two or more arguments, pause for the amount of time
+specified by the sum of their values.
+
+      --help     display this help and exit
+      --version  output version information and exit
+
+Report sleep bugs to bug-coreutils@gnu.org
+GNU coreutils home page: <http://www.gnu.org/software/coreutils/>
+General help using GNU software: <http://www.gnu.org/gethelp/>
+For complete documentation, run: info coreutils 'sleep invocation'
+Usage: mv [OPTION]... [-T] SOURCE DEST
+  or:  mv [OPTION]... SOURCE... DIRECTORY
+  or:  mv [OPTION]... -t DIRECTORY SOURCE...
+Rename SOURCE to DEST, or move SOURCE(s) to DIRECTORY.
+
+Mandatory arguments to long options are mandatory for short options too.
+      --backup[=CONTROL]       make a backup of each existing destination file
+  -b                           like --backup but does not accept an argument
+  -f, --force                  do not prompt before overwriting
+  -i, --interactive            prompt before overwrite
+  -n, --no-clobber             do not overwrite an existing file
+If you specify more than one of -i, -f, -n, only the final one takes effect.
+      --strip-trailing-slashes  remove any trailing slashes from each SOURCE
+                                 argument
+  -S, --suffix=SUFFIX          override the usual backup suffix
+  -t, --target-directory=DIRECTORY  move all SOURCE arguments into DIRECTORY
+  -T, --no-target-directory    treat DEST as a normal file
+  -u, --update                 move only when the SOURCE file is newer
+                                 than the destination file or when the
+                                 destination file is missing
+  -v, --verbose                explain what is being done
+      --help     display this help and exit
+      --version  output version information and exit
+
+The backup suffix is `~', unless set with --suffix or SIMPLE_BACKUP_SUFFIX.
+The version control method may be selected via the --backup option or through
+the VERSION_CONTROL environment variable.  Here are the values:
+
+  none, off       never make backups (even if --backup is given)
+  numbered, t     make numbered backups
+  existing, nil   numbered if numbered backups exist, simple otherwise
+  simple, never   always make simple backups
+
+Report mv bugs to bug-coreutils@gnu.org
+GNU coreutils home page: <http://www.gnu.org/software/coreutils/>
+General help using GNU software: <http://www.gnu.org/gethelp/>
+For complete documentation, run: info coreutils 'mv invocation'
+mailx: illegal option -- -
+Usage: mailx -eiIUdEFntBDNHRV~ -T FILE -u USER -h hops -r address -s SUBJECT -a FILE -q FILE -f FILE -A ACCOUNT -b USERS -c USERS -S OPTION users
+make: *** [all] Error 1
+[s%%%%%%%%%%[u[0;32mgruiz007[0;36m@[0;32mcs100[0;36m:[0;32m~/rshell[0;95m (exec) [0;36m$[0m make[K[K[K[K#outputted everything but crashed. Perhaps a memory problem?
+[s%%%%%%%%%%[u[0;32mgruiz007[0;36m@[0;32mcs100[0;36m:[0;32m~/rshell[0;95m (exec) [0;36m$[0m make
+g++ -Werror -ansi -pedantic -Wall src/rschell.cpp 
+mv a.out ./bin
+./bin/a.out		
+$ && vim
+7[?47h[?1h=[1;38r[m[H[2J[>c[2;1H[1m[34m~                                                                                                                                                        [3;1H~                                                                                                                                                        [4;1H~                                                                                                                                                        [5;1H~                                                                                                                                                        [6;1H~                                                                                                                                                        [7;1H~                                                                                                                                                        [8;1H~                                                                                                                                                        [9;1H~                                                                                                                                                        [10;1H~                                                                                                                                                        [11;1H~                                                                                                                                                        [12;1H~                                                                                                                                                        [13;1H~                                                                                                                                                        [14;1H~                                                                                                                                                        [15;1H~                                                                                                                                                        [16;1H~                                                                                                                                                        [17;1H~                                                                                                                                                        [18;1H~                                                                                                                                                        [19;1H~                                                                                                                                                        [20;1H~                                                                                                                                                        [21;1H~                                                                                                                                                        [22;1H~                                                                                                                                                        [23;1H~                                                                                                                                                        [24;1H~                                                                                                                                                        [25;1H~                                                                                                                                                        [26;1H~                                                                                                                                                        [27;1H~                                                                                                                                                        [28;1H~                                                                                                                                                        [29;1H~                                                                                                                                                        [30;1H~                                                                                                                                                        [31;1H~                                                                                                                                                        [32;1H~                                                                                                                                                        [33;1H~                                                                                                                                                        [34;1H~                                                                                                                                                        [35;1H~                                                                                                                                                        [36;1H~                                                                                                                                                        [37;1H~                                                                                                                                                        [m[38;136H0,0-1[9CAll[13;69HVIM - Vi IMproved[15;70Hversion 7.2.411[16;65Hby Bram Moolenaar et al.[17;61HModified by [34m<bugzilla@redhat.com>[m[18;56HVim is open source and freely distributable[20;65HSponsor Vim development![21;54Htype  :help sponsor[34m<Enter>[m    for information [23;54Htype  :q[34m<Enter>[m               to exit         [24;54Htype  :help[34m<Enter>[m  or  [34m<F1>[m  for on-line help[25;54Htype  :help version7[34m<Enter>[m   for version info[1;1HP+q436f\P+q6b75\P+q6b64\P+q6b72\P+q6b6c\P+q2332\P+q2334\P+q2569\P+q2a37\P+q6b31\[38;136H[K[38;1H:q[38;1H[K[38;1H[?1l>[2J[?47l8make: *** [all] Error 1
+[s%%%%%%%%%%[u[0;32mgruiz007[0;36m@[0;32mcs100[0;36m:[0;32m~/rshell[0;95m (exec) [0;36m$[0m make
+g++ -Werror -ansi -pedantic -Wall src/rschell.cpp 
+mv a.out ./bin
+./bin/a.out		
+$ lssssss &&   &&pwd
+Error: execvp didn't run as expected. Command may not exist.: No such file or directory
+make: *** [all] Error 1
+[s%%%%%%%%%%[u[0;32mgruiz007[0;36m@[0;32mcs100[0;36m:[0;32m~/rshell[0;95m (exec) [0;36m$[0m make
+g++ -Werror -ansi -pedantic -Wall src/rschell.cpp 
+mv a.out ./bin
+./bin/a.out		
+$ ls && pwd
+bin  exec.script  LICENSE  Makefile  README  src  tests
+/class/classes/gruiz007/rshell
+$ echo does next cmd work? && lssssss
+does next cmd work?
+Error: execvp didn't run as expected. Command may not exist.: No such file or directory
+make: *** [all] Error 1
+[s%%%%%%%%%%[u[0;32mgruiz007[0;36m@[0;32mcs100[0;36m:[0;32m~/rshell[0;95m (exec) [0;36m$[0m make
+g++ -Werror -ansi -pedantic -Wall src/rschell.cpp 
+mv a.out ./bin
+./bin/a.out		
+$ echoo  will this $ # be cut short?
+will this
+$ pwd#this works!
+/class/classes/gruiz007/rshell
+$ echo will cmd after comment symbol work? #;pwd
+Error: execvp didn't run as expected. Command may not exist.: No such file or directory
+$ #that last error is documents in my REAM DME^[[D^[[D^[[D^[[D^[[D^[[D^[[D^[[D^[[D^[[D^[[D^[[D^[[D^[[D^[[D^[[D                                                                 E
+$ 
+$ 
+$ 
+$ 
+$ 
+$ 
+$ 
+$ 
+$ 
+$ 
+$ clear
+[H[2J$                       
+$                      
+$ #bunch of spaces then enter>===         <enter> works as well as just <enter>
+$ lss    ;     s; #Does arg work?
+bin  exec.script  LICENSE  Makefile  README  src  tests
+$ ls  ;
+$ ;
+$ ||
+$ ; ls #should this work? It works for me!
+bin  exec.script  LICENSE  Makefile  README  src  tests
+$ &&
+make: *** [all] Error 1
+[s%%%%%%%%%%[u[0;32mgruiz007[0;36m@[0;32mcs100[0;36m:[0;32m~/rshell[0;95m (exec) [0;36m$[0m make
+g++ -Werror -ansi -pedantic -Wall src/rschell.cpp 
+mv a.out ./bin
+./bin/a.out		
+$ #there is iss    agian   ain!
+$ make #call p itself from withing    itself                         prgrm from w/in itself
+make[1]: Entering directory `/class/classes/gruiz007/rshell'
+g++ -Werror -ansi -pedantic -Wall src/rschell.cpp 
+mv a.out ./bin
+./bin/a.out		
+$ make #how about again?
+make[2]: Entering directory `/class/classes/gruiz007/rshell'
+g++ -Werror -ansi -pedantic -Wall src/rschell.cpp 
+mv a.out ./bin
+./bin/a.out		
+$ pwd
+/class/classes/gruiz007/rshell
+$ ls
+bin  exec.script  LICENSE  Makefile  README  src  tests
+$ ls -a; echo hello
+.  ..  bin  exec.script  .git  LICENSE	Makefile  README  src  tests
+hello
+$ echo hey this works!
+hey this works!
+$ #exiting now.... 
+$ exit
+make[2]: Leaving directory `/class/classes/gruiz007/rshell'
+$ exit
+make[1]: Leaving directory `/class/classes/gruiz007/rshell'
+$ #back in original rschell.cpp
+$ exit    echo good bye!
+good bye!
+$ ech  xit
+[s%%%%%%%%%%[u[0;32mgruiz007[0;36m@[0;32mcs100[0;36m:[0;32m~/rshell[0;95m (exec) [0;36m$[0m exit
+exit
+~
+gruiz007@hammer $ ls
+[0m[01;32mcipher.cpp[0m*  [01;34mDesktop[0m/    [01;34mDownloads[0m/    [01;32mlab01[0m*     [01;32mlab6.cpp[0m*  [01;34mMusic[0m/     [01;32mprob4.cpp[0m*  [01;34mrshell[0m/     [01;32mtextadventure.cpp[0m*  [01;34mucr-cs100[0m/
+[01;34mcs014[0m/       [01;34mDocuments[0m/  [01;32mhangman.cpp[0m*  [01;32mLab1.cpp[0m*  [01;32mlab7.cpp[0m*  [01;34mPictures[0m/  [01;34mPublic[0m/     [01;34mTemplates[0m/  typescript          [01;34mVideos[0m/
+[m~
+gruiz007@hammer $ cd rhell[K[K[K[Kshell
+~/rshell
+gruiz007@hammer $ exit exec.script
+exit
+bash: exit: exec.script: numeric argument required
+
+Script done on Tue 21 Oct 2014 11:25:00 PM PDT
