@@ -14,6 +14,27 @@ using namespace std;
 #include <cstdlib>
 #include <vector>
 
+
+//modifies input to remove comments
+void rm_comment(string & input)
+{
+	unsigned i = 0;
+	for(; i < input.size(); i++ )
+	{
+		if (input.at(i) == '#' ){
+			break; //get out of the for loop
+		}
+	}
+	
+	for(; i < input.size(); i++ )
+	{
+		input.at(i) = ' ';	
+	}
+	 
+}
+
+
+
 //returns true if 1 '&&' is found
 const bool is_and (const string & input )
 {
@@ -89,37 +110,6 @@ unsigned count_args_space( const char input[] ) {
 
 
 
-vector<unsigned> con_pos( const string & input ) {
-	vector<unsigned> x; 
-	if (input.size() == 0 )
-	{
-		return x; 
-	}
-
-	//int count = 1; 
-	
-	for(unsigned i = 0; i < input.size(); ++i)
-	{
-		if ( input.at(i) == '&' || input.at(i) == '|' )
-		{
-			x.push_back(i); 
-			x.push_back(i+1); 
-			i+=1; // first '&' or '|' will be followed by another
-			
-			//count +=1; 
-		}
-
-		if ( input.at(i) == ';' && i+1 != input.size() )//can have command: pwd;  
-		{
-			x.push_back(i); 
-	//BUG: will give greater size than should be when have input: "ls ; pwd;   "
-	//will count white space unfortunately.....
-	//will say extra argument than there is..
-		}
-	}
-	return x; 
-}
-
 
 
 
@@ -135,6 +125,8 @@ int main()
 while ( input != "exit" ) //bug if enters: "     exit" ->anything with exit and spaces
 {
 
+	//removing comments
+	rm_comment (input); 
 
     cout << endl << "outputting input: " << endl << input << endl; 
     cout << "input.size() (raw): " << input.size() << endl; 
@@ -152,19 +144,7 @@ while ( input != "exit" ) //bug if enters: "     exit" ->anything with exit and 
     strcpy(input2, input.c_str() );
 	cout << "input2 done. no seg fault here. " << endl; 	
 
-	vector <unsigned> pos; 
-	if(con_pos(input).size() != 0 ) 
-	{	
-		vector <unsigned> pos = con_pos(  input ); //contains positions of delimiters 
-	}	
-	cout << "printing elements in pos " << endl; 
-	if(pos.size() != 0 ){
-		for(unsigned i = 0; i < pos.size(); ++i){
-			cout << pos.at(i) << " "; 
-		}
-		cout << endl; 
-	}
-
+	
 	vector <char*> inp;
 	inp.resize(arg_count+1); 
 	
