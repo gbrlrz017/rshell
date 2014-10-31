@@ -1,7 +1,6 @@
 #define FLAG_a 1
 #define FLAG_l 2
-#define FLAG_R 4
-
+#define FLAG_R 4                                                                                                                                              
 #include <cstring>
 #include <vector>
 #include <sys/types.h>
@@ -21,7 +20,7 @@ vector<char*> parse_inp (string & input)
 {
 	char * tmp; //cstring will be used in parsing later
 	int inp_sz = input.size()+1; //character size of inputted string
-	char * input2 = new char[inp_sz]; //will take compy of input
+	char * input2 = new char[inp_sz]; //will take copy of input
 	strcpy(input2, input.c_str() ); 
 
 
@@ -31,6 +30,7 @@ vector<char*> parse_inp (string & input)
 	
 	if (tmp != NULL)
 	{
+		inp.resize( inp.size() + 1 ); 
 		inp.at(0) = new char[strlen(tmp) +1]; 
 		strcpy( inp.at(0), tmp); //copying token (1st one)
 	}
@@ -41,18 +41,28 @@ vector<char*> parse_inp (string & input)
 		argc +=1; // argument count increases. 
 		tmp = strtok (NULL," ");  
 		if(tmp != NULL){ 
+			inp.resize( inp.size() + 1 );
 			inp.at(argc) = new char[strlen(tmp) +1];
 			inp.at(argc) = tmp; // copying tokens into argv one at a time                
 		}
 	}
-	
-	delete tmp; 
-	delete input2; 
+	//watchout later for memory leaks
+	//may need to have different return type: vector <string>	
+	//delete tmp; 
+	//delete input2; 
 	return inp; 
 
 }
 
-
+void print ( char ** argv ) 
+{
+	for (unsigned i = 0; argv[i] != '\0'; ++i )
+	{
+		printf( argv[i]); 
+		cout << " "; 
+	}
+	cout << endl; 
+}
 
 /*
  *  * This is a BARE BONES example of how to use opendir/readdir/closedir.  Notice
@@ -80,7 +90,8 @@ int main()
 				
 		//point to same memory, so have to be careful later.
 		char ** argv = &inp[0]; 
-
+		//unsigned argc = inp.size() - 1;//argument count 
+		print(argv); 	
 
 		cout << "$ "; //command prompt
 		getline (cin,input);
