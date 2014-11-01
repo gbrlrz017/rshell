@@ -1,6 +1,10 @@
 #define FLAG_a 1
 #define FLAG_l 2
 #define FLAG_R 4                                                                                                                                              
+#define INPUT cout << "$ "; /*command prompt */\ 
+	getline (cin,input)
+
+
 #include <cstring>
 #include <vector>
 #include <sys/types.h>
@@ -19,7 +23,7 @@ using namespace std;
 vector<char*> parse_inp (string & input)
 {
 	char * tmp; //cstring will be used in parsing later
-	int inp_sz = input.size()+1; //character size of inputted string
+	int inp_sz = input.size()+3; //character size of inputted string
 	char * input2 = new char[inp_sz]; //will take copy of input
 	strcpy(input2, input.c_str() ); 
 
@@ -30,7 +34,7 @@ vector<char*> parse_inp (string & input)
 	
 	if (tmp != NULL)
 	{
-		inp.resize( inp.size() + 1 ); 
+		inp.resize( 2 ); 
 		inp.at(0) = new char[strlen(tmp) +1]; 
 		strcpy( inp.at(0), tmp); //copying token (1st one)
 	}
@@ -56,13 +60,81 @@ vector<char*> parse_inp (string & input)
 
 void print ( char ** argv ) 
 {
+	if( argv == NULL )
+	{
+		return; 
+	}
+	cerr << "entering loop \n"; 
 	for (unsigned i = 0; argv[i] != '\0'; ++i )
 	{
+		cout << "None yet." << endl; 
 		printf( argv[i]); 
 		cout << " "; 
+		cout << "Not yet." << endl; 
 	}
 	cout << endl; 
 }
+
+
+vector <bool> what_flags (int argc, char **argv)
+{
+	vector <bool> flags (3, 0); 
+	int aflag = 0;
+	int lflag = 0;
+	int Rflag = 0; 
+	//char *cvalue = NULL;
+	int index;
+	int c;
+
+	opterr = 0;
+	cerr << "nothing yet \n" << endl; 
+	while ((c = getopt (argc, argv, "alR")) != -1)
+	{
+		switch (c)
+		{
+			case 'a':
+				aflag = 1;
+				flags.at(0) = 1; 	
+				break;
+			case 'l':
+				lflag = 1;
+				flags.at(1) = 1; 
+				break;
+			case 'R':
+				Rflag = 1; 
+				flags.at(2) = 1; 
+				//cvalue = optarg;
+				break;
+			case '?':
+				//if (optopt == 'c')
+				//  fprintf (stderr, "Option -%c requires an argument.\n", optopt);
+				if (isprint (optopt))
+				  fprintf (stderr, "Unknown option `-%c'.\n", optopt);
+				else
+				  fprintf (stderr,
+					   "Unknown option character `\\x%x'.\n",
+					   optopt);
+				exit(1);//FIXME need to deal with this case a better way 
+			default:
+				abort ();
+		}
+	}
+
+	// may have to replace cflag = %d ..cvalue = %s\n", */
+	printf ("aflag = %d, lflag = %d, Rflag = %d\n", aflag, lflag, Rflag); 
+	//cvalue);
+	
+	for (index = optind; index < argc; index++)
+	printf ("Non-option argument %s\n", argv[index]);
+	return flags; 
+}
+
+
+
+
+
+
+
 
 /*
  *  * This is a BARE BONES example of how to use opendir/readdir/closedir.  Notice
@@ -79,24 +151,27 @@ int main()
 	string input; 
 	//taking input as a c++ string; 
 
-	cout << "$ "; //command prompt
-	getline (cin,input);
+	INPUT;  //command prompt
 	
 	while( input != "exit" )
 	{
 				//will take in parsed input
 		vector <char*> inp = parse_inp(input); 
-				
+		//potential memory leak...FIXME	
 				
 		//point to same memory, so have to be careful later.
 		char ** argv = &inp[0]; 
-		//unsigned argc = inp.size() - 1;//argument count 
+		unsigned argc = inp.size() -1;//argument count 
+		cout << "Printing." << endl; 
+		cout << "argc: " << argc << "\n" ; 
 		print(argv); 	
+		
 
-		cout << "$ "; //command prompt
-		getline (cin,input);
+		cerr << "flags: " << endl; 
+		//this function checks whether/which flags passed in
+		vector <bool> flags = what_flags(argc, argv); 
+		INPUT;//macro for command prompt 	
 	}
-
 
 	/*
 	    char *dirName = ".";
