@@ -35,7 +35,7 @@ vector<char*> parse_inp (string & input)
 	if (tmp != NULL)
 	{
 		inp.resize( 2 ); 
-		inp.at(0) = new char[strlen(tmp) +1]; 
+		inp.at(0) = new char[strlen(tmp) +2]; 
 		strcpy( inp.at(0), tmp); //copying token (1st one)
 	}
 
@@ -46,7 +46,7 @@ vector<char*> parse_inp (string & input)
 		tmp = strtok (NULL," ");  
 		if(tmp != NULL){ 
 			inp.resize( inp.size() + 1 );
-			inp.at(argc) = new char[strlen(tmp) +1];
+			inp.at(argc) = new char[strlen(tmp) +2];
 			inp.at(argc) = tmp; // copying tokens into argv one at a time                
 		}
 	}
@@ -79,6 +79,11 @@ void print ( char ** argv )
 vector <bool> what_flags (int argc, char **argv)
 {
 	vector <bool> flags (3, 0); 
+	if ( argv == NULL )
+	{
+		return flags; //empty case
+	}
+
 	int aflag = 0;
 	int lflag = 0;
 	int Rflag = 0; 
@@ -88,7 +93,7 @@ vector <bool> what_flags (int argc, char **argv)
 
 	opterr = 0;
 	cerr << "nothing yet \n" << endl; 
-	while ((c = getopt (argc, argv, "alR")) != -1)
+	for (unsigned i = 1; argv[i] != '\0' && (c = getopt (argc, argv, "alR")) != -1; ++i)
 	{
 		switch (c)
 		{
@@ -148,7 +153,7 @@ int main()
 	//need to combine later: to binary number? 
 	//bool flag_a, flag_l, flag_R; 
 	
-	string input; 
+	string input; // = "ls -l -a -R"; 
 	//taking input as a c++ string; 
 
 	INPUT;  //command prompt
@@ -170,6 +175,8 @@ int main()
 		cerr << "flags: " << endl; 
 		//this function checks whether/which flags passed in
 		vector <bool> flags = what_flags(argc, argv); 
+		
+		input = "";	
 		INPUT;//macro for command prompt 	
 	}
 
