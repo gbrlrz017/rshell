@@ -16,7 +16,8 @@
 #include <stdlib.h>
 #include <unistd.h>
 #include <iostream>
-
+#include <cstring>
+#include <string.h>
 using namespace std;
 
 //int debug_flag, compile_flag, size_in_bytes;
@@ -44,12 +45,11 @@ void print ( char ** argv )
 //sets Truth values to boolean global flag indicator variables 
 //will tell if a, l, or R flags passed into argv
 //FIXME need to fix case(s) -alR,...
-void <bool> flags (int argc, char *const* argv)
+void flags (int argc, char *const* argv)
 {
-	vector <bool> flags (3, 0); 
-	if ( argv == NULL )
+	if ( argc <= 1  )
 	{
-		return flags; //empty case
+		return; //can't be any flags 
 	}
 
 	//char *cvalue = NULL;
@@ -64,15 +64,12 @@ void <bool> flags (int argc, char *const* argv)
 		{
 			case 'a':
 				aflag = true;
-				flags.at(0) = 1; 	
 				break;
 			case 'l':
 				lflag = true;
-				flags.at(1) = 1; 
 				break;
 			case 'R':
 				Rflag = true;
-				flags.at(2) = 1; 
 				//cvalue = optarg;
 				break;
 			case '?':
@@ -96,7 +93,6 @@ void <bool> flags (int argc, char *const* argv)
 	
 	for (index = optind; index < argc; index++)
 	printf ("Non-option argument %s\n", argv[index]);
-	return flags; 
 }
 
 
@@ -114,14 +110,12 @@ void <bool> flags (int argc, char *const* argv)
 
 int main( int argc, char** argv )
 {
-	//cout << "Printing." << endl; 
-	//cout << "argc: " << argc << "\n" ; 
-	//print(reinterpret_cast<char* *> (argv));  	
+	cout << "argc: " << argc << "\n" ; 
 	print(argv); 
-	//cerr << "flags: " << endl; 
-	//this function checks whether/which flags passed in
-	//vector <bool> flags = what_flags(argc, argv); 
 	
+	//checks what options passed in
+	//sets Truthness of global indicator variables 
+	flags(argc, argv); 	
 	/*for (vector<char *>::iterator it = inp.begin(); it != inp.end(); it++) {
 delete *it;
 }
@@ -130,14 +124,21 @@ delete *it;
 */
 
 
-	/*
-	    char *dirName = ".";
-	    DIR *dirp = opendir(dirName);
-	    dirent *direntp;
-	    while ((direntp = readdir(dirp)))
-		
-		cout << direntp->d_name << endl;  // use stat here to find attributes of file
-	    closedir(dirp);
-	*/
+	
+	char *dirName = const_cast<char*>(".");
+	DIR *dirp = opendir(dirName);
+	dirent *direntp;
+	while ((direntp = readdir(dirp)))
+	{
+
+		if( aflag == false  && direntp->d_name[0] == '.' )
+		{
+			continue; //direntp->d_name starts with '.'
+		}
+		cout << direntp->d_name << "  ";  // use stat here to find attributes of file
+	}
+	cout << endl; 
+	closedir(dirp);
+
 	return 0; 
 }
