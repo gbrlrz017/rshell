@@ -1,7 +1,11 @@
 #define FLAG_a 1
 #define FLAG_l 2
-#define FLAG_R 4
+#define FLAG_R 4                                                                                                                                              
+#define INPUT cout << "$ "; /*command prompt */\ 
+	getline (cin,input)
 
+#include <string>
+#include <string.h>
 #include <cstring>
 #include <vector>
 #include <sys/types.h>
@@ -15,42 +19,90 @@
 
 using namespace std;
 
-//parses input with " " as delim
-//returns vector of cstring tokens
-vector<char*> parse_inp (string & input)
+//int debug_flag, compile_flag, size_in_bytes;
+bool aflag, lflag, Rflag;
+
+//prints elements in argv
+void print ( char ** argv ) 
 {
-	char * tmp; //cstring will be used in parsing later
-	int inp_sz = input.size()+1; //character size of inputted string
-	char * input2 = new char[inp_sz]; //will take compy of input
-	strcpy(input2, input.c_str() ); 
-
-
-	vector <char*> inp; 
-	int argc = 0; //no args yet
-	tmp = strtok(input2, " "); //parsing with whitespace as delims
-	
-	if (tmp != NULL)
+	if( argv == NULL )
 	{
-		inp.at(0) = new char[strlen(tmp) +1]; 
-		strcpy( inp.at(0), tmp); //copying token (1st one)
+		return; 
+	}
+	cerr << "entering loop \n"; 
+	for (unsigned i = 0; argv[i] != '\0'; ++i )
+	{
+		cout << "None yet." << endl; 
+		printf( argv[i]); 
+		cout << " "; 
+		cout << "Not yet." << endl; 
+	}
+	cout << endl; 
+}
+
+
+//sets Truth values to boolean global flag indicator variables 
+//will tell if a, l, or R flags passed into argv
+//FIXME need to fix case(s) -alR,...
+void <bool> flags (int argc, char *const* argv)
+{
+	vector <bool> flags (3, 0); 
+	if ( argv == NULL )
+	{
+		return flags; //empty case
 	}
 
-	//further parses with whitespace as delims. 
-	while (tmp != NULL)
-	{   
-		argc +=1; // argument count increases. 
-		tmp = strtok (NULL," ");  
-		if(tmp != NULL){ 
-			inp.at(argc) = new char[strlen(tmp) +1];
-			inp.at(argc) = tmp; // copying tokens into argv one at a time                
+	//char *cvalue = NULL;
+	int index;
+	int c;
+
+	opterr = 0;
+	cerr << "nothing yet \n" << endl; 
+	for (unsigned i = 1; argv[i] != '\0' && (c = getopt (argc, argv, ":alR")) != -1; ++i)
+	{
+		switch (c)
+		{
+			case 'a':
+				aflag = true;
+				flags.at(0) = 1; 	
+				break;
+			case 'l':
+				lflag = true;
+				flags.at(1) = 1; 
+				break;
+			case 'R':
+				Rflag = true;
+				flags.at(2) = 1; 
+				//cvalue = optarg;
+				break;
+			case '?':
+				//if (optopt == 'c')
+				//  fprintf (stderr, "Option -%c requires an argument.\n", optopt);
+				if (isprint (optopt))
+				  fprintf (stderr, "Unknown option `-%c'.\n", optopt);
+				else
+				  fprintf (stderr,
+					   "Unknown option character `\\x%x'.\n",
+					   optopt);
+				exit(1);//FIXME need to deal with this case a better way 
+			default:
+				abort ();
 		}
 	}
-	
-	delete tmp; 
-	delete input2; 
-	return inp; 
 
+	// may have to replace cflag = %d ..cvalue = %s\n", */
+	printf ("aflag = %d, lflag = %d, Rflag = %d\n", aflag, lflag, Rflag); 
+	//cvalue);
+	
+	for (index = optind; index < argc; index++)
+	printf ("Non-option argument %s\n", argv[index]);
+	return flags; 
 }
+
+
+
+
+
 
 
 
@@ -60,31 +112,22 @@ vector<char*> parse_inp (string & input)
  *    * checking yourself.
  *     */
 
-int main()
+int main( int argc, char** argv )
 {
-	//will tell me whether or not flags passed in
-	//need to combine later: to binary number? 
-	//bool flag_a, flag_l, flag_R; 
+	//cout << "Printing." << endl; 
+	//cout << "argc: " << argc << "\n" ; 
+	//print(reinterpret_cast<char* *> (argv));  	
+	print(argv); 
+	//cerr << "flags: " << endl; 
+	//this function checks whether/which flags passed in
+	//vector <bool> flags = what_flags(argc, argv); 
 	
-	string input; 
-	//taking input as a c++ string; 
+	/*for (vector<char *>::iterator it = inp.begin(); it != inp.end(); it++) {
+delete *it;
+}
 
-	cout << "$ "; //command prompt
-	getline (cin,input);
-	
-	while( input != "exit" )
-	{
-				//will take in parsed input
-		vector <char*> inp = parse_inp(input); 
-				
-				
-		//point to same memory, so have to be careful later.
-		char ** argv = &inp[0]; 
-
-
-		cout << "$ "; //command prompt
-		getline (cin,input);
-	}
+	inp.clear();			
+*/
 
 
 	/*
