@@ -4,7 +4,8 @@
 #define INPUT cout << "$ "; /*command prompt */\ 
 	getline (cin,input)
 
-
+#include <string>
+#include <string.h>
 #include <cstring>
 #include <vector>
 #include <sys/types.h>
@@ -18,46 +19,10 @@
 
 using namespace std;
 
-//parses input with " " as delim
-//returns vector of cstring tokens
-vector<char*> parse_inp (string & input)
-{
-	char * tmp; //cstring will be used in parsing later
-	int inp_sz = input.size()+3; //character size of inputted string
-	char * input2 = new char[inp_sz]; //will take copy of input
-	strcpy(input2, input.c_str() ); 
+//int debug_flag, compile_flag, size_in_bytes;
+bool aflag, lflag, Rflag;
 
-
-	vector <char*> inp; 
-	int argc = 0; //no args yet
-	tmp = strtok(input2, " "); //parsing with whitespace as delims
-	
-	if (tmp != NULL)
-	{
-		inp.resize( 2 ); 
-		inp.at(0) = new char[strlen(tmp) +2]; 
-		strcpy( inp.at(0), tmp); //copying token (1st one)
-	}
-
-	//further parses with whitespace as delims. 
-	while (tmp != NULL)
-	{   
-		argc +=1; // argument count increases. 
-		tmp = strtok (NULL," ");  
-		if(tmp != NULL){ 
-			inp.resize( inp.size() + 1 );
-			inp.at(argc) = new char[strlen(tmp) +2];
-			inp.at(argc) = tmp; // copying tokens into argv one at a time                
-		}
-	}
-	//watchout later for memory leaks
-	//may need to have different return type: vector <string>	
-	//delete tmp; 
-	//delete input2; 
-	return inp; 
-
-}
-
+//prints elements in argv
 void print ( char ** argv ) 
 {
 	if( argv == NULL )
@@ -76,7 +41,10 @@ void print ( char ** argv )
 }
 
 
-vector <bool> what_flags (int argc, char **argv)
+//sets Truth values to boolean global flag indicator variables 
+//will tell if a, l, or R flags passed into argv
+//FIXME need to fix case(s) -alR,...
+void <bool> flags (int argc, char *const* argv)
 {
 	vector <bool> flags (3, 0); 
 	if ( argv == NULL )
@@ -84,29 +52,26 @@ vector <bool> what_flags (int argc, char **argv)
 		return flags; //empty case
 	}
 
-	int aflag = 0;
-	int lflag = 0;
-	int Rflag = 0; 
 	//char *cvalue = NULL;
 	int index;
 	int c;
 
 	opterr = 0;
 	cerr << "nothing yet \n" << endl; 
-	for (unsigned i = 1; argv[i] != '\0' && (c = getopt (argc, argv, "alR")) != -1; ++i)
+	for (unsigned i = 1; argv[i] != '\0' && (c = getopt (argc, argv, ":alR")) != -1; ++i)
 	{
 		switch (c)
 		{
 			case 'a':
-				aflag = 1;
+				aflag = true;
 				flags.at(0) = 1; 	
 				break;
 			case 'l':
-				lflag = 1;
+				lflag = true;
 				flags.at(1) = 1; 
 				break;
 			case 'R':
-				Rflag = 1; 
+				Rflag = true;
 				flags.at(2) = 1; 
 				//cvalue = optarg;
 				break;
@@ -147,38 +112,23 @@ vector <bool> what_flags (int argc, char **argv)
  *    * checking yourself.
  *     */
 
-int main()
+int main( int argc, char** argv )
 {
-	//will tell me whether or not flags passed in
-	//need to combine later: to binary number? 
-	//bool flag_a, flag_l, flag_R; 
+	//cout << "Printing." << endl; 
+	//cout << "argc: " << argc << "\n" ; 
+	//print(reinterpret_cast<char* *> (argv));  	
+	print(argv); 
+	//cerr << "flags: " << endl; 
+	//this function checks whether/which flags passed in
+	//vector <bool> flags = what_flags(argc, argv); 
 	
-	string input; // = "ls -l -a -R"; 
-	//taking input as a c++ string; 
+	/*for (vector<char *>::iterator it = inp.begin(); it != inp.end(); it++) {
+delete *it;
+}
 
-	INPUT;  //command prompt
-	
-	while( input != "exit" )
-	{
-				//will take in parsed input
-		vector <char*> inp = parse_inp(input); 
-		//potential memory leak...FIXME	
-				
-		//point to same memory, so have to be careful later.
-		char ** argv = &inp[0]; 
-		unsigned argc = inp.size() -1;//argument count 
-		cout << "Printing." << endl; 
-		cout << "argc: " << argc << "\n" ; 
-		print(argv); 	
-		
+	inp.clear();			
+*/
 
-		cerr << "flags: " << endl; 
-		//this function checks whether/which flags passed in
-		vector <bool> flags = what_flags(argc, argv); 
-		
-		input = "";	
-		INPUT;//macro for command prompt 	
-	}
 
 	/*
 	    char *dirName = ".";
