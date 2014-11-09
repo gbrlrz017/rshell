@@ -3,13 +3,15 @@
 #define FLAG_R 4                                                                                                                                              
 #define INPUT cout << "$ "; /*command prompt */\ 
 	getline (cin,input)
-
+#include "Status.h"
 #include <string>
 #include <string.h>
 #include <cstring>
 #include <vector>
 #include <sys/types.h>
 #include <dirent.h>
+#include <fcntl.h>
+#include <sys/stat.h>
 #include <errno.h>
 #include <ctype.h>
 #include <stdio.h>
@@ -22,6 +24,26 @@ using namespace std;
 
 //int debug_flag, compile_flag, size_in_bytes;
 bool aflag, lflag, Rflag;
+
+bool is_dir( const char* pathname)
+{
+        struct stat info;
+
+        if( stat( pathname, &info ) != 0 )
+        {
+            printf( "cannot access %s\n", pathname );
+                perror("stat");
+                exit(1);
+        }
+        else if( info.st_mode & S_IFDIR )
+        {
+            printf( "%s is a directory\n", pathname );
+                return true; 
+                //exit(1);
+        }
+	return false;         
+}
+
 
 //prints elements in argv
 void print ( char ** argv ) 
@@ -131,11 +153,20 @@ delete *it;
 	while ((direntp = readdir(dirp)))
 	{
 
-		if( aflag == false  && direntp->d_name[0] == '.' )
+		if( !aflag && direntp->d_name[0] == '.' )
 		{
 			continue; //direntp->d_name starts with '.'
 		}
-		cout << direntp->d_name << "  ";  // use stat here to find attributes of file
+		if ( !lflag && !Rflag )
+		{
+			cout << direntp->d_name << "  ";  
+			continue; 
+		}
+		else if( lflag )
+		{
+			//need conditional for R flag
+			status( direntp->d_name ); 
+		}
 	}
 	cout << endl; 
 	closedir(dirp);
