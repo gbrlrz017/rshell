@@ -25,25 +25,6 @@ using namespace std;
 //int debug_flag, compile_flag, size_in_bytes;
 bool aflag, lflag, Rflag;
 
-bool is_dir( const char* pathname)
-{
-        struct stat info;
-
-        if( stat( pathname, &info ) != 0 )
-        {
-            printf( "cannot access %s\n", pathname );
-                perror("stat");
-                exit(1);
-        }
-        else if( info.st_mode & S_IFDIR )
-        {
-            printf( "%s is a directory\n", pathname );
-                return true; 
-                //exit(1);
-        }
-	return false;         
-}
-
 
 //prints elements in argv
 void print ( char ** argv ) 
@@ -79,7 +60,6 @@ void flags (int argc, char *const* argv)
 	int c;
 
 	opterr = 0;
-	cerr << "nothing yet \n" << endl; 
 	for (unsigned i = 1; argv[i] != '\0' && (c = getopt (argc, argv, ":alR")) != -1; ++i)
 	{
 		switch (c)
@@ -132,8 +112,8 @@ void flags (int argc, char *const* argv)
 
 int main( int argc, char** argv )
 {
-	cout << "argc: " << argc << "\n" ; 
-	print(argv); 
+	//cout << "argc: " << argc << "\n" ; 
+	//print(argv); 
 	
 	//checks what options passed in
 	//sets Truthness of global indicator variables 
@@ -146,7 +126,7 @@ delete *it;
 */
 
 
-	
+/*	
 	char *dirName = const_cast<char*>(".");
 	DIR *dirp = opendir(dirName);
 	dirent *direntp;
@@ -170,6 +150,7 @@ delete *it;
 	}
 	cout << endl; 
 	closedir(dirp);
-
+*/
+	print_dir( const_cast<char*>("."), aflag, lflag, Rflag);
 	return 0; 
 }

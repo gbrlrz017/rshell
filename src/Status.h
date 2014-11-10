@@ -2,6 +2,9 @@
 #define STATUS_H
 #include <iostream>
 using namespace std; 
+#include <cstdlib>
+#include <string>
+#include <vector>
 #include <sys/types.h>
 #include <sys/stat.h>
 #include <dirent.h>
@@ -12,6 +15,7 @@ using namespace std;
 #include <langinfo.h>
 #include <stdio.h>
 #include <stdint.h>
+#include <unistd.h>
 
 char const * sperm( __mode_t mode) {
 	static char local_buff[16] = {0};
@@ -116,4 +120,101 @@ void status(char * path)
 
 	return ; 
 }
+
+//checks whether path is directory
+bool is_dir(char *par_dir ,const char* pathname)
+{
+	string p = static_cast<string>(par_dir)
+	+ "/" + static_cast<string>(pathname);  
+	char* p2 = const_cast<char*>(p.c_str());
+        struct stat info;
+	//cout << endl << endl << p << endl; 
+        if( stat( p2, &info ) != 0 )
+        {
+            printf( "cannot access %s\n", pathname );
+                perror("stat");
+                exit(1);
+        }
+        else if( info.st_mode & S_IFDIR )
+        {
+            //printf( "%s is a directory\n", pathname );
+                return true;
+                //exit(1);
+        }
+	//cout << pathname << " is not a directory." << endl; 
+        return false;
+}
+
+bool is_file ( const char *fname  )
+{
+        if( access( fname, F_OK ) != -1 ) {
+                //file exists
+                return 1;
+        }
+        return 0;
+        // file doesn't exist
+}
+
+//this function deals with printing out contents in current
+//directory. If Rflag == true, then does same recursively 
+//through subdirectories
+void print_dir ( char* path, const bool& aflag, 
+	const bool& lflag, const bool& Rflag)
+{
+	//will record names of subdirectories 
+	//in curr directoroy. Will call print_dir
+	//on these later.
+	vector <string> sub_dirs;
+	char *dirName = path; //const_cast<char*>(".");
+        DIR *dirp = opendir(dirName);
+        dirent *direntp;
+	if( Rflag )
+	{
+		cout << path << ":"  << endl;
+	}
+        while ((direntp = readdir(dirp)))
+        {
+
+		
+                if( !aflag && direntp->d_name[0] == '.' )
+                {
+                        continue; //direntp->d_name starts with '.'
+                }
+		if( Rflag && //!is_file(direntp->d_name) && 
+			 is_dir( path, direntp->d_name ))
+		{
+			string dir = static_cast<string>(path)
+			+"/" + static_cast
+			<string>(direntp->d_name); 
+			sub_dirs.push_back(dir); 
+			//sub_dirs.push_back(
+			//const_cast<char*> (dir.c_str()) );
+			//cout << dir << endl;
+			//sub_dirs.push_back(direntp->d_name);
+		}
+                if ( !lflag )
+                {
+                        cout << direntp->d_name << "  ";
+                        continue;
+                }
+                else if( lflag )
+                {
+                        status( direntp->d_name );
+                }
+         }
+         cout << endl;
+	closedir(dirp);
+	for (unsigned i = 0; i < sub_dirs.size(); ++i )
+	{
+		//cout << sub_dirs.at(i) << " "; 
+		print_dir ( 
+		const_cast<char*>(sub_dirs.at(i).c_str())
+		, aflag, lflag, Rflag);
+
+	} 	
+	cout << endl; 
+         //closedir(dirp);
+}
+ 
+
 #endif
