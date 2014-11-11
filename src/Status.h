@@ -154,6 +154,43 @@ bool is_file ( const char *fname  )
         return 0;
         // file doesn't exist
 }
+/*
+void file_alone( char* path, const bool& lflag )
+{
+	if(aflag && (static_cast<string>(direntp->d_name) ==  "." 
+		|| static_cast<string>(direntp->d_name) ==  ".."))  
+	{
+		continue; //don't want to go in these
+	}
+	if( !aflag && direntp->d_name[0] == '.' )
+	{
+		continue; //direntp->d_name starts with '.'
+	}
+	if(Rflag && //!is_file(direntp->d_name) && 
+		 is_dir( path, direntp->d_name ))
+	{
+		string dir = static_cast<string>(path)
+		+"/" + static_cast
+		<string>(direntp->d_name); 
+		sub_dirs.push_back(dir); 
+		//sub_dirs.push_back(
+		//const_cast<char*> (dir.c_str()) );
+		//cout << dir << endl;
+		//sub_dirs.push_back(direntp->d_name);
+	}
+	if ( !lflag )
+	{
+		cout << direntp->d_name << "  ";
+		continue;
+	}
+	else if( lflag )
+	{
+		status( direntp->d_name );
+	}
+}
+
+*/
+
 
 //this function deals with printing out contents in current
 //directory. If Rflag == true, then does same recursively 
@@ -175,12 +212,16 @@ void print_dir ( char* path, const bool& aflag,
         while ((direntp = readdir(dirp)))
         {
 
-		
+		if(aflag && (static_cast<string>(direntp->d_name) ==  "." 
+		|| static_cast<string>(direntp->d_name) ==  ".."))  
+		{
+			continue; //don't want to go in these
+		}
                 if( !aflag && direntp->d_name[0] == '.' )
                 {
                         continue; //direntp->d_name starts with '.'
                 }
-		if( Rflag && //!is_file(direntp->d_name) && 
+		if(Rflag && //!is_file(direntp->d_name) && 
 			 is_dir( path, direntp->d_name ))
 		{
 			string dir = static_cast<string>(path)

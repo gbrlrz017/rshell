@@ -50,17 +50,12 @@ void print ( char ** argv )
 //FIXME need to fix case(s) -alR,...
 void flags (int argc, char *const* argv)
 {
-	if ( argc <= 1  )
-	{
-		return; //can't be any flags 
-	}
-
 	//char *cvalue = NULL;
 	int index;
 	int c;
-
 	opterr = 0;
-	for (unsigned i = 1; argv[i] != '\0' && (c = getopt (argc, argv, ":alR")) != -1; ++i)
+
+	while( (c = getopt (argc, argv, "alR")) != -1 )
 	{
 		switch (c)
 		{
@@ -78,12 +73,11 @@ void flags (int argc, char *const* argv)
 				//if (optopt == 'c')
 				//  fprintf (stderr, "Option -%c requires an argument.\n", optopt);
 				if (isprint (optopt))
-				  fprintf (stderr, "Unknown option `-%c'.\n", optopt);
+				  fprintf (stderr, "ls: invalid option -- '%c'.\nTry 'a', 'l', 'R'\n", optopt);
 				else
 				  fprintf (stderr,
-					   "Unknown option character `\\x%x'.\n",
-					   optopt);
-				exit(1);//FIXME need to deal with this case a better way 
+					   "Unknown option character `\\x%x'.\n", optopt);
+				//exit(1);//FIXME need to deal with this case a better way 
 			default:
 				abort ();
 		}
@@ -99,9 +93,17 @@ void flags (int argc, char *const* argv)
 
 
 
-
-
-
+/*
+bool is_file ( const char *fname  )
+{
+        if( access( fname, F_OK ) != -1 ) {
+                //file exists
+                return 1;
+        }
+                return 0;
+                //file doesn't exist
+}
+*/
 
 
 /*
@@ -112,9 +114,17 @@ void flags (int argc, char *const* argv)
 
 int main( int argc, char** argv )
 {
+	bool file1 = false; 
+	if(is_file( argv[1] ))
+	{
+		file1 = true; 
+	}  
+	if( file1 )
+	{
+		cout << "TRUE!" << endl; 
+	}
 	//cout << "argc: " << argc << "\n" ; 
 	//print(argv); 
-	
 	//checks what options passed in
 	//sets Truthness of global indicator variables 
 	flags(argc, argv); 	
@@ -151,6 +161,6 @@ delete *it;
 	cout << endl; 
 	closedir(dirp);
 */
-	print_dir( const_cast<char*>("."), aflag, lflag, Rflag);
+	//print_dir( const_cast<char*>("."), aflag, lflag, Rflag);
 	return 0; 
 }
