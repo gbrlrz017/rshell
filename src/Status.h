@@ -56,8 +56,13 @@ char const * sperm( __mode_t mode) {
 }
 
 //prints out info necessary when -l flag called
-void status(char * path)
+void status(char* path, 
+	char* par_dir = const_cast<char*>("./"))
 {
+	string p = "./" + static_cast<string>(par_dir)
+	+ "/" + static_cast<string>(path);  
+	char* p2 = const_cast<char*>(p.c_str());
+ 
 	//struct dirent  *dp;
 	struct stat     statbuf;
 	struct passwd  *pwd;
@@ -74,7 +79,7 @@ void status(char * path)
 
     /* Get entry's information. */
 	//need to do error checking here! FIXME
-	if ( stat( path, &statbuf ) == -1 )
+	if ( stat( p2, &statbuf ) == -1 )
 	{
 		perror ("stat"); 
 	}
@@ -128,7 +133,6 @@ bool is_dir(char *par_dir ,const char* pathname)
 	+ "/" + static_cast<string>(pathname);  
 	char* p2 = const_cast<char*>(p.c_str());
         struct stat info;
-	//cout << endl << endl << p << endl; 
         if( stat( p2, &info ) != 0 )
         {
             printf( "cannot access %s\n", pathname );
@@ -145,51 +149,43 @@ bool is_dir(char *par_dir ,const char* pathname)
         return false;
 }
 
-bool is_file ( const char *fname  )
+enum path_other {file, directory, other};
+//checks whether path is file
+path_other is_file(const char* pathname)
 {
-        if( access( fname, F_OK ) != -1 ) {
-                //file exists
-                return 1;
+        struct stat info;
+        if( stat( pathname, &info ) != 0 )
+        {
+            printf( "ls: cannot access %s -- ", pathname );
+                perror("stat");
+		return other;
+                
+                //exit(1);
         }
-        return 0;
-        // file doesn't exist
+        else if( info.st_mode & S_IFREG )
+        {
+            //printf( "%s is a directory\n", pathname );
+                return file;
+                //exit(1);
+        }
+	//cout << pathname << " is not a directory." << endl; 
+        return directory;
 }
-/*
+
+//function to print out files passed into 
+//ls as arguments
 void file_alone( char* path, const bool& lflag )
 {
-	if(aflag && (static_cast<string>(direntp->d_name) ==  "." 
-		|| static_cast<string>(direntp->d_name) ==  ".."))  
-	{
-		continue; //don't want to go in these
-	}
-	if( !aflag && direntp->d_name[0] == '.' )
-	{
-		continue; //direntp->d_name starts with '.'
-	}
-	if(Rflag && //!is_file(direntp->d_name) && 
-		 is_dir( path, direntp->d_name ))
-	{
-		string dir = static_cast<string>(path)
-		+"/" + static_cast
-		<string>(direntp->d_name); 
-		sub_dirs.push_back(dir); 
-		//sub_dirs.push_back(
-		//const_cast<char*> (dir.c_str()) );
-		//cout << dir << endl;
-		//sub_dirs.push_back(direntp->d_name);
-	}
 	if ( !lflag )
 	{
-		cout << direntp->d_name << "  ";
-		continue;
+		cout <<  path << "  ";
 	}
 	else if( lflag )
 	{
-		status( direntp->d_name );
+		status( path );
 	}
 }
 
-*/
 
 
 //this function deals with printing out contents in current
@@ -221,8 +217,7 @@ void print_dir ( char* path, const bool& aflag,
                 {
                         continue; //direntp->d_name starts with '.'
                 }
-		if(Rflag && //!is_file(direntp->d_name) && 
-			 is_dir( path, direntp->d_name ))
+		if(Rflag && is_dir( path, direntp->d_name ))
 		{
 			string dir = static_cast<string>(path)
 			+"/" + static_cast
@@ -240,7 +235,7 @@ void print_dir ( char* path, const bool& aflag,
                 }
                 else if( lflag )
                 {
-                        status( direntp->d_name );
+                        status(direntp->d_name, path );
                 }
          }
          cout << endl;
