@@ -18,12 +18,21 @@ using namespace std;
 #include <unistd.h>
 
 char const * sperm( __mode_t mode) {
+	
 	static char local_buff[16] = {0};
 	int i = 0;
-	// user permissions
-	if ((mode & S_IFDIR) == S_IFDIR) local_buff[i] = 'd';
+	// directory or symbolic link 
+	if ((mode & S_IFDIR) == S_IFDIR &&
+	(mode & S_IFLNK)== S_IFLNK){
+		local_buff[i] = 'l';
+	}
+	else if ((mode & S_IFDIR) == S_IFDIR) local_buff[i] = 'd';
+	else if ((mode & S_IFLNK) == S_IFLNK){
+		local_buff[i] = 'l';
+	}
 	else local_buff[i] = '-';
 	i++;
+	// user permissions
 	if ((mode & S_IRUSR) == S_IRUSR) local_buff[i] = 'r';
 	else local_buff[i] = '-';
 	i++;
@@ -79,9 +88,9 @@ void status(char* path,
 
     /* Get entry's information. */
 	//need to do error checking here! FIXME
-	if ( stat( p2, &statbuf ) == -1 )
+	if ( lstat( p2, &statbuf ) == -1 )
 	{
-		perror ("stat"); 
+		perror ("lstat"); 
 	}
 	  //stat(dp->d_name, &statbuf) == -1)
 	//continue;
@@ -116,13 +125,39 @@ void status(char* path,
 
 
     /* Get localized date string. */
-    strftime(datestring, sizeof(datestring), nl_langinfo(D_T_FMT), tm);
+    //strftime(datestring, sizeof(datestring), nl_langinfo(D_T_FMT), tm);
+    strftime(datestring, sizeof(datestring), "%b %d %R", tm);
 
+	if ((statbuf.st_mode & S_IFLNK) == S_IFLNK){
 
-    printf(" %s %s\n", datestring, path);
-	//}
+    char *linkname;
+    ssize_t r;
 
+      linkname = new char [statbuf.st_size +12];//malloc(statbuf.st_size + 12);
+    if (linkname == NULL) {
+        fprintf(stderr, "insufficient memory\n");
+        exit(1);
+    }
 
+   r = readlink(p2, linkname, statbuf.st_size + 1);
+
+   if (r < 0) {
+        perror("lstat");
+        exit(1);
+    }
+
+   if (r > statbuf.st_size) {
+        fprintf(stderr, "symlink increased in size "
+                        "between lstat() and readlink()\n");
+        exit(1);
+    }
+
+   linkname[statbuf.st_size] = '\0';
+		printf(" %s %s -> %s\n", datestring, path, linkname);
+		delete [] linkname;
+		return; 
+	}
+	printf(" %s %s\n", datestring, path);
 	return ; 
 }
 
@@ -248,7 +283,6 @@ void print_dir ( char* path, const bool& aflag,
 		, aflag, lflag, Rflag);
 
 	} 	
-	cout << endl; 
          //closedir(dirp);
 }
  
