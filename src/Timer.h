@@ -107,5 +107,6 @@ int main()
     t.elapsedUserTime(eTime);
     cout << eTime << endl;
 }
+<<<<<<< HEAD
 */
 
