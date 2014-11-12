@@ -1,10 +1,12 @@
 #ifndef STATUS_H
 #define STATUS_H
 #include <iostream>
+#include <algorithm>
 using namespace std; 
 #include <cstdlib>
 #include <string>
 #include <vector>
+#include <cstring>
 #include <sys/types.h>
 #include <sys/stat.h>
 #include <dirent.h>
@@ -68,7 +70,7 @@ char const * sperm( __mode_t mode) {
 void status(char* path, 
 	char* par_dir = const_cast<char*>("./"))
 {
-	string p = "./" + static_cast<string>(par_dir)
+	string p =  static_cast<string>(par_dir)
 	+ "/" + static_cast<string>(path);  
 	char* p2 = const_cast<char*>(p.c_str());
  
@@ -221,7 +223,94 @@ void file_alone( char* path, const bool& lflag )
 	}
 }
 
+#include <cctype>
+//enum hmm {less, great, equal};
+int cmp(char a,char b) { 
+	if(isalpha(a) && isalpha(b))
+	{
+		if(isupper(a) && !isupper(b))
+		{
+			if((a+32) < b)
+			{
+				return -17;	
+			}
+			else if( (a+32) > b) 
+			{
+				return 17;
+			}
+			else return 0; 
+		}
+		if(!isupper(a) && isupper(b) )
+		{
+			if(a < (b+32))
+			{
+				return -17;	
+			}
+			else if( a > (b+32) )
+			{
+				return 17;
+			}
+			else return 0; 		
+		}
+	}
+	if(a < b)
+	{
+		return -17;
+	}
+	else if(a > b) return 17; 
 
+	return 0;
+}
+
+int mystrcmp(const char *s1, const char *s2) {
+
+	//int status;
+	int i = 0;
+	for (i = 0; s1[i] != '\0' && s2[i] != '\0'; i++) {
+		int what = cmp( s1[i] , s2[i] ); 
+		if( what == 0)  
+		{
+			continue;	
+		}			
+		else if( what < 0 )
+		{
+			//s1 comes before s2
+			return -17;
+		}
+		else if (what > 0)
+		{
+			return 17; //s2 before s1
+		}
+	}
+
+	if (s1[i]=='\0' && s2[i]=='\0')
+		return 0;
+	else if (s1[i] != '\0')
+		return 17;
+	else if (s2[i] != '\0')
+		return -17;
+	return 0; 
+}
+
+//need to call n times in loop spanning size n
+void sort_cstring( vector<char*> & x)
+{
+	for(unsigned i = 0; i < x.size(); ++i)
+	{
+		for(unsigned j=i+1; j<x.size(); ++j)
+		{
+			int what = mystrcmp(x.at(i), x.at(j) ); 
+			if( what <= 0)
+			{
+				continue; 
+			}
+			else if( what > 0 )
+			{
+				swap( x.at(i), x.at(j) ); 
+			} 
+		} 
+	}
+}
 
 //this function deals with printing out contents in current
 //directory. If Rflag == true, then does same recursively 
@@ -240,40 +329,53 @@ void print_dir ( char* path, const bool& aflag,
 	{
 		cout << path << ":"  << endl;
 	}
-        while ((direntp = readdir(dirp)))
-        {
 
-		if(aflag && (static_cast<string>(direntp->d_name) ==  "." 
-		|| static_cast<string>(direntp->d_name) ==  ".."))  
+	vector<char*> elements;
+	//saves contents of directory into elements
+	while( (direntp = readdir(dirp)) )
+	{
+		elements.push_back( direntp->d_name ); 
+	}	
+	//sorts contents of directory
+	for(unsigned i = 0; i <elements.size(); i++)
+	{
+		sort_cstring( elements );
+	}
+
+	for(unsigned i = 0; i <elements.size(); i++)
+	{
+
+		if(aflag && (static_cast<string>(elements.at(i)) ==  "." 
+		|| static_cast<string>(elements.at(i)) ==  ".."))  
 		{
 			continue; //don't want to go in these
 		}
-                if( !aflag && direntp->d_name[0] == '.' )
+                if( !aflag && elements.at(i)[0] == '.' )
                 {
                         continue; //direntp->d_name starts with '.'
                 }
-		if(Rflag && is_dir( path, direntp->d_name ))
+		if(Rflag && is_dir( path, elements.at(i) ))
 		{
 			string dir = static_cast<string>(path)
 			+"/" + static_cast
-			<string>(direntp->d_name); 
+			<string>(elements.at(i)); 
 			sub_dirs.push_back(dir); 
-			//sub_dirs.push_back(
-			//const_cast<char*> (dir.c_str()) );
-			//cout << dir << endl;
-			//sub_dirs.push_back(direntp->d_name);
 		}
                 if ( !lflag )
                 {
-                        cout << direntp->d_name << "  ";
+                        cout << elements.at(i) << "  ";
                         continue;
                 }
                 else if( lflag )
                 {
-                        status(direntp->d_name, path );
+                        status(elements.at(i), path );
                 }
          }
          cout << endl;
+	if( Rflag )
+	{
+		cout << endl;
+	}
 	closedir(dirp);
 	for (unsigned i = 0; i < sub_dirs.size(); ++i )
 	{

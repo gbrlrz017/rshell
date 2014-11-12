@@ -55,7 +55,7 @@ void flags (int argc, char *const* argv)
 	int c;
 	opterr = 0;
 
-	while( (c = getopt (argc, argv, "a::l::R::")) != -1 )
+	while( (c = getopt (argc, argv, "alR")) != -1 )
 	{
 		switch (c)
 		{
@@ -84,7 +84,7 @@ void flags (int argc, char *const* argv)
 	}
 
 	// may have to replace cflag = %d ..cvalue = %s\n", */
-	printf ("aflag = %d, lflag = %d, Rflag = %d\n", aflag, lflag, Rflag); 
+	//printf ("aflag = %d, lflag = %d, Rflag = %d\n", aflag, lflag, Rflag); 
 	//cvalue);
 	
 	//for (index = optind; index < argc; index++)
@@ -110,30 +110,30 @@ int main( int argc, char** argv )
 	{
 		if( argv[i][0] != '-')
 		{
-			cout << argv[i] << " is not an option!" << endl; 
+			//cout << argv[i] << " is not an option!" << endl; 
 			path_other what = is_file(argv[i]); 
 			if( what == file )
 			{
 				files.push_back( argv[i] ); 
-				cout << argv[i] << " is a file!" <<endl; 
+				//cout << argv[i] << " is a file!" <<endl; 
 			}	
 			else if (what == directory){
 				dirs.push_back(argv[i]); 
-				cout << argv[i] << " is a directory! (maybe)" << endl;
+				//cout << argv[i] << " is a directory! (maybe)" << endl;
 			}
 			else
 			{
 				others.push_back(argv[i]); 
-				cout << "other." << endl;
+				//cout << "other." << endl;
 			}
 		}	
 	}
 	
 	//cout << "argc: " << argc << "\n" ; 
 	//print(argv); 
+	
 	//checks what options passed in
 	//sets Truthness of global indicator variables 
-	
 	flags(argc, argv); 	
 	/*for (vector<char *>::iterator it = inp.begin(); it != inp.end(); it++) {
 delete *it;
@@ -142,32 +142,18 @@ delete *it;
 	inp.clear();			
 */
 
-
-/*	
-	char *dirName = const_cast<char*>(".");
-	DIR *dirp = opendir(dirName);
-	dirent *direntp;
-	while ((direntp = readdir(dirp)))
+	//sorting dirs & files
+	for(unsigned i = 0; i <dirs.size(); ++i)
 	{
-
-		if( !aflag && direntp->d_name[0] == '.' )
-		{
-			continue; //direntp->d_name starts with '.'
-		}
-		if ( !lflag && !Rflag )
-		{
-			cout << direntp->d_name << "  ";  
-			continue; 
-		}
-		else if( lflag )
-		{
-			//need conditional for R flag
-			status( direntp->d_name ); 
-		}
+		sort_cstring( dirs ); 	
 	}
-	cout << endl; 
-	closedir(dirp);
-*/
+	for(unsigned i = 0; i <files.size(); ++i)
+	{
+		sort_cstring( files ); 	
+	}
+	
+	//files or directories passed into
+	//ls as arguments
 	if( others.size() != 0 || dirs.size() != 0
 		 || files.size() != 0)
 	{
@@ -179,7 +165,7 @@ delete *it;
 		{
 			//only want newline if
 			//outputted files
-			cout << endl; 
+			cout << endl << endl; 
 		}
 		for(unsigned i = 0; i<dirs.size(); ++i)
 		{
