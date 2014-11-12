@@ -324,6 +324,13 @@ void print_dir ( char* path, const bool& aflag,
 	vector <string> sub_dirs;
 	char *dirName = path; //const_cast<char*>(".");
         DIR *dirp = opendir(dirName);
+	if (dirp == NULL)
+	{
+		cerr << "Could not open directory -- " 
+			<< path << "." << endl; 
+		perror("opendir");
+		exit(1);
+	}
         dirent *direntp;
 	if( Rflag )
 	{
@@ -376,7 +383,14 @@ void print_dir ( char* path, const bool& aflag,
 	{
 		cout << endl;
 	}
-	closedir(dirp);
+	int close = closedir(dirp);
+	if( close == -1 )
+	{
+		cerr << "Error closing directory -- "
+		<< path << "." << endl;  
+		perror("closedir"); 
+		exit(1); 
+	}
 	for (unsigned i = 0; i < sub_dirs.size(); ++i )
 	{
 		//cout << sub_dirs.at(i) << " "; 
