@@ -1,0 +1,4665 @@
+Script started on Tue 11 Nov 2014 09:36:23 PM PST
+~
+gruiz007@hammer $ ls
+[0m[01;32mcipher.cpp[0m*  [01;34mcs11[0m/       [01;34mDownloads[0m/    [01;32mLab1.cpp[0m*  [01;32mlab7.cpp[0m*  [01;32mprob4.cpp[0m*  [01;34mTemplates[0m/          [01;34mucr-cs100[0m/
+[01;34mcs014[0m/       [01;34mDesktop[0m/    [01;32mhangman.cpp[0m*  [01;34mlab3-gdb[0m/  [01;34mMusic[0m/     [01;34mPublic[0m/     [01;32mtextadventure.cpp[0m*  [01;34mVideos[0m/
+[01;34mcs100[0m/       [01;34mDocuments[0m/  [01;32mlab01[0m*        [01;32mlab6.cpp[0m*  [01;34mPictures[0m/  [01;34mrshell[0m/     typescript
+[m~
+gruiz007@hammer $ cd rshell
+~/rshell
+gruiz007@hammer $ make
+g++ -g -Werror -ansi -pedantic -Wall src/rschell.cpp -o rshell 
+mv rshell ./bin
+g++ -g -Werror -ansi -pedantic -Wall src/ls.cpp src/Status.h -o ls
+mv ls ./bin
+g++ -g -Werror -ansi -pedantic -Wall src/cp.cpp -o cp
+mv cp ./bin
+~/rshell
+gruiz007@hammer $ make ls
+g++ -g -Werror -ansi -pedantic -Wall src/ls.cpp src/Status.h -o ls
+mv ls ./bin
+~/rshell
+gruiz007@hammer $ make cp
+g++ -g -Werror -ansi -pedantic -Wall src/cp.cpp -o cp
+mv cp ./bin
+~/rshell
+gruiz007@hammer $ bin/ls
+a.out  bin  LICENSE  Makefile  README  readme  src  SRC  tests  
+~/rshell
+gruiz007@hammer $ bin/ls src SRC #SRC is symbolic link to src directory
+a.out  cp.cpp  ls.cpp  rschell.cpp  Status.h  Status.h.gch  Timer.h  
+a.out  cp.cpp  ls.cpp  rschell.cpp  Status.h  Status.h.gch  Timer.h  
+~/rshell
+gruiz007@hammer $ bin src/ls.cpp
+bash: bin: command not found
+~/rshell
+gruiz007@hammer $ bin src/ls.cpp/ src/ls.cppl src/ls.cpps src/ls.cpp
+src/ls.cpp  
+
+~/rshell
+gruiz007@hammer $ bin/ls src/ls.cpp[K[K[K[K[K[K[K[K[K[Kreadme
+readme  
+
+~/rshell
+gruiz007@hammer $ bin/ls src Makefile bin tests src/Timer.h a.out bin
+a.out  Makefile  src/Timer.h  
+
+bin:
+a.out  cp  ls  rshell  
+bin:
+a.out  cp  ls  rshell  
+src:
+a.out  cp.cpp  ls.cpp  rschell.cpp  Status.h  Status.h.gch  Timer.h  
+tests:
+exec.script  ls.script  
+~/rshell
+gruiz007@hammer $ bin/ls -a[K[K[K[K[K[K[K[K[K#### -a flag ####
+~/rshell
+gruiz007@hammer $ bin/ls -a
+.git  a.out  bin  LICENSE  Makefile  README  readme  src  SRC  tests  
+~/rshell
+gruiz007@hammer $ bin -a/ -al -as -a[C -ab -ai -an -a
+a.out  cp  ls  rshell  
+~/rshell
+gruiz007@hammer $ bin/ls bin -a .git ~
+#MERGE_MSG#  branches  COMMIT_EDITMSG  config  description  FETCH_HEAD  HEAD  hooks  index  info  logs  objects  ORIG_HEAD  packed-refs  refs  
+.adobe  .bash_history  .bash_logout  .bashrc  .cache  .config  .dbus  .dmrc  .eggcups  .emacs.d  .esd_auth  .execooo27n7ML  .execooo8s7RXI  .execoooeWf7Nw  .execoooFpgHMV  .execooogEte7e  .execoooI6FWgo  .execoooiJqI2H  .execoookNIKAe  .execooonxFJm8  .execooosrKoS3  .execoooYPmMli  .fontconfig  .gconf  .gconfd  .gitconfig  .gnome  .gnome2  .gnome2_private  .gnote  .gnupg  .goutputstream-7MFFDX  .goutputstream-ZVF4DX  .gstreamer-0.10  .gtk-bookmarks  .gtkrc-1.2-gnome2  .gvfs  .ICEauthority  .imsettings.log  .kde  .local  .macromedia  .metacity  .mozilla  .nautilus  .nv  .openoffice.org  .pki  .procmailrc  .profile  .pulse  .pulse-cookie  .recently-used.xbel  .redhat  .ssh  .thumbnails  .Trash  .viminfo  .Xauthority  .xsession-errors  .xsession-errors.old  cipher.cpp  cs014  cs100  cs11  Desktop  Documents  Downloads  hangman.cpp  lab01  Lab1.cpp  lab3-gdb  lab6.cpp  lab7.cpp  Music  Pictures  prob4.cpp  Public  rshell  Templates  textadventure.cpp  typescript  ucr-cs100  Videos  
+a.out  cp  ls  rshell  
+~/rshell
+gruiz007@hammer $ ### quite messy ###
+~/rshell
+gruiz007@hammer $ ### quite messy ###bin/ls bin -a .git ~[1P~[1P~[1P~[1P~[1P~[1P~[1P~[1P~[1P~[1P~[1P~[1P~[C -a[1P -ab -ai -an -a
+a.out  cp  ls  rshell  
+~/rshell
+gruiz007@hammer $ bin/ls bin -a[K[K[K[K[K[K[K[K[K[K[K[K[K######-l Flag#####[C #####[4h [4l
+~/rshell
+gruiz007@hammer $ bin/ls README -l
+-rw------- 1 gruiz007 classes       4180 Nov 11 20:36 README
+
+
+~/rshell
+gruiz007@hammer $ bin/ls README -l src tests[1P[1P[1P[C[C[C[C tests- testsl tests[C[C[C[C[C[C src/cp.cpp
+-rw------- 1 gruiz007 classes       4180 Nov 11 20:36 README
+-rw------- 1 gruiz007 classes       5224 Nov 11 20:36 src/cp.cpp
+
+
+src:
+-rwx------ 1 gruiz007 classes      13930 Nov 08 17:21 a.out
+-rw------- 1 gruiz007 classes       5224 Nov 11 20:36 cp.cpp
+-rw------- 1 gruiz007 classes       4069 Nov 11 20:36 ls.cpp
+-rw------- 1 gruiz007 classes       5097 Oct 30 14:49 rschell.cpp
+-rw------- 1 gruiz007 classes       9116 Nov 11 20:36 Status.h
+-rw------- 1 gruiz007 classes    2881264 Nov 08 17:21 Status.h.gch
+-rw------- 1 gruiz007 classes       2715 Nov 11 20:40 Timer.h
+
+tests:
+-rw------- 1 gruiz007 classes      16105 Oct 21 23:28 exec.script
+-rw------- 1 gruiz007 classes          0 Nov 11 21:35 ls.script
+
+~/rshell
+gruiz007@hammer $ bin/ls README src -l tests src/cp.cpp Makefile bin/a.out LOL ##[K[K
+stat: No such file or directory
+ls: cannot access LOL -- -rwx------ 1 gruiz007 classes      38374 Oct 28 15:25 bin/a.out
+-rw------- 1 gruiz007 classes        654 Nov 11 20:36 Makefile
+-rw------- 1 gruiz007 classes       4180 Nov 11 20:36 README
+-rw------- 1 gruiz007 classes       5224 Nov 11 20:36 src/cp.cpp
+
+
+src:
+-rwx------ 1 gruiz007 classes      13930 Nov 08 17:21 a.out
+-rw------- 1 gruiz007 classes       5224 Nov 11 20:36 cp.cpp
+-rw------- 1 gruiz007 classes       4069 Nov 11 20:36 ls.cpp
+-rw------- 1 gruiz007 classes       5097 Oct 30 14:49 rschell.cpp
+-rw------- 1 gruiz007 classes       9116 Nov 11 20:36 Status.h
+-rw------- 1 gruiz007 classes    2881264 Nov 08 17:21 Status.h.gch
+-rw------- 1 gruiz007 classes       2715 Nov 11 20:40 Timer.h
+
+tests:
+-rw------- 1 gruiz007 classes      16105 Oct 21 23:28 exec.script
+-rw------- 1 gruiz007 classes          0 Nov 11 21:35 ls.script
+
+~/rshell
+gruiz007@hammer $ ###see error message for unknow ath[K[K[Kpath LOL###[C[4hn[4l[C[C[C[C[C[C"LOL###[C[C[C"###
+~/rshell
+gruiz007@hammer $ bin/ls SRC readme -l
+lrwxrwxrwx 1 gruiz007 classes          6 Nov 11 14:08 readme -> README
+
+
+SRC:
+-rwx------ 1 gruiz007 classes      13930 Nov 08 17:21 a.out
+-rw------- 1 gruiz007 classes       5224 Nov 11 20:36 cp.cpp
+-rw------- 1 gruiz007 classes       4069 Nov 11 20:36 ls.cpp
+-rw------- 1 gruiz007 classes       5097 Oct 30 14:49 rschell.cpp
+-rw------- 1 gruiz007 classes       9116 Nov 11 20:36 Status.h
+-rw------- 1 gruiz007 classes    2881264 Nov 08 17:21 Status.h.gch
+-rw------- 1 gruiz007 classes       2715 Nov 11 20:40 Timer.h
+
+~/rshell
+gruiz007@hammer $ ##readme and SRC both symbolic links### ###[4h"[4l[4h"[4l[4h [4l[4h"[4l[C[C[C[C[C[C[4h"[4l[C[C[4h#[4l
+~/rshell
+gruiz007@hammer $ ### "readme" and "SRC" both symbolic links ###[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[26Pbin/ls SRC readme -l[K[K[K[K[K[K[K[K[K[K[K[K[K-l ~
+-rwx------ 1 gruiz007 classes       3944 Nov 01 19:39 cipher.cpp
+drwx------ 3 gruiz007 classes       4096 Apr 01 11:48 cs014
+drwx------ 4 gruiz007 classes       4096 Nov 10 11:09 cs100
+drwx------ 2 gruiz007 classes       4096 Oct 26 15:47 cs11
+drwx------ 2 gruiz007 classes       4096 Jun 03 13:26 Desktop
+drwx------ 4 gruiz007 classes       4096 Oct 20 13:45 Documents
+drwx------ 2 gruiz007 classes       4096 May 13 13:18 Downloads
+-rwx------ 1 gruiz007 classes       3203 Nov 15 15:54 hangman.cpp
+-rwx------ 1 gruiz007 classes        490 Apr 01 11:33 lab01
+-rwx------ 1 gruiz007 classes        622 Sep 30 17:28 Lab1.cpp
+drwx------ 3 gruiz007 classes       4096 Nov 07 14:29 lab3-gdb
+-rwx------ 1 gruiz007 classes       4146 Nov 04 16:48 lab6.cpp
+-rwx------ 1 gruiz007 classes        746 Nov 12 14:15 lab7.cpp
+drwx------ 2 gruiz007 classes       4096 Nov 22 09:42 Music
+drwx------ 2 gruiz007 classes       4096 Nov 22 09:42 Pictures
+-rwx------ 1 gruiz007 classes          1 Apr 01 12:49 prob4.cpp
+drwx------ 2 gruiz007 classes       4096 Nov 22 09:42 Public
+drwx------ 6 gruiz007 classes       4096 Nov 11 21:36 rshell
+drwx------ 2 gruiz007 classes       4096 Nov 22 09:42 Templates
+-rwx------ 1 gruiz007 classes       7112 Nov 18 16:46 textadventure.cpp
+-rw------- 1 gruiz007 classes          0 Oct 21 15:30 typescript
+drwx------ 8 gruiz007 classes       4096 Oct 26 21:12 ucr-cs100
+drwx------ 2 gruiz007 classes       4096 Nov 22 09:42 Videos
+
+~/rshell
+gruiz007@hammer $ ### WORKS WITH HOME DIRECTORY!! Extre[Ka credit?? :D ####
+~/rshell
+gruiz007@hammer $ #### TESTING -l Flag ###3[K :D
+~/rshell
+gruiz007@hammer $ #### TESTING -l Flag ### :D[1P[4hR[4l[C[C[C[C[C[C[4h [4l[4h([4l[4hc[4l[4ho[4l[4hr[4l[4hr[4l[4he[4l[4hc[4l[4ht[4l[4hi[4l[4ho[4l[4hn[4l[4h)[4l
+~/rshell
+gruiz007@hammer $ bin/ls -R
+.:
+a.out  bin  LICENSE  Makefile  README  readme  src  SRC  tests  
+
+./bin:
+a.out  cp  ls  rshell  
+
+./src:
+a.out  cp.cpp  ls.cpp  rschell.cpp  Status.h  Status.h.gch  Timer.h  
+
+./SRC:
+a.out  cp.cpp  ls.cpp  rschell.cpp  Status.h  Status.h.gch  Timer.h  
+
+./tests:
+exec.script  ls.script  
+
+~/rshell
+gruiz007@hammer $ bin/ls -R test[1Ptest[1Ptest[1Ptest[C[C[C[C bin -R bin src SRC[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K###NOTICE[K[K[K[K[K[K[K[KNOTICE bug: symbolic link SRC whould[K[K[K[K[K[Kshouldn't print out :o ####
+~/rshell
+gruiz007@hammer $ bin/ls test bin -R bin src SRC ##ubt s[K[K[K[K[Kbut should print twice here :D
+stat: No such file or directory
+ls: cannot access test -- bin:
+a.out  cp  ls  rshell  
+
+bin:
+a.out  cp  ls  rshell  
+
+src:
+a.out  cp.cpp  ls.cpp  rschell.cpp  Status.h  Status.h.gch  Timer.h  
+
+SRC:
+a.out  cp.cpp  ls.cpp  rschell.cpp  Status.h  Status.h.gch  Timer.h  
+
+~/rshell
+gruiz007@hammer $ ###TESTING -a -l combinations###
+~/rshell
+gruiz007@hammer $ bin/ls -al
+drwx------ 8 gruiz007 classes       4096 Nov 11 20:40 .git
+-rwx------ 1 gruiz007 classes      10617 Nov 10 21:02 a.out
+drwx------ 2 gruiz007 classes       4096 Nov 11 21:36 bin
+-rw------- 1 gruiz007 classes       1483 Nov 11 20:39 LICENSE
+-rw------- 1 gruiz007 classes        654 Nov 11 20:36 Makefile
+-rw------- 1 gruiz007 classes       4180 Nov 11 20:36 README
+lrwxrwxrwx 1 gruiz007 classes          6 Nov 11 14:08 readme -> README
+drwx------ 2 gruiz007 classes       4096 Nov 11 20:40 src
+lrwxrwxrwx 1 gruiz007 classes          3 Nov 11 14:08 SRC -> src
+drwx------ 2 gruiz007 classes       4096 Nov 11 21:35 tests
+
+~/rshell
+gruiz007@hammer $ bin/ls -al[1Pl[Ca[K -a
+drwx------ 8 gruiz007 classes       4096 Nov 11 20:40 .git
+-rwx------ 1 gruiz007 classes      10617 Nov 10 21:02 a.out
+drwx------ 2 gruiz007 classes       4096 Nov 11 21:36 bin
+-rw------- 1 gruiz007 classes       1483 Nov 11 20:39 LICENSE
+-rw------- 1 gruiz007 classes        654 Nov 11 20:36 Makefile
+-rw------- 1 gruiz007 classes       4180 Nov 11 20:36 README
+lrwxrwxrwx 1 gruiz007 classes          6 Nov 11 14:08 readme -> README
+drwx------ 2 gruiz007 classes       4096 Nov 11 20:40 src
+lrwxrwxrwx 1 gruiz007 classes          3 Nov 11 14:08 SRC -> src
+drwx------ 2 gruiz007 classes       4096 Nov 11 21:35 tests
+
+~/rshell
+gruiz007@hammer $ bin/ls -l -a[C -aR -aE -aA -aD -aM -aE -a
+-rw------- 1 gruiz007 classes       4180 Nov 11 20:36 README
+
+
+~/rshell
+gruiz007@hammer $ bin/ls -l README -a[K[K[K[K[K[K[K[K[K[K[K[Ksrc -l tests -a Makefile src SRC
+-rw------- 1 gruiz007 classes        654 Nov 11 20:36 Makefile
+
+
+src:
+-rwx------ 1 gruiz007 classes      13930 Nov 08 17:21 a.out
+-rw------- 1 gruiz007 classes       5224 Nov 11 20:36 cp.cpp
+-rw------- 1 gruiz007 classes       4069 Nov 11 20:36 ls.cpp
+-rw------- 1 gruiz007 classes       5097 Oct 30 14:49 rschell.cpp
+-rw------- 1 gruiz007 classes       9116 Nov 11 20:36 Status.h
+-rw------- 1 gruiz007 classes    2881264 Nov 08 17:21 Status.h.gch
+-rw------- 1 gruiz007 classes       2715 Nov 11 20:40 Timer.h
+
+src:
+-rwx------ 1 gruiz007 classes      13930 Nov 08 17:21 a.out
+-rw------- 1 gruiz007 classes       5224 Nov 11 20:36 cp.cpp
+-rw------- 1 gruiz007 classes       4069 Nov 11 20:36 ls.cpp
+-rw------- 1 gruiz007 classes       5097 Oct 30 14:49 rschell.cpp
+-rw------- 1 gruiz007 classes       9116 Nov 11 20:36 Status.h
+-rw------- 1 gruiz007 classes    2881264 Nov 08 17:21 Status.h.gch
+-rw------- 1 gruiz007 classes       2715 Nov 11 20:40 Timer.h
+
+SRC:
+-rwx------ 1 gruiz007 classes      13930 Nov 08 17:21 a.out
+-rw------- 1 gruiz007 classes       5224 Nov 11 20:36 cp.cpp
+-rw------- 1 gruiz007 classes       4069 Nov 11 20:36 ls.cpp
+-rw------- 1 gruiz007 classes       5097 Oct 30 14:49 rschell.cpp
+-rw------- 1 gruiz007 classes       9116 Nov 11 20:36 Status.h
+-rw------- 1 gruiz007 classes    2881264 Nov 08 17:21 Status.h.gch
+-rw------- 1 gruiz007 classes       2715 Nov 11 20:40 Timer.h
+
+tests:
+-rw------- 1 gruiz007 classes      16105 Oct 21 23:28 exec.script
+-rw------- 1 gruiz007 classes          0 Nov 11 21:35 ls.script
+
+~/rshell
+gruiz007@hammer $ bin/ls -la[K[K[K.git -la[1Pa[Cl
+-rw------- 1 gruiz007 classes        267 Nov 11 20:36 #MERGE_MSG#
+drwx------ 2 gruiz007 classes       4096 Oct 20 15:17 branches
+-rw------- 1 gruiz007 classes          9 Nov 11 20:40 COMMIT_EDITMSG
+-rw------- 1 gruiz007 classes        322 Oct 21 23:26 config
+-rw------- 1 gruiz007 classes         73 Oct 20 15:17 description
+-rw------- 1 gruiz007 classes        311 Nov 11 20:40 FETCH_HEAD
+-rw------- 1 gruiz007 classes         21 Nov 11 20:37 HEAD
+drwx------ 2 gruiz007 classes       4096 Oct 20 15:17 hooks
+-rw------- 1 gruiz007 classes        895 Nov 11 20:40 index
+drwx------ 2 gruiz007 classes       4096 Oct 20 18:27 info
+drwx------ 3 gruiz007 classes       4096 Oct 20 15:18 logs
+drwx------ 131 gruiz007 classes       8192 Nov 11 20:40 objects
+-rw------- 1 gruiz007 classes         41 Nov 11 20:40 ORIG_HEAD
+-rw------- 1 gruiz007 classes        173 Oct 20 15:18 packed-refs
+drwx------ 5 gruiz007 classes       4096 Oct 20 15:18 refs
+
+~/rshell
+gruiz007@hammer $ #####TESTING TESTING[C[C[C[C[C[C[C -Ra flags!! ####
+~/rshell
+gruiz007@hammer $ bin/ls -Ra
+.:
+.git  a.out  bin  LICENSE  Makefile  README  readme  src  SRC  tests  
+
+./.git:
+#MERGE_MSG#  branches  COMMIT_EDITMSG  config  description  FETCH_HEAD  HEAD  hooks  index  info  logs  objects  ORIG_HEAD  packed-refs  refs  
+
+./.git/branches:
+
+
+./.git/hooks:
+applypatch-msg.sample  commit-msg.sample  post-update.sample  pre-applypatch.sample  pre-commit.sample  pre-push.sample  pre-rebase.sample  prepare-commit-msg.sample  update.sample  
+
+./.git/info:
+exclude  refs  
+
+./.git/logs:
+HEAD  refs  
+
+./.git/logs/refs:
+heads  remotes  
+
+./.git/logs/refs/heads:
+exec  ls  ls-2  master  
+
+./.git/logs/refs/remotes:
+origin  
+
+./.git/logs/refs/remotes/origin:
+exec  HEAD  ls  master  
+
+./.git/objects:
+01  02  04  06  0a  0d  15  16  1c  1d  20  21  23  24  25  26  29  2a  2b  2d  2f  30  34  35  36  37  38  39  3a  3c  3d  42  46  47  4c  4f  53  55  56  5b  5c  5d  60  63  64  66  67  68  69  6a  6b  6c  6e  6f  71  74  75  76  77  78  7c  7d  80  82  83  84  88  89  8d  8f  90  92  93  96  98  9a  9d  9e  9f  a0  a1  a3  a4  a6  ab  ac  b2  b4  b5  b7  b8  b9  bb  bc  be  bf  c0  c2  c4  c7  c9  cc  ce  cf  d1  d2  d3  d4  d6  d7  d9  db  dc  e0  e2  e3  e6  e9  eb  ed  ee  f0  f4  f7  fa  fc  ff  info  pack  
+
+./.git/objects/01:
+f86c85b4d271e7ced6193e4a62bd9f1d7e21b8  
+
+./.git/objects/02:
+163f17965fc52a79d496157cfb054d7300c5c9  
+
+./.git/objects/04:
+6ea4490f9630077b02e6ac96e2bca3d4d83315  
+
+./.git/objects/06:
+a91ad7b0133b4e8cfd5a2b91bc3400db37deec  e9f66ca602521d2f3818613cbc0820f56a3123  ed474a910fa8d3fdcaf83a1f8204810794a2e2  
+
+./.git/objects/0a:
+aa32413c979a082b0ef69f744b0e6347fd05aa  
+
+./.git/objects/0d:
+46273481d35e623cd85eff7695bdc6571310a7  6873a662050da8305cc3e663e8c77cbd96b56e  7124484eef47f330edcd3e73847030d4da955a  
+
+./.git/objects/15:
+672d0ce6c5fa0bf6f560457036c4556ab67fb8  
+
+./.git/objects/16:
+99f3639920bd74c64881164f827c05f5f9254f  
+
+./.git/objects/1c:
+28f86a7f4be5013dd00b5b1cc78d58ed74e6e1  
+
+./.git/objects/1d:
+b6b74efb3b6495c28d01ffa60259535062253f  
+
+./.git/objects/20:
+9ebb6a7b1fa8a117e02908fccd9766e3bb8cc4  
+
+./.git/objects/21:
+97b9fff2e1b9ff2c6532c4a76f5941ee45cbcc  b0f4cebd2217d1f1e61a3739f3baad94697c4d  
+
+./.git/objects/23:
+5c111ca008e0134f326ba4af3c6d69c8a5bebe  
+
+./.git/objects/24:
+010f6df5aa4ce646699c0f655350cfa139994f  9edea4e2626af6a02b7025c23d150b7ea53c60  afe26f1f86772e2124136bf7b8f9fc4f798f16  d1838f820dc78cbb90a0091912c77bdd95d3b5  
+
+./.git/objects/25:
+ac0b725a9cc1d7a6a6f7b5b8dd480ba8a51af0  
+
+./.git/objects/26:
+a88e925de326ef792051200decb580b5afc236  
+
+./.git/objects/29:
+b6259aadad2abe53a42cc3bf6de76dbbea42df  be4954482aca55a01c852de16e20c4b99cdc30  cd6a860473617ea506f570a03e621547995c29  
+
+./.git/objects/2a:
+c42b20815da785d5fdd675ed98d5e79502d59a  
+
+./.git/objects/2b:
+2c3cf1f913d24c6edef33416697914fabf3feb  5634d3553d8ed05e7d7d416131e37c9264fc5a  
+
+./.git/objects/2d:
+21fb25c0ccabd2f8c4ab659b52b7625feb67a3  
+
+./.git/objects/2f:
+b88fd7ba1a38f5fe81615c966bdeb0679591bb  ec3d483a08b613708f5395f2ba462c76a3e69b  
+
+./.git/objects/30:
+a54fc7e8e7e7112dcb4fdd926772a50e63bde9  d7038fe236a10207cae8d58af21f8606b5b581  
+
+./.git/objects/34:
+a123d28e6916343cdf5f4ea52bb87a2491b5d9  
+
+./.git/objects/35:
+f3d243332a5c6e68f332edf21963cac0071d75  
+
+./.git/objects/36:
+d12528d2213977dcfa1460774ede78c82df039  
+
+./.git/objects/37:
+7034d2f9e1cea5b018aac1a87f15d66e6f462d  
+
+./.git/objects/38:
+c7e6e776b387449159435cfbffa474764a435f  e781e4b24f37771f43fd62b882d70280f37496  f2bef456369fc305f589638a14d639ca436a66  
+
+./.git/objects/39:
+1199fa6025261b43dc053e1e3090f6ea2caad3  ca030dd81b9debf47a070ea497e7aca8d97b89  
+
+./.git/objects/3a:
+156a876b5eec6c3d908e9995f2404d5248f8b7  
+
+./.git/objects/3c:
+0ca36d97423929ebb25a29fc2ea04d49cd044e  
+
+./.git/objects/3d:
+e267187ab951567faee920feab6a841ef2876b  
+
+./.git/objects/42:
+8047bf5dce33a2a471c584f11b3407f7de916d  
+
+./.git/objects/46:
+6d14a3e510049dc0aff1258ba29b59d2e29694  
+
+./.git/objects/47:
+94e0399231687e51b5e7c60605e561ae048961  
+
+./.git/objects/4c:
+58809e3e8ec743d999984dbf3cc4e9ffbe3ef5  
+
+./.git/objects/4f:
+bf7237cee6e21844b6a771bc16d1da956384e7  
+
+./.git/objects/53:
+4caef4c3c4d18a0e76e16a1893be73d0d956c8  
+
+./.git/objects/55:
+31170f545dd11f9555a4fd19d97e3a0da3a90a  cafb4b34d95f1e9f40c0d6e3dfd707d53bc7fa  
+
+./.git/objects/56:
+d7573050042fc3159e6e96ae560e471c225262  f68b6bfb37f8dbeeb979f7550b67b5f2a36ea0  
+
+./.git/objects/5b:
+9f4eded0274a8370ecf0bb908cf6d3cbc16307  
+
+./.git/objects/5c:
+1f53d2cbf0847e096686aa8e0ecc5c89e0aa61  
+
+./.git/objects/5d:
+0d73586bc5b7cdcb84b432d94a09b87ea23974  a51c16d763bdd0471ec50ff31d90d1b89e8eea  
+
+./.git/objects/60:
+1a44a7f701144882d8df9fd5e2ca5864d5f297  
+
+./.git/objects/63:
+c4cdb33a005d4842a11d825c8bd6986e715e9d  cedb29f361733480e7664fbcd3f8dd362b21cb  fa0a1922f0479854ed65be9631244e5916b5d1  
+
+./.git/objects/64:
+04b7f99ae3d8713164aa965b8e898deb9eb282  921a895869de7e607fd22fd6dec8b76877713b  
+
+./.git/objects/66:
+b764ac781397ec461ba940e4a80c54bf2debde  
+
+./.git/objects/67:
+2f4e562a8d19ed8858362ee3f2c14ba05f5b8a  
+
+./.git/objects/68:
+42958432d72a078ac9e0e8f8fa3a335fe434d4  924508659e05a9f052e968e7a5b9b64a5dc183  
+
+./.git/objects/69:
+ff9c186d4acfc5a9cf259a62db067068409111  
+
+./.git/objects/6a:
+d287642218f1f6ee4d60c9824966c538981c07  
+
+./.git/objects/6b:
+09836aefabc8164ce46bd41fc7480754b229d4  43a2d9c22b55fe88a8be5421e79f11ed49fbc0  62409942a7df1b5c933e20d08be11a2f721f40  
+
+./.git/objects/6c:
+4a3a3bfa8525e1e0b552e9a220a822734920b1  
+
+./.git/objects/6e:
+ea89b1c272c705f2cf9cd7e674adbc5c5d0fc1  
+
+./.git/objects/6f:
+789d4a00d97435d680a2a2ceb00e59f60ae59b  
+
+./.git/objects/71:
+f9822a4e856976011c18a906dc927c79d6316b  
+
+./.git/objects/74:
+baaebc6fa956f89e3654d4723c05119a8025dd  
+
+./.git/objects/75:
+3c7c59979d1d38a93b806cf2e0ee0f6e62ce23  4f68257f009af7750e8e5987032519abb1d726  
+
+./.git/objects/76:
+862ac062153cd15ad339c2329fa45faffb9df2  
+
+./.git/objects/77:
+e28f3046644f437f1613547cb2fefd29b78108  
+
+./.git/objects/78:
+457d8609ff657aee50ba7443150960dd155060  ff674afdffac9d3430b8c665c5ca1db4a2bf5b  
+
+./.git/objects/7c:
+ca2f4afe213d689f23b9e80949d13fabdd1137  
+
+./.git/objects/7d:
+5f3c096f6c4cd5d22176e973d5ed590a3192cb  
+
+./.git/objects/80:
+2779f8aa3ef4ab90342c6ee849229735270a4f  
+
+./.git/objects/82:
+8824e74b183a3a3cf0fe0fd7e61da6cbd696f9  
+
+./.git/objects/83:
+960d0b92b1b64c255b7353f453d30cc257bd2c  
+
+./.git/objects/84:
+59e88a1fcabedcffa3e8dc1a99f8448df9c72b  ef64069f2e2a251be925f3085fb58eccab42c1  
+
+./.git/objects/88:
+2a05c714b8e44d462c7924e49f489134447c20  
+
+./.git/objects/89:
+8a4398a04f46199f5257e0b745a6568a629df8  a3f33aa3279f6cca902d0d29300a04a31f9360  
+
+./.git/objects/8d:
+44d64995b2145160a3cfe9a0320681837817c2  878235263d9a2df49f3686a821e5ed813e472e  9887eeda60b4ad8e97fb48231a6388092cadb7  
+
+./.git/objects/8f:
+126e1c73974310e9a8865442ce4b8b2af1cc15  d4828f4bdfa2b6ffe91475c82798b032a4279b  
+
+./.git/objects/90:
+00e335fc5be9d11ae820ab44a58cbd6f0ae411  6c542d6b9b6de3e7b31f1b6f153bdba4f87dd0  
+
+./.git/objects/92:
+29bcf2801da3eb4e1b9763e5747f4c6819d409  8feec7de9c630003241d6f483feb12ac016900  
+
+./.git/objects/93:
+55ef3f37a435081ab7719b43a7194fa1f0b205  
+
+./.git/objects/96:
+acd3e27bcb657e37f2ae37199820efcf0de32e  
+
+./.git/objects/98:
+daa2c73a7d0c54d32cbac9bb6c8c597cdce196  
+
+./.git/objects/9a:
+1e4e607d1fa1900cf15f48efa2dd9ce4995395  
+
+./.git/objects/9d:
+a663a125a90800bc674ce06cbdd8faa3260bb5  
+
+./.git/objects/9e:
+d3c78edea41fac0dbb5536f8833ab6ff1101b4  
+
+./.git/objects/9f:
+46c938cf12ee985a7e294516fe505c6050d6e8  
+
+./.git/objects/a0:
+a8c9dd5cad85bfb58256d0a8bd6455aee58ed3  
+
+./.git/objects/a1:
+9a6c45a0695a4db5ef37d7a4190342e7ba7690  
+
+./.git/objects/a3:
+05b2a5e7b91558d0941e0082ffc4d2e80f2761  4f0ff443795e76258d7a3a0707fcb9feaa5d99  beb0a1576542aeb0330bb94e2458d99b044fa4  
+
+./.git/objects/a4:
+15574efa6d194d6a9d6014492c0e47721aa9d9  
+
+./.git/objects/a6:
+de78586b5e136dc0fb27ff196e8f85a175d331  
+
+./.git/objects/ab:
+2bb4ae30ebe41a0163612fd0f4073140c0dc33  
+
+./.git/objects/ac:
+c698b6d1bdaa3f4a7fcb74017a48b23fb046c1  
+
+./.git/objects/b2:
+92d02eac0af00d257324acd8611aab29217bb7  
+
+./.git/objects/b4:
+0c3fa870ddf3a0a15d9025760e883b3abec555  
+
+./.git/objects/b5:
+1360c64b2ec7049605c129c3c50445a5962087  
+
+./.git/objects/b7:
+932e94b00d32a0e98aa5831a4afc74bbfc7e9a  
+
+./.git/objects/b8:
+880a60fedbfca230ee5d23dcd46e2d407979e8  
+
+./.git/objects/b9:
+33df01890770f08d22bd122776a20854c60fca  
+
+./.git/objects/bb:
+36d2d51bee40f9fc72ee8c6bda86e19edbe4c3  65967dfab303060e09b31fd89eaa5a2c010bbe  
+
+./.git/objects/bc:
+6b0b0b6a7d1704a3e31e7f3e2281a70dd02daf  
+
+./.git/objects/be:
+1d1a9569018e9412f9e85aea468b652f32732a  91807a43189d9d34b149cda5acbdbfff107cec  
+
+./.git/objects/bf:
+edc0d2584aa794c91cf99ec4726d250a6b54be  
+
+./.git/objects/c0:
+6424777988057aee8b18209bba200246722efb  
+
+./.git/objects/c2:
+5c10850f2b328d256e24ae00e30c1d61bca2bd  
+
+./.git/objects/c4:
+8f6335543b4b7de4675fe02b7fd3f0cfcc3c93  c821dfb6c9703715a134f26b92d1a608b78317  
+
+./.git/objects/c7:
+e06b0d69c700a3ec7ef3eb2f7932fa21ccbbca  
+
+./.git/objects/c9:
+1b1b631ecf614c299d568ec48a4035f27bc6f9  380af372b16d6d5132fd0a8c29008b87235169  
+
+./.git/objects/cc:
+2d59fc231999a9dba4f292364e0d0c83499257  
+
+./.git/objects/ce:
+ba5592526df4daea18fc473e1d8e2bd5fc2101  
+
+./.git/objects/cf:
+56ed0e9ba90ea586e11794f11d2aa7c05cdfa5  
+
+./.git/objects/d1:
+c1b4213d3bb382e1d296f05c5c356ac571304f  
+
+./.git/objects/d2:
+081c9df45208a7e0a2a41b71abc78f36d75f10  
+
+./.git/objects/d3:
+80472625ae05f1d4e8d38673dd5050d41aee84  
+
+./.git/objects/d4:
+40020a658b7d6dbc73fad15bd6569aa1a5341e  
+
+./.git/objects/d6:
+e552cc04f286cf6bff305891d4cfbfcde084a0  
+
+./.git/objects/d7:
+7a3277ca79aa3ffeba686fbf09352abe0d1a18  
+
+./.git/objects/d9:
+4e66918f636f702af1457df40cbe99a809a47a  ca330a223eb8363f0ff604a0a809befa188a1a  
+
+./.git/objects/db:
+d71754d4fac322569b5114278e04826d499930  
+
+./.git/objects/dc:
+37719562467b4799e969c40157254b78044475  472cdb6ed63c486e0d1ac2103907237bea0625  
+
+./.git/objects/e0:
+36b98c84921fe19a94b2b48d1efe5bd58dd43a  
+
+./.git/objects/e2:
+3a9098d4f9568c1342788d344178929b25d980  f58dc79cc9f43ec4e0e9ae7087fdf2858c7d27  
+
+./.git/objects/e3:
+78a065e848bc310764eada2de214ef88e81437  
+
+./.git/objects/e6:
+0d67b1ecb5d828983584164f9cf642db9492a9  c05b070bf0ca5bbdf28277865b1f8be48f0729  
+
+./.git/objects/e9:
+877e0a4268a2269a0b850d8b5da901c4612008  
+
+./.git/objects/eb:
+9bcdb8df05e0c955ae61237ef9571bd10a2b21  e4a587b09a69eeafef5347d176a3e3541c06df  
+
+./.git/objects/ed:
+c1c0f4508df005fd1895ed34393f07db7ad833  
+
+./.git/objects/ee:
+8b2a94b61a583c180c2fae666714d2c37d6491  
+
+./.git/objects/f0:
+309b3f75c29c5ab861b3fddff8683aef68969b  83f5daa470d7bd9ff7c10e6feafad9639c0e2f  
+
+./.git/objects/f4:
+27674a434e70aa592f409cd9d35f0f99eac4fa  68e8f65a077802329f4aa7cb464321934fb4db  
+
+./.git/objects/f7:
+917d2786c148f2e1ef88156cb5859a42438154  
+
+./.git/objects/fa:
+03d8e7c0ead7a15140f05dbdba443148b4b9d4  
+
+./.git/objects/fc:
+73917dea269fab50f61bfdbd1423ca33a55cbb  
+
+./.git/objects/ff:
+f9d78fa9fdbbd0f061d6ead041f9e02982b15f  
+
+./.git/objects/info:
+packs  
+
+./.git/objects/pack:
+pack-51be7dce109f6f745ca701bb6b9fcefbc1fe7ec8.idx  pack-51be7dce109f6f745ca701bb6b9fcefbc1fe7ec8.pack  
+
+./.git/refs:
+heads  remotes  tags  
+
+./.git/refs/heads:
+exec  ls  ls-2  master  
+
+./.git/refs/remotes:
+origin  
+
+./.git/refs/remotes/origin:
+exec  HEAD  ls  master  
+
+./.git/refs/tags:
+hw0  
+
+./bin:
+a.out  cp  ls  rshell  
+
+./src:
+a.out  cp.cpp  ls.cpp  rschell.cpp  Status.h  Status.h.gch  Timer.h  
+
+./SRC:
+a.out  cp.cpp  ls.cpp  rschell.cpp  Status.h  Status.h.gch  Timer.h  
+
+./tests:
+exec.script  ls.script  
+
+~/rshell
+gruiz007@hammer $ bin/ls -Ra[1Pa[C -R
+.:
+.git  a.out  bin  LICENSE  Makefile  README  readme  src  SRC  tests  
+
+./.git:
+#MERGE_MSG#  branches  COMMIT_EDITMSG  config  description  FETCH_HEAD  HEAD  hooks  index  info  logs  objects  ORIG_HEAD  packed-refs  refs  
+
+./.git/branches:
+
+
+./.git/hooks:
+applypatch-msg.sample  commit-msg.sample  post-update.sample  pre-applypatch.sample  pre-commit.sample  pre-push.sample  pre-rebase.sample  prepare-commit-msg.sample  update.sample  
+
+./.git/info:
+exclude  refs  
+
+./.git/logs:
+HEAD  refs  
+
+./.git/logs/refs:
+heads  remotes  
+
+./.git/logs/refs/heads:
+exec  ls  ls-2  master  
+
+./.git/logs/refs/remotes:
+origin  
+
+./.git/logs/refs/remotes/origin:
+exec  HEAD  ls  master  
+
+./.git/objects:
+01  02  04  06  0a  0d  15  16  1c  1d  20  21  23  24  25  26  29  2a  2b  2d  2f  30  34  35  36  37  38  39  3a  3c  3d  42  46  47  4c  4f  53  55  56  5b  5c  5d  60  63  64  66  67  68  69  6a  6b  6c  6e  6f  71  74  75  76  77  78  7c  7d  80  82  83  84  88  89  8d  8f  90  92  93  96  98  9a  9d  9e  9f  a0  a1  a3  a4  a6  ab  ac  b2  b4  b5  b7  b8  b9  bb  bc  be  bf  c0  c2  c4  c7  c9  cc  ce  cf  d1  d2  d3  d4  d6  d7  d9  db  dc  e0  e2  e3  e6  e9  eb  ed  ee  f0  f4  f7  fa  fc  ff  info  pack  
+
+./.git/objects/01:
+f86c85b4d271e7ced6193e4a62bd9f1d7e21b8  
+
+./.git/objects/02:
+163f17965fc52a79d496157cfb054d7300c5c9  
+
+./.git/objects/04:
+6ea4490f9630077b02e6ac96e2bca3d4d83315  
+
+./.git/objects/06:
+a91ad7b0133b4e8cfd5a2b91bc3400db37deec  e9f66ca602521d2f3818613cbc0820f56a3123  ed474a910fa8d3fdcaf83a1f8204810794a2e2  
+
+./.git/objects/0a:
+aa32413c979a082b0ef69f744b0e6347fd05aa  
+
+./.git/objects/0d:
+46273481d35e623cd85eff7695bdc6571310a7  6873a662050da8305cc3e663e8c77cbd96b56e  7124484eef47f330edcd3e73847030d4da955a  
+
+./.git/objects/15:
+672d0ce6c5fa0bf6f560457036c4556ab67fb8  
+
+./.git/objects/16:
+99f3639920bd74c64881164f827c05f5f9254f  
+
+./.git/objects/1c:
+28f86a7f4be5013dd00b5b1cc78d58ed74e6e1  
+
+./.git/objects/1d:
+b6b74efb3b6495c28d01ffa60259535062253f  
+
+./.git/objects/20:
+9ebb6a7b1fa8a117e02908fccd9766e3bb8cc4  
+
+./.git/objects/21:
+97b9fff2e1b9ff2c6532c4a76f5941ee45cbcc  b0f4cebd2217d1f1e61a3739f3baad94697c4d  
+
+./.git/objects/23:
+5c111ca008e0134f326ba4af3c6d69c8a5bebe  
+
+./.git/objects/24:
+010f6df5aa4ce646699c0f655350cfa139994f  9edea4e2626af6a02b7025c23d150b7ea53c60  afe26f1f86772e2124136bf7b8f9fc4f798f16  d1838f820dc78cbb90a0091912c77bdd95d3b5  
+
+./.git/objects/25:
+ac0b725a9cc1d7a6a6f7b5b8dd480ba8a51af0  
+
+./.git/objects/26:
+a88e925de326ef792051200decb580b5afc236  
+
+./.git/objects/29:
+b6259aadad2abe53a42cc3bf6de76dbbea42df  be4954482aca55a01c852de16e20c4b99cdc30  cd6a860473617ea506f570a03e621547995c29  
+
+./.git/objects/2a:
+c42b20815da785d5fdd675ed98d5e79502d59a  
+
+./.git/objects/2b:
+2c3cf1f913d24c6edef33416697914fabf3feb  5634d3553d8ed05e7d7d416131e37c9264fc5a  
+
+./.git/objects/2d:
+21fb25c0ccabd2f8c4ab659b52b7625feb67a3  
+
+./.git/objects/2f:
+b88fd7ba1a38f5fe81615c966bdeb0679591bb  ec3d483a08b613708f5395f2ba462c76a3e69b  
+
+./.git/objects/30:
+a54fc7e8e7e7112dcb4fdd926772a50e63bde9  d7038fe236a10207cae8d58af21f8606b5b581  
+
+./.git/objects/34:
+a123d28e6916343cdf5f4ea52bb87a2491b5d9  
+
+./.git/objects/35:
+f3d243332a5c6e68f332edf21963cac0071d75  
+
+./.git/objects/36:
+d12528d2213977dcfa1460774ede78c82df039  
+
+./.git/objects/37:
+7034d2f9e1cea5b018aac1a87f15d66e6f462d  
+
+./.git/objects/38:
+c7e6e776b387449159435cfbffa474764a435f  e781e4b24f37771f43fd62b882d70280f37496  f2bef456369fc305f589638a14d639ca436a66  
+
+./.git/objects/39:
+1199fa6025261b43dc053e1e3090f6ea2caad3  ca030dd81b9debf47a070ea497e7aca8d97b89  
+
+./.git/objects/3a:
+156a876b5eec6c3d908e9995f2404d5248f8b7  
+
+./.git/objects/3c:
+0ca36d97423929ebb25a29fc2ea04d49cd044e  
+
+./.git/objects/3d:
+e267187ab951567faee920feab6a841ef2876b  
+
+./.git/objects/42:
+8047bf5dce33a2a471c584f11b3407f7de916d  
+
+./.git/objects/46:
+6d14a3e510049dc0aff1258ba29b59d2e29694  
+
+./.git/objects/47:
+94e0399231687e51b5e7c60605e561ae048961  
+
+./.git/objects/4c:
+58809e3e8ec743d999984dbf3cc4e9ffbe3ef5  
+
+./.git/objects/4f:
+bf7237cee6e21844b6a771bc16d1da956384e7  
+
+./.git/objects/53:
+4caef4c3c4d18a0e76e16a1893be73d0d956c8  
+
+./.git/objects/55:
+31170f545dd11f9555a4fd19d97e3a0da3a90a  cafb4b34d95f1e9f40c0d6e3dfd707d53bc7fa  
+
+./.git/objects/56:
+d7573050042fc3159e6e96ae560e471c225262  f68b6bfb37f8dbeeb979f7550b67b5f2a36ea0  
+
+./.git/objects/5b:
+9f4eded0274a8370ecf0bb908cf6d3cbc16307  
+
+./.git/objects/5c:
+1f53d2cbf0847e096686aa8e0ecc5c89e0aa61  
+
+./.git/objects/5d:
+0d73586bc5b7cdcb84b432d94a09b87ea23974  a51c16d763bdd0471ec50ff31d90d1b89e8eea  
+
+./.git/objects/60:
+1a44a7f701144882d8df9fd5e2ca5864d5f297  
+
+./.git/objects/63:
+c4cdb33a005d4842a11d825c8bd6986e715e9d  cedb29f361733480e7664fbcd3f8dd362b21cb  fa0a1922f0479854ed65be9631244e5916b5d1  
+
+./.git/objects/64:
+04b7f99ae3d8713164aa965b8e898deb9eb282  921a895869de7e607fd22fd6dec8b76877713b  
+
+./.git/objects/66:
+b764ac781397ec461ba940e4a80c54bf2debde  
+
+./.git/objects/67:
+2f4e562a8d19ed8858362ee3f2c14ba05f5b8a  
+
+./.git/objects/68:
+42958432d72a078ac9e0e8f8fa3a335fe434d4  924508659e05a9f052e968e7a5b9b64a5dc183  
+
+./.git/objects/69:
+ff9c186d4acfc5a9cf259a62db067068409111  
+
+./.git/objects/6a:
+d287642218f1f6ee4d60c9824966c538981c07  
+
+./.git/objects/6b:
+09836aefabc8164ce46bd41fc7480754b229d4  43a2d9c22b55fe88a8be5421e79f11ed49fbc0  62409942a7df1b5c933e20d08be11a2f721f40  
+
+./.git/objects/6c:
+4a3a3bfa8525e1e0b552e9a220a822734920b1  
+
+./.git/objects/6e:
+ea89b1c272c705f2cf9cd7e674adbc5c5d0fc1  
+
+./.git/objects/6f:
+789d4a00d97435d680a2a2ceb00e59f60ae59b  
+
+./.git/objects/71:
+f9822a4e856976011c18a906dc927c79d6316b  
+
+./.git/objects/74:
+baaebc6fa956f89e3654d4723c05119a8025dd  
+
+./.git/objects/75:
+3c7c59979d1d38a93b806cf2e0ee0f6e62ce23  4f68257f009af7750e8e5987032519abb1d726  
+
+./.git/objects/76:
+862ac062153cd15ad339c2329fa45faffb9df2  
+
+./.git/objects/77:
+e28f3046644f437f1613547cb2fefd29b78108  
+
+./.git/objects/78:
+457d8609ff657aee50ba7443150960dd155060  ff674afdffac9d3430b8c665c5ca1db4a2bf5b  
+
+./.git/objects/7c:
+ca2f4afe213d689f23b9e80949d13fabdd1137  
+
+./.git/objects/7d:
+5f3c096f6c4cd5d22176e973d5ed590a3192cb  
+
+./.git/objects/80:
+2779f8aa3ef4ab90342c6ee849229735270a4f  
+
+./.git/objects/82:
+8824e74b183a3a3cf0fe0fd7e61da6cbd696f9  
+
+./.git/objects/83:
+960d0b92b1b64c255b7353f453d30cc257bd2c  
+
+./.git/objects/84:
+59e88a1fcabedcffa3e8dc1a99f8448df9c72b  ef64069f2e2a251be925f3085fb58eccab42c1  
+
+./.git/objects/88:
+2a05c714b8e44d462c7924e49f489134447c20  
+
+./.git/objects/89:
+8a4398a04f46199f5257e0b745a6568a629df8  a3f33aa3279f6cca902d0d29300a04a31f9360  
+
+./.git/objects/8d:
+44d64995b2145160a3cfe9a0320681837817c2  878235263d9a2df49f3686a821e5ed813e472e  9887eeda60b4ad8e97fb48231a6388092cadb7  
+
+./.git/objects/8f:
+126e1c73974310e9a8865442ce4b8b2af1cc15  d4828f4bdfa2b6ffe91475c82798b032a4279b  
+
+./.git/objects/90:
+00e335fc5be9d11ae820ab44a58cbd6f0ae411  6c542d6b9b6de3e7b31f1b6f153bdba4f87dd0  
+
+./.git/objects/92:
+29bcf2801da3eb4e1b9763e5747f4c6819d409  8feec7de9c630003241d6f483feb12ac016900  
+
+./.git/objects/93:
+55ef3f37a435081ab7719b43a7194fa1f0b205  
+
+./.git/objects/96:
+acd3e27bcb657e37f2ae37199820efcf0de32e  
+
+./.git/objects/98:
+daa2c73a7d0c54d32cbac9bb6c8c597cdce196  
+
+./.git/objects/9a:
+1e4e607d1fa1900cf15f48efa2dd9ce4995395  
+
+./.git/objects/9d:
+a663a125a90800bc674ce06cbdd8faa3260bb5  
+
+./.git/objects/9e:
+d3c78edea41fac0dbb5536f8833ab6ff1101b4  
+
+./.git/objects/9f:
+46c938cf12ee985a7e294516fe505c6050d6e8  
+
+./.git/objects/a0:
+a8c9dd5cad85bfb58256d0a8bd6455aee58ed3  
+
+./.git/objects/a1:
+9a6c45a0695a4db5ef37d7a4190342e7ba7690  
+
+./.git/objects/a3:
+05b2a5e7b91558d0941e0082ffc4d2e80f2761  4f0ff443795e76258d7a3a0707fcb9feaa5d99  beb0a1576542aeb0330bb94e2458d99b044fa4  
+
+./.git/objects/a4:
+15574efa6d194d6a9d6014492c0e47721aa9d9  
+
+./.git/objects/a6:
+de78586b5e136dc0fb27ff196e8f85a175d331  
+
+./.git/objects/ab:
+2bb4ae30ebe41a0163612fd0f4073140c0dc33  
+
+./.git/objects/ac:
+c698b6d1bdaa3f4a7fcb74017a48b23fb046c1  
+
+./.git/objects/b2:
+92d02eac0af00d257324acd8611aab29217bb7  
+
+./.git/objects/b4:
+0c3fa870ddf3a0a15d9025760e883b3abec555  
+
+./.git/objects/b5:
+1360c64b2ec7049605c129c3c50445a5962087  
+
+./.git/objects/b7:
+932e94b00d32a0e98aa5831a4afc74bbfc7e9a  
+
+./.git/objects/b8:
+880a60fedbfca230ee5d23dcd46e2d407979e8  
+
+./.git/objects/b9:
+33df01890770f08d22bd122776a20854c60fca  
+
+./.git/objects/bb:
+36d2d51bee40f9fc72ee8c6bda86e19edbe4c3  65967dfab303060e09b31fd89eaa5a2c010bbe  
+
+./.git/objects/bc:
+6b0b0b6a7d1704a3e31e7f3e2281a70dd02daf  
+
+./.git/objects/be:
+1d1a9569018e9412f9e85aea468b652f32732a  91807a43189d9d34b149cda5acbdbfff107cec  
+
+./.git/objects/bf:
+edc0d2584aa794c91cf99ec4726d250a6b54be  
+
+./.git/objects/c0:
+6424777988057aee8b18209bba200246722efb  
+
+./.git/objects/c2:
+5c10850f2b328d256e24ae00e30c1d61bca2bd  
+
+./.git/objects/c4:
+8f6335543b4b7de4675fe02b7fd3f0cfcc3c93  c821dfb6c9703715a134f26b92d1a608b78317  
+
+./.git/objects/c7:
+e06b0d69c700a3ec7ef3eb2f7932fa21ccbbca  
+
+./.git/objects/c9:
+1b1b631ecf614c299d568ec48a4035f27bc6f9  380af372b16d6d5132fd0a8c29008b87235169  
+
+./.git/objects/cc:
+2d59fc231999a9dba4f292364e0d0c83499257  
+
+./.git/objects/ce:
+ba5592526df4daea18fc473e1d8e2bd5fc2101  
+
+./.git/objects/cf:
+56ed0e9ba90ea586e11794f11d2aa7c05cdfa5  
+
+./.git/objects/d1:
+c1b4213d3bb382e1d296f05c5c356ac571304f  
+
+./.git/objects/d2:
+081c9df45208a7e0a2a41b71abc78f36d75f10  
+
+./.git/objects/d3:
+80472625ae05f1d4e8d38673dd5050d41aee84  
+
+./.git/objects/d4:
+40020a658b7d6dbc73fad15bd6569aa1a5341e  
+
+./.git/objects/d6:
+e552cc04f286cf6bff305891d4cfbfcde084a0  
+
+./.git/objects/d7:
+7a3277ca79aa3ffeba686fbf09352abe0d1a18  
+
+./.git/objects/d9:
+4e66918f636f702af1457df40cbe99a809a47a  ca330a223eb8363f0ff604a0a809befa188a1a  
+
+./.git/objects/db:
+d71754d4fac322569b5114278e04826d499930  
+
+./.git/objects/dc:
+37719562467b4799e969c40157254b78044475  472cdb6ed63c486e0d1ac2103907237bea0625  
+
+./.git/objects/e0:
+36b98c84921fe19a94b2b48d1efe5bd58dd43a  
+
+./.git/objects/e2:
+3a9098d4f9568c1342788d344178929b25d980  f58dc79cc9f43ec4e0e9ae7087fdf2858c7d27  
+
+./.git/objects/e3:
+78a065e848bc310764eada2de214ef88e81437  
+
+./.git/objects/e6:
+0d67b1ecb5d828983584164f9cf642db9492a9  c05b070bf0ca5bbdf28277865b1f8be48f0729  
+
+./.git/objects/e9:
+877e0a4268a2269a0b850d8b5da901c4612008  
+
+./.git/objects/eb:
+9bcdb8df05e0c955ae61237ef9571bd10a2b21  e4a587b09a69eeafef5347d176a3e3541c06df  
+
+./.git/objects/ed:
+c1c0f4508df005fd1895ed34393f07db7ad833  
+
+./.git/objects/ee:
+8b2a94b61a583c180c2fae666714d2c37d6491  
+
+./.git/objects/f0:
+309b3f75c29c5ab861b3fddff8683aef68969b  83f5daa470d7bd9ff7c10e6feafad9639c0e2f  
+
+./.git/objects/f4:
+27674a434e70aa592f409cd9d35f0f99eac4fa  68e8f65a077802329f4aa7cb464321934fb4db  
+
+./.git/objects/f7:
+917d2786c148f2e1ef88156cb5859a42438154  
+
+./.git/objects/fa:
+03d8e7c0ead7a15140f05dbdba443148b4b9d4  
+
+./.git/objects/fc:
+73917dea269fab50f61bfdbd1423ca33a55cbb  
+
+./.git/objects/ff:
+f9d78fa9fdbbd0f061d6ead041f9e02982b15f  
+
+./.git/objects/info:
+packs  
+
+./.git/objects/pack:
+pack-51be7dce109f6f745ca701bb6b9fcefbc1fe7ec8.idx  pack-51be7dce109f6f745ca701bb6b9fcefbc1fe7ec8.pack  
+
+./.git/refs:
+heads  remotes  tags  
+
+./.git/refs/heads:
+exec  ls  ls-2  master  
+
+./.git/refs/remotes:
+origin  
+
+./.git/refs/remotes/origin:
+exec  HEAD  ls  master  
+
+./.git/refs/tags:
+hw0  
+
+./bin:
+a.out  cp  ls  rshell  
+
+./src:
+a.out  cp.cpp  ls.cpp  rschell.cpp  Status.h  Status.h.gch  Timer.h  
+
+./SRC:
+a.out  cp.cpp  ls.cpp  rschell.cpp  Status.h  Status.h.gch  Timer.h  
+
+./tests:
+exec.script  ls.script  
+
+~/rshell
+gruiz007@hammer $ ###sorry! quite llong[K[K[K[Kong D: ###
+~/rshell
+gruiz007@hammer $ ###sorry! quite long D: ###[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[15Pbin/ls -a -R[C[C[K[K[KR src tests/exec.sr[Kcript bin readme SRC -a -R
+readme  tests/exec.script  
+
+bin:
+a.out  cp  ls  rshell  
+
+src:
+a.out  cp.cpp  ls.cpp  rschell.cpp  Status.h  Status.h.gch  Timer.h  
+
+SRC:
+a.out  cp.cpp  ls.cpp  rschell.cpp  Status.h  Status.h.gch  Timer.h  
+
+~/rshell
+gruiz007@hammer $ ### te[K[KTESTING -l -R combinations ###
+~/rshell
+gruiz007@hammer $ bin/ls -l -R
+.:
+-rwx------ 1 gruiz007 classes      10617 Nov 10 21:02 a.out
+drwx------ 2 gruiz007 classes       4096 Nov 11 21:36 bin
+-rw------- 1 gruiz007 classes       1483 Nov 11 20:39 LICENSE
+-rw------- 1 gruiz007 classes        654 Nov 11 20:36 Makefile
+-rw------- 1 gruiz007 classes       4180 Nov 11 20:36 README
+lrwxrwxrwx 1 gruiz007 classes          6 Nov 11 14:08 readme -> README
+drwx------ 2 gruiz007 classes       4096 Nov 11 20:40 src
+lrwxrwxrwx 1 gruiz007 classes          3 Nov 11 14:08 SRC -> src
+drwx------ 2 gruiz007 classes       4096 Nov 11 21:35 tests
+
+
+./bin:
+-rwx------ 1 gruiz007 classes      38374 Oct 28 15:25 a.out
+-rwx------ 1 gruiz007 classes      58562 Nov 11 21:36 cp
+-rwx------ 1 gruiz007 classes     127735 Nov 11 21:35 ls
+-rwx------ 1 gruiz007 classes     116286 Nov 11 21:35 rshell
+
+
+./src:
+-rwx------ 1 gruiz007 classes      13930 Nov 08 17:21 a.out
+-rw------- 1 gruiz007 classes       5224 Nov 11 20:36 cp.cpp
+-rw------- 1 gruiz007 classes       4069 Nov 11 20:36 ls.cpp
+-rw------- 1 gruiz007 classes       5097 Oct 30 14:49 rschell.cpp
+-rw------- 1 gruiz007 classes       9116 Nov 11 20:36 Status.h
+-rw------- 1 gruiz007 classes    2881264 Nov 08 17:21 Status.h.gch
+-rw------- 1 gruiz007 classes       2715 Nov 11 20:40 Timer.h
+
+
+./SRC:
+-rwx------ 1 gruiz007 classes      13930 Nov 08 17:21 a.out
+-rw------- 1 gruiz007 classes       5224 Nov 11 20:36 cp.cpp
+-rw------- 1 gruiz007 classes       4069 Nov 11 20:36 ls.cpp
+-rw------- 1 gruiz007 classes       5097 Oct 30 14:49 rschell.cpp
+-rw------- 1 gruiz007 classes       9116 Nov 11 20:36 Status.h
+-rw------- 1 gruiz007 classes    2881264 Nov 08 17:21 Status.h.gch
+-rw------- 1 gruiz007 classes       2715 Nov 11 20:40 Timer.h
+
+
+./tests:
+-rw------- 1 gruiz007 classes      16105 Oct 21 23:28 exec.script
+-rw------- 1 gruiz007 classes      32768 Nov 11 21:52 ls.script
+
+
+~/rshell
+gruiz007@hammer $ bin/ls -l -R[C[1PR[1PR[C a.out
+-rwx------ 1 gruiz007 classes      10617 Nov 10 21:02 a.out
+
+
+~/rshell
+gruiz007@hammer $ bin/ls LICENSE tests -Rl a.out .git SRC src bin/a.out
+-rwx------ 1 gruiz007 classes      10617 Nov 10 21:02 a.out
+-rwx------ 1 gruiz007 classes      38374 Oct 28 15:25 bin/a.out
+-rw------- 1 gruiz007 classes       1483 Nov 11 20:39 LICENSE
+
+
+.git:
+-rw------- 1 gruiz007 classes        267 Nov 11 20:36 #MERGE_MSG#
+drwx------ 2 gruiz007 classes       4096 Oct 20 15:17 branches
+-rw------- 1 gruiz007 classes          9 Nov 11 20:40 COMMIT_EDITMSG
+-rw------- 1 gruiz007 classes        322 Oct 21 23:26 config
+-rw------- 1 gruiz007 classes         73 Oct 20 15:17 description
+-rw------- 1 gruiz007 classes        311 Nov 11 20:40 FETCH_HEAD
+-rw------- 1 gruiz007 classes         21 Nov 11 20:37 HEAD
+drwx------ 2 gruiz007 classes       4096 Oct 20 15:17 hooks
+-rw------- 1 gruiz007 classes        895 Nov 11 20:40 index
+drwx------ 2 gruiz007 classes       4096 Oct 20 18:27 info
+drwx------ 3 gruiz007 classes       4096 Oct 20 15:18 logs
+drwx------ 131 gruiz007 classes       8192 Nov 11 20:40 objects
+-rw------- 1 gruiz007 classes         41 Nov 11 20:40 ORIG_HEAD
+-rw------- 1 gruiz007 classes        173 Oct 20 15:18 packed-refs
+drwx------ 5 gruiz007 classes       4096 Oct 20 15:18 refs
+
+
+.git/branches:
+
+
+.git/hooks:
+-rwx------ 1 gruiz007 classes        452 Oct 20 15:17 applypatch-msg.sample
+-rwx------ 1 gruiz007 classes        896 Oct 20 15:17 commit-msg.sample
+-rwx------ 1 gruiz007 classes        189 Oct 20 15:17 post-update.sample
+-rwx------ 1 gruiz007 classes        398 Oct 20 15:17 pre-applypatch.sample
+-rwx------ 1 gruiz007 classes       1635 Oct 20 15:17 pre-commit.sample
+-rwx------ 1 gruiz007 classes       1348 Oct 20 15:17 pre-push.sample
+-rwx------ 1 gruiz007 classes       4951 Oct 20 15:17 pre-rebase.sample
+-rwx------ 1 gruiz007 classes       1239 Oct 20 15:17 prepare-commit-msg.sample
+-rwx------ 1 gruiz007 classes       3611 Oct 20 15:17 update.sample
+
+
+.git/info:
+-rw------- 1 gruiz007 classes        240 Oct 20 15:17 exclude
+-rw------- 1 gruiz007 classes        257 Oct 20 18:27 refs
+
+
+.git/logs:
+-rw------- 1 gruiz007 classes       9350 Nov 11 20:40 HEAD
+drwx------ 4 gruiz007 classes       4096 Oct 20 15:18 refs
+
+
+.git/logs/refs:
+drwx------ 2 gruiz007 classes       4096 Nov 07 15:27 heads
+drwx------ 3 gruiz007 classes       4096 Oct 20 15:18 remotes
+
+
+.git/logs/refs/heads:
+-rw------- 1 gruiz007 classes       4120 Nov 11 20:40 exec
+-rw------- 1 gruiz007 classes       2848 Nov 11 18:50 ls
+-rw------- 1 gruiz007 classes        157 Nov 07 15:27 ls-2
+-rw------- 1 gruiz007 classes       1212 Nov 11 20:35 master
+
+
+.git/logs/refs/remotes:
+drwx------ 2 gruiz007 classes       4096 Oct 29 13:28 origin
+
+
+.git/logs/refs/remotes/origin:
+-rw------- 1 gruiz007 classes       3008 Nov 11 20:41 exec
+-rw------- 1 gruiz007 classes        193 Oct 20 15:18 HEAD
+-rw------- 1 gruiz007 classes       1924 Nov 11 18:46 ls
+-rw------- 1 gruiz007 classes        752 Nov 11 20:24 master
+
+
+.git/objects:
+drwx------ 2 gruiz007 classes       4096 Oct 20 19:00 01
+drwx------ 2 gruiz007 classes       4096 Nov 10 22:20 02
+drwx------ 2 gruiz007 classes       4096 Nov 11 18:55 04
+drwx------ 2 gruiz007 classes       4096 Nov 10 22:23 06
+drwx------ 2 gruiz007 classes       4096 Oct 29 13:22 0a
+drwx------ 2 gruiz007 classes       4096 Nov 11 18:55 0d
+drwx------ 2 gruiz007 classes       4096 Oct 21 12:23 15
+drwx------ 2 gruiz007 classes       4096 Nov 11 20:24 16
+drwx------ 2 gruiz007 classes       4096 Oct 21 21:25 1c
+drwx------ 2 gruiz007 classes       4096 Nov 11 14:02 1d
+drwx------ 2 gruiz007 classes       4096 Nov 11 18:44 20
+drwx------ 2 gruiz007 classes       4096 Oct 21 21:55 21
+drwx------ 2 gruiz007 classes       4096 Oct 21 20:45 23
+drwx------ 2 gruiz007 classes       4096 Nov 11 20:24 24
+drwx------ 2 gruiz007 classes       4096 Nov 10 22:20 25
+drwx------ 2 gruiz007 classes       4096 Nov 11 20:24 26
+drwx------ 2 gruiz007 classes       4096 Nov 11 20:24 29
+drwx------ 2 gruiz007 classes       4096 Nov 09 19:38 2a
+drwx------ 2 gruiz007 classes       4096 Nov 01 20:26 2b
+drwx------ 2 gruiz007 classes       4096 Nov 11 15:36 2d
+drwx------ 2 gruiz007 classes       4096 Nov 11 20:24 2f
+drwx------ 2 gruiz007 classes       4096 Nov 11 14:02 30
+drwx------ 2 gruiz007 classes       4096 Nov 10 22:23 34
+drwx------ 2 gruiz007 classes       4096 Oct 21 21:12 35
+drwx------ 2 gruiz007 classes       4096 Nov 09 14:26 36
+drwx------ 2 gruiz007 classes       4096 Oct 21 20:45 37
+drwx------ 2 gruiz007 classes       4096 Nov 11 18:50 38
+drwx------ 2 gruiz007 classes       4096 Oct 29 13:26 39
+drwx------ 2 gruiz007 classes       4096 Oct 21 16:37 3a
+drwx------ 2 gruiz007 classes       4096 Oct 29 13:22 3c
+drwx------ 2 gruiz007 classes       4096 Oct 21 16:15 3d
+drwx------ 2 gruiz007 classes       4096 Oct 21 10:59 42
+drwx------ 2 gruiz007 classes       4096 Oct 21 16:37 46
+drwx------ 2 gruiz007 classes       4096 Oct 31 23:25 47
+drwx------ 2 gruiz007 classes       4096 Oct 30 14:30 4c
+drwx------ 2 gruiz007 classes       4096 Oct 20 18:58 4f
+drwx------ 2 gruiz007 classes       4096 Oct 20 19:00 53
+drwx------ 2 gruiz007 classes       4096 Nov 11 19:21 55
+drwx------ 2 gruiz007 classes       4096 Nov 11 20:24 56
+drwx------ 2 gruiz007 classes       4096 Oct 21 21:12 5b
+drwx------ 2 gruiz007 classes       4096 Nov 11 18:55 5c
+drwx------ 2 gruiz007 classes       4096 Oct 30 14:30 5d
+drwx------ 2 gruiz007 classes       4096 Nov 11 20:24 60
+drwx------ 2 gruiz007 classes       4096 Oct 29 13:26 63
+drwx------ 2 gruiz007 classes       4096 Oct 29 13:26 64
+drwx------ 2 gruiz007 classes       4096 Nov 09 14:26 66
+drwx------ 2 gruiz007 classes       4096 Nov 07 21:28 67
+drwx------ 2 gruiz007 classes       4096 Nov 11 14:02 68
+drwx------ 2 gruiz007 classes       4096 Oct 21 21:55 69
+drwx------ 2 gruiz007 classes       4096 Oct 20 18:20 6a
+drwx------ 2 gruiz007 classes       4096 Nov 11 15:36 6b
+drwx------ 2 gruiz007 classes       4096 Nov 11 20:35 6c
+drwx------ 2 gruiz007 classes       4096 Nov 11 18:45 6e
+drwx------ 2 gruiz007 classes       4096 Nov 07 21:28 6f
+drwx------ 2 gruiz007 classes       4096 Nov 11 19:21 71
+drwx------ 2 gruiz007 classes       4096 Nov 08 14:04 74
+drwx------ 2 gruiz007 classes       4096 Nov 11 20:38 75
+drwx------ 2 gruiz007 classes       4096 Nov 08 14:04 76
+drwx------ 2 gruiz007 classes       4096 Oct 21 23:25 77
+drwx------ 2 gruiz007 classes       4096 Oct 29 13:26 78
+drwx------ 2 gruiz007 classes       4096 Oct 21 21:11 7c
+drwx------ 2 gruiz007 classes       4096 Oct 21 09:24 7d
+drwx------ 2 gruiz007 classes       4096 Oct 31 10:35 80
+drwx------ 2 gruiz007 classes       4096 Nov 11 20:40 82
+drwx------ 2 gruiz007 classes       4096 Nov 09 19:38 83
+drwx------ 2 gruiz007 classes       4096 Nov 11 19:21 84
+drwx------ 2 gruiz007 classes       4096 Nov 11 20:24 88
+drwx------ 2 gruiz007 classes       4096 Oct 21 21:55 89
+drwx------ 2 gruiz007 classes       4096 Nov 11 20:24 8d
+drwx------ 2 gruiz007 classes       4096 Nov 11 14:02 8f
+drwx------ 2 gruiz007 classes       4096 Nov 07 21:27 90
+drwx------ 2 gruiz007 classes       4096 Nov 11 20:39 92
+drwx------ 2 gruiz007 classes       4096 Oct 21 21:21 93
+drwx------ 2 gruiz007 classes       4096 Oct 21 21:23 96
+drwx------ 2 gruiz007 classes       4096 Oct 29 13:26 98
+drwx------ 2 gruiz007 classes       4096 Oct 21 10:59 9a
+drwx------ 2 gruiz007 classes       4096 Oct 20 19:00 9d
+drwx------ 2 gruiz007 classes       4096 Oct 21 21:25 9e
+drwx------ 2 gruiz007 classes       4096 Oct 20 18:58 9f
+drwx------ 2 gruiz007 classes       4096 Nov 11 20:24 a0
+drwx------ 2 gruiz007 classes       4096 Oct 21 16:15 a1
+drwx------ 2 gruiz007 classes       4096 Nov 11 14:02 a3
+drwx------ 2 gruiz007 classes       4096 Oct 21 23:02 a4
+drwx------ 2 gruiz007 classes       4096 Oct 30 14:29 a6
+drwx------ 2 gruiz007 classes       4096 Nov 11 18:45 ab
+drwx------ 2 gruiz007 classes       4096 Nov 07 21:28 ac
+drwx------ 2 gruiz007 classes       4096 Nov 11 20:24 b2
+drwx------ 2 gruiz007 classes       4096 Nov 11 20:24 b4
+drwx------ 2 gruiz007 classes       4096 Nov 11 19:21 b5
+drwx------ 2 gruiz007 classes       4096 Nov 10 22:23 b7
+drwx------ 2 gruiz007 classes       4096 Oct 31 23:24 b8
+drwx------ 2 gruiz007 classes       4096 Oct 21 22:10 b9
+drwx------ 2 gruiz007 classes       4096 Nov 11 18:50 bb
+drwx------ 2 gruiz007 classes       4096 Nov 11 18:45 bc
+drwx------ 2 gruiz007 classes       4096 Oct 21 21:55 be
+drwx------ 2 gruiz007 classes       4096 Nov 08 14:03 bf
+drwx------ 2 gruiz007 classes       4096 Oct 20 19:00 c0
+drwx------ 2 gruiz007 classes       4096 Nov 11 20:24 c2
+drwx------ 2 gruiz007 classes       4096 Nov 11 18:55 c4
+drwx------ 2 gruiz007 classes       4096 Oct 21 23:26 c7
+drwx------ 2 gruiz007 classes       4096 Nov 11 18:49 c9
+drwx------ 2 gruiz007 classes       4096 Oct 30 14:29 cc
+drwx------ 2 gruiz007 classes       4096 Oct 21 23:26 ce
+drwx------ 2 gruiz007 classes       4096 Oct 21 21:23 cf
+drwx------ 2 gruiz007 classes       4096 Oct 20 18:58 d1
+drwx------ 2 gruiz007 classes       4096 Oct 20 18:19 d2
+drwx------ 2 gruiz007 classes       4096 Oct 20 18:57 d3
+drwx------ 2 gruiz007 classes       4096 Nov 11 20:40 d4
+drwx------ 2 gruiz007 classes       4096 Oct 21 12:23 d6
+drwx------ 2 gruiz007 classes       4096 Oct 21 16:37 d7
+drwx------ 2 gruiz007 classes       4096 Nov 09 14:25 d9
+drwx------ 2 gruiz007 classes       4096 Nov 11 20:24 db
+drwx------ 2 gruiz007 classes       4096 Nov 11 20:40 dc
+drwx------ 2 gruiz007 classes       4096 Oct 21 16:15 e0
+drwx------ 2 gruiz007 classes       4096 Oct 31 23:25 e2
+drwx------ 2 gruiz007 classes       4096 Nov 11 20:24 e3
+drwx------ 2 gruiz007 classes       4096 Nov 11 20:24 e6
+drwx------ 2 gruiz007 classes       4096 Nov 11 20:24 e9
+drwx------ 2 gruiz007 classes       4096 Nov 11 20:24 eb
+drwx------ 2 gruiz007 classes       4096 Oct 21 09:24 ed
+drwx------ 2 gruiz007 classes       4096 Oct 21 09:24 ee
+drwx------ 2 gruiz007 classes       4096 Nov 11 15:36 f0
+drwx------ 2 gruiz007 classes       4096 Nov 09 19:38 f4
+drwx------ 2 gruiz007 classes       4096 Nov 11 18:55 f7
+drwx------ 2 gruiz007 classes       4096 Oct 21 21:26 fa
+drwx------ 2 gruiz007 classes       4096 Oct 30 14:29 fc
+drwx------ 2 gruiz007 classes       4096 Nov 11 20:40 ff
+drwx------ 2 gruiz007 classes       4096 Oct 20 18:27 info
+drwx------ 2 gruiz007 classes       4096 Oct 20 15:18 pack
+
+
+.git/objects/01:
+-r-------- 1 gruiz007 classes        178 Oct 20 19:00 f86c85b4d271e7ced6193e4a62bd9f1d7e21b8
+
+
+.git/objects/02:
+-r-------- 1 gruiz007 classes       2227 Nov 10 22:20 163f17965fc52a79d496157cfb054d7300c5c9
+
+
+.git/objects/04:
+-r-------- 1 gruiz007 classes       1896 Nov 11 18:55 6ea4490f9630077b02e6ac96e2bca3d4d83315
+
+
+.git/objects/06:
+-r-------- 1 gruiz007 classes       2333 Oct 21 09:24 a91ad7b0133b4e8cfd5a2b91bc3400db37deec
+-r-------- 1 gruiz007 classes        172 Nov 10 22:23 e9f66ca602521d2f3818613cbc0820f56a3123
+-r-------- 1 gruiz007 classes        182 Oct 30 14:29 ed474a910fa8d3fdcaf83a1f8204810794a2e2
+
+
+.git/objects/0a:
+-r-------- 1 gruiz007 classes        116 Oct 29 13:22 aa32413c979a082b0ef69f744b0e6347fd05aa
+
+
+.git/objects/0d:
+-r-------- 1 gruiz007 classes        210 Oct 21 20:45 46273481d35e623cd85eff7695bdc6571310a7
+-r-------- 1 gruiz007 classes        758 Nov 11 18:55 6873a662050da8305cc3e663e8c77cbd96b56e
+-r-------- 1 gruiz007 classes         87 Oct 20 18:20 7124484eef47f330edcd3e73847030d4da955a
+
+
+.git/objects/15:
+-r-------- 1 gruiz007 classes        208 Oct 21 12:23 672d0ce6c5fa0bf6f560457036c4556ab67fb8
+
+
+.git/objects/16:
+-r-------- 1 gruiz007 classes        175 Nov 11 20:24 99f3639920bd74c64881164f827c05f5f9254f
+
+
+.git/objects/1c:
+-r-------- 1 gruiz007 classes        179 Oct 21 21:25 28f86a7f4be5013dd00b5b1cc78d58ed74e6e1
+
+
+.git/objects/1d:
+-r-------- 1 gruiz007 classes        116 Nov 11 14:02 b6b74efb3b6495c28d01ffa60259535062253f
+
+
+.git/objects/20:
+-r-------- 1 gruiz007 classes       3106 Nov 11 18:44 9ebb6a7b1fa8a117e02908fccd9766e3bb8cc4
+
+
+.git/objects/21:
+-r-------- 1 gruiz007 classes        183 Oct 21 21:55 97b9fff2e1b9ff2c6532c4a76f5941ee45cbcc
+-r-------- 1 gruiz007 classes        178 Oct 21 10:59 b0f4cebd2217d1f1e61a3739f3baad94697c4d
+
+
+.git/objects/23:
+-r-------- 1 gruiz007 classes        137 Oct 21 20:45 5c111ca008e0134f326ba4af3c6d69c8a5bebe
+
+
+.git/objects/24:
+-r-------- 1 gruiz007 classes        173 Oct 29 13:22 010f6df5aa4ce646699c0f655350cfa139994f
+-r-------- 1 gruiz007 classes       1480 Nov 11 20:24 9edea4e2626af6a02b7025c23d150b7ea53c60
+-r-------- 1 gruiz007 classes       2530 Nov 11 15:35 afe26f1f86772e2124136bf7b8f9fc4f798f16
+-r-------- 1 gruiz007 classes        174 Nov 09 14:26 d1838f820dc78cbb90a0091912c77bdd95d3b5
+
+
+.git/objects/25:
+-r-------- 1 gruiz007 classes       1595 Nov 10 22:20 ac0b725a9cc1d7a6a6f7b5b8dd480ba8a51af0
+
+
+.git/objects/26:
+-r-------- 1 gruiz007 classes        174 Nov 11 20:24 a88e925de326ef792051200decb580b5afc236
+
+
+.git/objects/29:
+-r-------- 1 gruiz007 classes        173 Nov 11 20:24 b6259aadad2abe53a42cc3bf6de76dbbea42df
+-r-------- 1 gruiz007 classes        174 Nov 11 20:24 be4954482aca55a01c852de16e20c4b99cdc30
+-r-------- 1 gruiz007 classes        229 Oct 31 10:35 cd6a860473617ea506f570a03e621547995c29
+
+
+.git/objects/2a:
+-r-------- 1 gruiz007 classes        194 Nov 09 19:38 c42b20815da785d5fdd675ed98d5e79502d59a
+
+
+.git/objects/2b:
+-r-------- 1 gruiz007 classes        183 Nov 01 20:26 2c3cf1f913d24c6edef33416697914fabf3feb
+-r-------- 1 gruiz007 classes        155 Oct 21 21:26 5634d3553d8ed05e7d7d416131e37c9264fc5a
+
+
+.git/objects/2d:
+-r-------- 1 gruiz007 classes        188 Nov 11 15:36 21fb25c0ccabd2f8c4ab659b52b7625feb67a3
+
+
+.git/objects/2f:
+-r-------- 1 gruiz007 classes        213 Nov 11 20:24 b88fd7ba1a38f5fe81615c966bdeb0679591bb
+-r-------- 1 gruiz007 classes        173 Nov 11 20:24 ec3d483a08b613708f5395f2ba462c76a3e69b
+
+
+.git/objects/30:
+-r-------- 1 gruiz007 classes       1876 Nov 11 14:02 a54fc7e8e7e7112dcb4fdd926772a50e63bde9
+-r-------- 1 gruiz007 classes        173 Oct 21 23:26 d7038fe236a10207cae8d58af21f8606b5b581
+
+
+.git/objects/34:
+-r-------- 1 gruiz007 classes        116 Nov 10 22:23 a123d28e6916343cdf5f4ea52bb87a2491b5d9
+
+
+.git/objects/35:
+-r-------- 1 gruiz007 classes         87 Oct 21 21:12 f3d243332a5c6e68f332edf21963cac0071d75
+
+
+.git/objects/36:
+-r-------- 1 gruiz007 classes        202 Nov 09 14:26 d12528d2213977dcfa1460774ede78c82df039
+
+
+.git/objects/37:
+-r-------- 1 gruiz007 classes        169 Oct 21 20:45 7034d2f9e1cea5b018aac1a87f15d66e6f462d
+
+
+.git/objects/38:
+-r-------- 1 gruiz007 classes        915 Oct 29 13:21 c7e6e776b387449159435cfbffa474764a435f
+-r-------- 1 gruiz007 classes       2032 Nov 09 19:38 e781e4b24f37771f43fd62b882d70280f37496
+-r-------- 1 gruiz007 classes        173 Nov 11 18:50 f2bef456369fc305f589638a14d639ca436a66
+
+
+.git/objects/39:
+-r-------- 1 gruiz007 classes       1530 Oct 21 22:10 1199fa6025261b43dc053e1e3090f6ea2caad3
+-r-------- 1 gruiz007 classes        799 Oct 29 13:26 ca030dd81b9debf47a070ea497e7aca8d97b89
+
+
+.git/objects/3a:
+-r-------- 1 gruiz007 classes        178 Oct 21 16:37 156a876b5eec6c3d908e9995f2404d5248f8b7
+
+
+.git/objects/3c:
+-r-------- 1 gruiz007 classes        196 Oct 29 13:22 0ca36d97423929ebb25a29fc2ea04d49cd044e
+
+
+.git/objects/3d:
+-r-------- 1 gruiz007 classes        216 Oct 21 16:15 e267187ab951567faee920feab6a841ef2876b
+
+
+.git/objects/42:
+-r-------- 1 gruiz007 classes        194 Oct 21 10:59 8047bf5dce33a2a471c584f11b3407f7de916d
+
+
+.git/objects/46:
+-r-------- 1 gruiz007 classes       2624 Oct 21 16:37 6d14a3e510049dc0aff1258ba29b59d2e29694
+
+
+.git/objects/47:
+-r-------- 1 gruiz007 classes        116 Oct 31 23:25 94e0399231687e51b5e7c60605e561ae048961
+
+
+.git/objects/4c:
+-r-------- 1 gruiz007 classes        173 Oct 30 14:30 58809e3e8ec743d999984dbf3cc4e9ffbe3ef5
+
+
+.git/objects/4f:
+-r-------- 1 gruiz007 classes        178 Oct 20 18:58 bf7237cee6e21844b6a771bc16d1da956384e7
+
+
+.git/objects/53:
+-r-------- 1 gruiz007 classes       2064 Oct 20 19:00 4caef4c3c4d18a0e76e16a1893be73d0d956c8
+
+
+.git/objects/55:
+-r-------- 1 gruiz007 classes       3204 Nov 11 19:21 31170f545dd11f9555a4fd19d97e3a0da3a90a
+-r-------- 1 gruiz007 classes       1113 Nov 09 14:25 cafb4b34d95f1e9f40c0d6e3dfd707d53bc7fa
+
+
+.git/objects/56:
+-r-------- 1 gruiz007 classes        167 Nov 11 20:24 d7573050042fc3159e6e96ae560e471c225262
+-r-------- 1 gruiz007 classes        203 Nov 07 21:27 f68b6bfb37f8dbeeb979f7550b67b5f2a36ea0
+
+
+.git/objects/5b:
+-r-------- 1 gruiz007 classes        186 Oct 21 21:12 9f4eded0274a8370ecf0bb908cf6d3cbc16307
+
+
+.git/objects/5c:
+-r-------- 1 gruiz007 classes        173 Nov 11 18:55 1f53d2cbf0847e096686aa8e0ecc5c89e0aa61
+
+
+.git/objects/5d:
+-r-------- 1 gruiz007 classes        148 Oct 21 21:21 0d73586bc5b7cdcb84b432d94a09b87ea23974
+-r-------- 1 gruiz007 classes        248 Oct 30 14:30 a51c16d763bdd0471ec50ff31d90d1b89e8eea
+
+
+.git/objects/60:
+-r-------- 1 gruiz007 classes        214 Nov 11 20:24 1a44a7f701144882d8df9fd5e2ca5864d5f297
+
+
+.git/objects/63:
+-r-------- 1 gruiz007 classes        176 Oct 21 23:03 c4cdb33a005d4842a11d825c8bd6986e715e9d
+-r-------- 1 gruiz007 classes         87 Oct 21 10:59 cedb29f361733480e7664fbcd3f8dd362b21cb
+-r-------- 1 gruiz007 classes        173 Oct 29 13:26 fa0a1922f0479854ed65be9631244e5916b5d1
+
+
+.git/objects/64:
+-r-------- 1 gruiz007 classes        178 Oct 20 18:20 04b7f99ae3d8713164aa965b8e898deb9eb282
+-r-------- 1 gruiz007 classes        997 Oct 29 13:26 921a895869de7e607fd22fd6dec8b76877713b
+
+
+.git/objects/66:
+-r-------- 1 gruiz007 classes        116 Nov 09 14:26 b764ac781397ec461ba940e4a80c54bf2debde
+
+
+.git/objects/67:
+-r-------- 1 gruiz007 classes        176 Nov 07 21:28 2f4e562a8d19ed8858362ee3f2c14ba05f5b8a
+
+
+.git/objects/68:
+-r-------- 1 gruiz007 classes       1476 Nov 09 19:38 42958432d72a078ac9e0e8f8fa3a335fe434d4
+-r-------- 1 gruiz007 classes       2206 Nov 11 14:02 924508659e05a9f052e968e7a5b9b64a5dc183
+
+
+.git/objects/69:
+-r-------- 1 gruiz007 classes         56 Oct 21 21:55 ff9c186d4acfc5a9cf259a62db067068409111
+
+
+.git/objects/6a:
+-r-------- 1 gruiz007 classes        275 Oct 20 18:20 d287642218f1f6ee4d60c9824966c538981c07
+
+
+.git/objects/6b:
+-r-------- 1 gruiz007 classes         56 Oct 21 21:26 09836aefabc8164ce46bd41fc7480754b229d4
+-r-------- 1 gruiz007 classes        174 Nov 11 15:36 43a2d9c22b55fe88a8be5421e79f11ed49fbc0
+-r-------- 1 gruiz007 classes        174 Nov 08 14:04 62409942a7df1b5c933e20d08be11a2f721f40
+
+
+.git/objects/6c:
+-r-------- 1 gruiz007 classes        158 Nov 11 20:35 4a3a3bfa8525e1e0b552e9a220a822734920b1
+
+
+.git/objects/6e:
+-r-------- 1 gruiz007 classes        222 Nov 11 18:45 ea89b1c272c705f2cf9cd7e674adbc5c5d0fc1
+
+
+.git/objects/6f:
+-r-------- 1 gruiz007 classes        230 Nov 07 21:28 789d4a00d97435d680a2a2ceb00e59f60ae59b
+
+
+.git/objects/71:
+-r-------- 1 gruiz007 classes        190 Nov 11 19:21 f9822a4e856976011c18a906dc927c79d6316b
+
+
+.git/objects/74:
+-r-------- 1 gruiz007 classes        215 Nov 08 14:04 baaebc6fa956f89e3654d4723c05119a8025dd
+
+
+.git/objects/75:
+-r-------- 1 gruiz007 classes        207 Nov 11 20:38 3c7c59979d1d38a93b806cf2e0ee0f6e62ce23
+-r-------- 1 gruiz007 classes        145 Oct 21 22:10 4f68257f009af7750e8e5987032519abb1d726
+
+
+.git/objects/76:
+-r-------- 1 gruiz007 classes         83 Nov 08 14:04 862ac062153cd15ad339c2329fa45faffb9df2
+
+
+.git/objects/77:
+-r-------- 1 gruiz007 classes       3391 Oct 21 23:25 e28f3046644f437f1613547cb2fefd29b78108
+
+
+.git/objects/78:
+-r-------- 1 gruiz007 classes        173 Oct 29 13:26 457d8609ff657aee50ba7443150960dd155060
+-r-------- 1 gruiz007 classes         88 Oct 21 12:23 ff674afdffac9d3430b8c665c5ca1db4a2bf5b
+
+
+.git/objects/7c:
+-r-------- 1 gruiz007 classes       2541 Oct 21 21:11 ca2f4afe213d689f23b9e80949d13fabdd1137
+
+
+.git/objects/7d:
+-r-------- 1 gruiz007 classes        179 Oct 21 09:24 5f3c096f6c4cd5d22176e973d5ed590a3192cb
+
+
+.git/objects/80:
+-r-------- 1 gruiz007 classes        173 Oct 31 10:35 2779f8aa3ef4ab90342c6ee849229735270a4f
+
+
+.git/objects/82:
+-r-------- 1 gruiz007 classes        173 Nov 11 20:40 8824e74b183a3a3cf0fe0fd7e61da6cbd696f9
+
+
+.git/objects/83:
+-r-------- 1 gruiz007 classes        174 Nov 09 19:38 960d0b92b1b64c255b7353f453d30cc257bd2c
+
+
+.git/objects/84:
+-r-------- 1 gruiz007 classes       1933 Nov 01 20:25 59e88a1fcabedcffa3e8dc1a99f8448df9c72b
+-r-------- 1 gruiz007 classes        173 Nov 11 19:21 ef64069f2e2a251be925f3085fb58eccab42c1
+
+
+.git/objects/88:
+-r-------- 1 gruiz007 classes        224 Nov 11 20:24 2a05c714b8e44d462c7924e49f489134447c20
+
+
+.git/objects/89:
+-r-------- 1 gruiz007 classes       2125 Oct 21 21:55 8a4398a04f46199f5257e0b745a6568a629df8
+-r-------- 1 gruiz007 classes       2566 Oct 21 16:14 a3f33aa3279f6cca902d0d29300a04a31f9360
+
+
+.git/objects/8d:
+-r-------- 1 gruiz007 classes        173 Nov 11 20:24 44d64995b2145160a3cfe9a0320681837817c2
+-r-------- 1 gruiz007 classes       1750 Nov 11 18:44 878235263d9a2df49f3686a821e5ed813e472e
+-r-------- 1 gruiz007 classes        178 Oct 21 12:23 9887eeda60b4ad8e97fb48231a6388092cadb7
+
+
+.git/objects/8f:
+-r-------- 1 gruiz007 classes        116 Oct 31 10:35 126e1c73974310e9a8865442ce4b8b2af1cc15
+-r-------- 1 gruiz007 classes        173 Nov 11 14:02 d4828f4bdfa2b6ffe91475c82798b032a4279b
+
+
+.git/objects/90:
+-r-------- 1 gruiz007 classes       1434 Nov 07 21:27 00e335fc5be9d11ae820ab44a58cbd6f0ae411
+-r-------- 1 gruiz007 classes        210 Oct 21 21:12 6c542d6b9b6de3e7b31f1b6f153bdba4f87dd0
+
+
+.git/objects/92:
+-r-------- 1 gruiz007 classes        173 Oct 31 23:25 29bcf2801da3eb4e1b9763e5747f4c6819d409
+-r-------- 1 gruiz007 classes        812 Nov 11 20:39 8feec7de9c630003241d6f483feb12ac016900
+
+
+.git/objects/93:
+-r-------- 1 gruiz007 classes        178 Oct 21 21:21 55ef3f37a435081ab7719b43a7194fa1f0b205
+
+
+.git/objects/96:
+-r-------- 1 gruiz007 classes        162 Oct 21 21:23 acd3e27bcb657e37f2ae37199820efcf0de32e
+
+
+.git/objects/98:
+-r-------- 1 gruiz007 classes        171 Oct 29 13:26 daa2c73a7d0c54d32cbac9bb6c8c597cdce196
+
+
+.git/objects/9a:
+-r-------- 1 gruiz007 classes       2210 Oct 21 10:59 1e4e607d1fa1900cf15f48efa2dd9ce4995395
+
+
+.git/objects/9d:
+-r-------- 1 gruiz007 classes         87 Oct 20 19:00 a663a125a90800bc674ce06cbdd8faa3260bb5
+
+
+.git/objects/9e:
+-r-------- 1 gruiz007 classes        145 Oct 21 21:25 d3c78edea41fac0dbb5536f8833ab6ff1101b4
+
+
+.git/objects/9f:
+-r-------- 1 gruiz007 classes         87 Oct 20 18:58 46c938cf12ee985a7e294516fe505c6050d6e8
+
+
+.git/objects/a0:
+-r-------- 1 gruiz007 classes        243 Nov 11 20:24 a8c9dd5cad85bfb58256d0a8bd6455aee58ed3
+
+
+.git/objects/a1:
+-r-------- 1 gruiz007 classes         87 Oct 21 16:15 9a6c45a0695a4db5ef37d7a4190342e7ba7690
+
+
+.git/objects/a3:
+-r-------- 1 gruiz007 classes        184 Nov 11 14:02 05b2a5e7b91558d0941e0082ffc4d2e80f2761
+-r-------- 1 gruiz007 classes        173 Nov 07 21:29 4f0ff443795e76258d7a3a0707fcb9feaa5d99
+-r-------- 1 gruiz007 classes        174 Nov 07 21:28 beb0a1576542aeb0330bb94e2458d99b044fa4
+
+
+.git/objects/a4:
+-r-------- 1 gruiz007 classes       1009 Oct 21 23:02 15574efa6d194d6a9d6014492c0e47721aa9d9
+
+
+.git/objects/a6:
+-r-------- 1 gruiz007 classes        116 Oct 30 14:29 de78586b5e136dc0fb27ff196e8f85a175d331
+
+
+.git/objects/ab:
+-r-------- 1 gruiz007 classes        116 Nov 11 18:45 2bb4ae30ebe41a0163612fd0f4073140c0dc33
+
+
+.git/objects/ac:
+-r-------- 1 gruiz007 classes         83 Nov 07 21:28 c698b6d1bdaa3f4a7fcb74017a48b23fb046c1
+
+
+.git/objects/b2:
+-r-------- 1 gruiz007 classes        174 Nov 11 20:24 92d02eac0af00d257324acd8611aab29217bb7
+
+
+.git/objects/b4:
+-r-------- 1 gruiz007 classes        173 Nov 11 20:24 0c3fa870ddf3a0a15d9025760e883b3abec555
+
+
+.git/objects/b5:
+-r-------- 1 gruiz007 classes        173 Nov 11 19:21 1360c64b2ec7049605c129c3c50445a5962087
+
+
+.git/objects/b7:
+-r-------- 1 gruiz007 classes        236 Nov 10 22:23 932e94b00d32a0e98aa5831a4afc74bbfc7e9a
+
+
+.git/objects/b8:
+-r-------- 1 gruiz007 classes       1879 Oct 31 23:24 880a60fedbfca230ee5d23dcd46e2d407979e8
+
+
+.git/objects/b9:
+-r-------- 1 gruiz007 classes        166 Oct 21 22:10 33df01890770f08d22bd122776a20854c60fca
+
+
+.git/objects/bb:
+-r-------- 1 gruiz007 classes        116 Nov 01 20:26 36d2d51bee40f9fc72ee8c6bda86e19edbe4c3
+-r-------- 1 gruiz007 classes        164 Nov 11 18:50 65967dfab303060e09b31fd89eaa5a2c010bbe
+
+
+.git/objects/bc:
+-r-------- 1 gruiz007 classes        174 Nov 11 18:45 6b0b0b6a7d1704a3e31e7f3e2281a70dd02daf
+
+
+.git/objects/be:
+-r-------- 1 gruiz007 classes        145 Oct 21 21:55 1d1a9569018e9412f9e85aea468b652f32732a
+-r-------- 1 gruiz007 classes        983 Oct 21 16:14 91807a43189d9d34b149cda5acbdbfff107cec
+
+
+.git/objects/bf:
+-r-------- 1 gruiz007 classes       1419 Nov 08 14:03 edc0d2584aa794c91cf99ec4726d250a6b54be
+
+
+.git/objects/c0:
+-r-------- 1 gruiz007 classes        175 Oct 20 19:00 6424777988057aee8b18209bba200246722efb
+
+
+.git/objects/c2:
+-r-------- 1 gruiz007 classes        143 Nov 11 20:24 5c10850f2b328d256e24ae00e30c1d61bca2bd
+
+
+.git/objects/c4:
+-r-------- 1 gruiz007 classes        173 Nov 11 18:55 8f6335543b4b7de4675fe02b7fd3f0cfcc3c93
+-r-------- 1 gruiz007 classes        453 Oct 29 13:21 c821dfb6c9703715a134f26b92d1a608b78317
+
+
+.git/objects/c7:
+-r-------- 1 gruiz007 classes        185 Oct 21 23:26 e06b0d69c700a3ec7ef3eb2f7932fa21ccbbca
+
+
+.git/objects/c9:
+-r-------- 1 gruiz007 classes        167 Oct 29 13:26 1b1b631ecf614c299d568ec48a4035f27bc6f9
+-r-------- 1 gruiz007 classes        212 Nov 11 18:49 380af372b16d6d5132fd0a8c29008b87235169
+
+
+.git/objects/cc:
+-r-------- 1 gruiz007 classes       1049 Oct 30 14:29 2d59fc231999a9dba4f292364e0d0c83499257
+
+
+.git/objects/ce:
+-r-------- 1 gruiz007 classes         55 Oct 21 23:26 ba5592526df4daea18fc473e1d8e2bd5fc2101
+
+
+.git/objects/cf:
+-r-------- 1 gruiz007 classes        112 Oct 21 21:23 56ed0e9ba90ea586e11794f11d2aa7c05cdfa5
+
+
+.git/objects/d1:
+-r-------- 1 gruiz007 classes        204 Oct 20 18:58 c1b4213d3bb382e1d296f05c5c356ac571304f
+
+
+.git/objects/d2:
+-r-------- 1 gruiz007 classes       1849 Oct 20 18:19 081c9df45208a7e0a2a41b71abc78f36d75f10
+
+
+.git/objects/d3:
+-r-------- 1 gruiz007 classes       2060 Oct 20 18:57 80472625ae05f1d4e8d38673dd5050d41aee84
+
+
+.git/objects/d4:
+-r-------- 1 gruiz007 classes        190 Nov 11 20:40 40020a658b7d6dbc73fad15bd6569aa1a5341e
+
+
+.git/objects/d6:
+-r-------- 1 gruiz007 classes       2521 Oct 21 12:23 e552cc04f286cf6bff305891d4cfbfcde084a0
+
+
+.git/objects/d7:
+-r-------- 1 gruiz007 classes         87 Oct 21 16:37 7a3277ca79aa3ffeba686fbf09352abe0d1a18
+
+
+.git/objects/d9:
+-r-------- 1 gruiz007 classes        177 Oct 21 21:19 4e66918f636f702af1457df40cbe99a809a47a
+-r-------- 1 gruiz007 classes       1631 Nov 09 14:25 ca330a223eb8363f0ff604a0a809befa188a1a
+
+
+.git/objects/db:
+-r-------- 1 gruiz007 classes        173 Nov 11 20:24 d71754d4fac322569b5114278e04826d499930
+
+
+.git/objects/dc:
+-r-------- 1 gruiz007 classes        221 Oct 21 16:37 37719562467b4799e969c40157254b78044475
+-r-------- 1 gruiz007 classes        173 Nov 11 20:40 472cdb6ed63c486e0d1ac2103907237bea0625
+
+
+.git/objects/e0:
+-r-------- 1 gruiz007 classes        179 Oct 21 16:15 36b98c84921fe19a94b2b48d1efe5bd58dd43a
+
+
+.git/objects/e2:
+-r-------- 1 gruiz007 classes        144 Oct 21 23:03 3a9098d4f9568c1342788d344178929b25d980
+-r-------- 1 gruiz007 classes        206 Oct 31 23:25 f58dc79cc9f43ec4e0e9ae7087fdf2858c7d27
+
+
+.git/objects/e3:
+-r-------- 1 gruiz007 classes        173 Nov 11 20:24 78a065e848bc310764eada2de214ef88e81437
+
+
+.git/objects/e6:
+-r-------- 1 gruiz007 classes        175 Nov 11 20:24 0d67b1ecb5d828983584164f9cf642db9492a9
+-r-------- 1 gruiz007 classes        168 Oct 21 21:19 c05b070bf0ca5bbdf28277865b1f8be48f0729
+
+
+.git/objects/e9:
+-r-------- 1 gruiz007 classes       2089 Nov 11 20:24 877e0a4268a2269a0b850d8b5da901c4612008
+
+
+.git/objects/eb:
+-r-------- 1 gruiz007 classes        173 Nov 11 20:24 9bcdb8df05e0c955ae61237ef9571bd10a2b21
+-r-------- 1 gruiz007 classes       1218 Oct 31 10:35 e4a587b09a69eeafef5347d176a3e3541c06df
+
+
+.git/objects/ed:
+-r-------- 1 gruiz007 classes         87 Oct 21 09:24 c1c0f4508df005fd1895ed34393f07db7ad833
+
+
+.git/objects/ee:
+-r-------- 1 gruiz007 classes        178 Oct 21 09:24 8b2a94b61a583c180c2fae666714d2c37d6491
+
+
+.git/objects/f0:
+-r-------- 1 gruiz007 classes        116 Nov 11 15:36 309b3f75c29c5ab861b3fddff8683aef68969b
+-r-------- 1 gruiz007 classes        174 Nov 01 20:26 83f5daa470d7bd9ff7c10e6feafad9639c0e2f
+
+
+.git/objects/f4:
+-r-------- 1 gruiz007 classes        116 Nov 09 19:38 27674a434e70aa592f409cd9d35f0f99eac4fa
+-r-------- 1 gruiz007 classes        927 Oct 21 22:59 68e8f65a077802329f4aa7cb464321934fb4db
+
+
+.git/objects/f7:
+-r-------- 1 gruiz007 classes        169 Nov 11 18:55 917d2786c148f2e1ef88156cb5859a42438154
+
+
+.git/objects/fa:
+-r-------- 1 gruiz007 classes        145 Oct 21 21:26 03d8e7c0ead7a15140f05dbdba443148b4b9d4
+
+
+.git/objects/fc:
+-r-------- 1 gruiz007 classes        173 Oct 30 14:29 73917dea269fab50f61bfdbd1423ca33a55cbb
+
+
+.git/objects/ff:
+-r-------- 1 gruiz007 classes        767 Nov 11 20:40 f9d78fa9fdbbd0f061d6ead041f9e02982b15f
+
+
+.git/objects/info:
+-rw------- 1 gruiz007 classes         54 Oct 20 18:27 packs
+
+
+.git/objects/pack:
+-r-------- 1 gruiz007 classes      38340 Oct 20 15:18 pack-51be7dce109f6f745ca701bb6b9fcefbc1fe7ec8.idx
+-r-------- 1 gruiz007 classes   12469599 Oct 20 15:18 pack-51be7dce109f6f745ca701bb6b9fcefbc1fe7ec8.pack
+
+
+.git/refs:
+drwx------ 2 gruiz007 classes       4096 Nov 11 20:40 heads
+drwx------ 3 gruiz007 classes       4096 Oct 20 15:18 remotes
+drwx------ 2 gruiz007 classes       4096 Oct 21 23:33 tags
+
+
+.git/refs/heads:
+-rw------- 1 gruiz007 classes         41 Nov 11 20:40 exec
+-rw------- 1 gruiz007 classes         41 Nov 11 18:50 ls
+-rw------- 1 gruiz007 classes         41 Nov 07 15:27 ls-2
+-rw------- 1 gruiz007 classes         41 Nov 11 20:35 master
+
+
+.git/refs/remotes:
+drwx------ 2 gruiz007 classes       4096 Nov 11 20:41 origin
+
+
+.git/refs/remotes/origin:
+-rw------- 1 gruiz007 classes         41 Nov 11 20:41 exec
+-rw------- 1 gruiz007 classes         30 Oct 20 15:18 HEAD
+-rw------- 1 gruiz007 classes         41 Nov 11 18:46 ls
+-rw------- 1 gruiz007 classes         41 Nov 11 20:24 master
+
+
+.git/refs/tags:
+-rw------- 1 gruiz007 classes         41 Oct 21 23:33 hw0
+
+
+SRC:
+-rwx------ 1 gruiz007 classes      13930 Nov 08 17:21 a.out
+-rw------- 1 gruiz007 classes       5224 Nov 11 20:36 cp.cpp
+-rw------- 1 gruiz007 classes       4069 Nov 11 20:36 ls.cpp
+-rw------- 1 gruiz007 classes       5097 Oct 30 14:49 rschell.cpp
+-rw------- 1 gruiz007 classes       9116 Nov 11 20:36 Status.h
+-rw------- 1 gruiz007 classes    2881264 Nov 08 17:21 Status.h.gch
+-rw------- 1 gruiz007 classes       2715 Nov 11 20:40 Timer.h
+
+
+src:
+-rwx------ 1 gruiz007 classes      13930 Nov 08 17:21 a.out
+-rw------- 1 gruiz007 classes       5224 Nov 11 20:36 cp.cpp
+-rw------- 1 gruiz007 classes       4069 Nov 11 20:36 ls.cpp
+-rw------- 1 gruiz007 classes       5097 Oct 30 14:49 rschell.cpp
+-rw------- 1 gruiz007 classes       9116 Nov 11 20:36 Status.h
+-rw------- 1 gruiz007 classes    2881264 Nov 08 17:21 Status.h.gch
+-rw------- 1 gruiz007 classes       2715 Nov 11 20:40 Timer.h
+
+
+tests:
+-rw------- 1 gruiz007 classes      16105 Oct 21 23:28 exec.script
+-rw------- 1 gruiz007 classes      65536 Nov 11 21:56 ls.script
+
+
+~/rshell
+gruiz007@hammer $ #### ts[Kesting combinations of all three flags #####
+~/rshell
+gruiz007@hammer $ bin/ls -laR
+.:
+drwx------ 8 gruiz007 classes       4096 Nov 11 20:40 .git
+-rwx------ 1 gruiz007 classes      10617 Nov 10 21:02 a.out
+drwx------ 2 gruiz007 classes       4096 Nov 11 21:36 bin
+-rw------- 1 gruiz007 classes       1483 Nov 11 20:39 LICENSE
+-rw------- 1 gruiz007 classes        654 Nov 11 20:36 Makefile
+-rw------- 1 gruiz007 classes       4180 Nov 11 20:36 README
+lrwxrwxrwx 1 gruiz007 classes          6 Nov 11 14:08 readme -> README
+drwx------ 2 gruiz007 classes       4096 Nov 11 20:40 src
+lrwxrwxrwx 1 gruiz007 classes          3 Nov 11 14:08 SRC -> src
+drwx------ 2 gruiz007 classes       4096 Nov 11 21:35 tests
+
+
+./.git:
+-rw------- 1 gruiz007 classes        267 Nov 11 20:36 #MERGE_MSG#
+drwx------ 2 gruiz007 classes       4096 Oct 20 15:17 branches
+-rw------- 1 gruiz007 classes          9 Nov 11 20:40 COMMIT_EDITMSG
+-rw------- 1 gruiz007 classes        322 Oct 21 23:26 config
+-rw------- 1 gruiz007 classes         73 Oct 20 15:17 description
+-rw------- 1 gruiz007 classes        311 Nov 11 20:40 FETCH_HEAD
+-rw------- 1 gruiz007 classes         21 Nov 11 20:37 HEAD
+drwx------ 2 gruiz007 classes       4096 Oct 20 15:17 hooks
+-rw------- 1 gruiz007 classes        895 Nov 11 20:40 index
+drwx------ 2 gruiz007 classes       4096 Oct 20 18:27 info
+drwx------ 3 gruiz007 classes       4096 Oct 20 15:18 logs
+drwx------ 131 gruiz007 classes       8192 Nov 11 20:40 objects
+-rw------- 1 gruiz007 classes         41 Nov 11 20:40 ORIG_HEAD
+-rw------- 1 gruiz007 classes        173 Oct 20 15:18 packed-refs
+drwx------ 5 gruiz007 classes       4096 Oct 20 15:18 refs
+
+
+./.git/branches:
+
+
+./.git/hooks:
+-rwx------ 1 gruiz007 classes        452 Oct 20 15:17 applypatch-msg.sample
+-rwx------ 1 gruiz007 classes        896 Oct 20 15:17 commit-msg.sample
+-rwx------ 1 gruiz007 classes        189 Oct 20 15:17 post-update.sample
+-rwx------ 1 gruiz007 classes        398 Oct 20 15:17 pre-applypatch.sample
+-rwx------ 1 gruiz007 classes       1635 Oct 20 15:17 pre-commit.sample
+-rwx------ 1 gruiz007 classes       1348 Oct 20 15:17 pre-push.sample
+-rwx------ 1 gruiz007 classes       4951 Oct 20 15:17 pre-rebase.sample
+-rwx------ 1 gruiz007 classes       1239 Oct 20 15:17 prepare-commit-msg.sample
+-rwx------ 1 gruiz007 classes       3611 Oct 20 15:17 update.sample
+
+
+./.git/info:
+-rw------- 1 gruiz007 classes        240 Oct 20 15:17 exclude
+-rw------- 1 gruiz007 classes        257 Oct 20 18:27 refs
+
+
+./.git/logs:
+-rw------- 1 gruiz007 classes       9350 Nov 11 20:40 HEAD
+drwx------ 4 gruiz007 classes       4096 Oct 20 15:18 refs
+
+
+./.git/logs/refs:
+drwx------ 2 gruiz007 classes       4096 Nov 07 15:27 heads
+drwx------ 3 gruiz007 classes       4096 Oct 20 15:18 remotes
+
+
+./.git/logs/refs/heads:
+-rw------- 1 gruiz007 classes       4120 Nov 11 20:40 exec
+-rw------- 1 gruiz007 classes       2848 Nov 11 18:50 ls
+-rw------- 1 gruiz007 classes        157 Nov 07 15:27 ls-2
+-rw------- 1 gruiz007 classes       1212 Nov 11 20:35 master
+
+
+./.git/logs/refs/remotes:
+drwx------ 2 gruiz007 classes       4096 Oct 29 13:28 origin
+
+
+./.git/logs/refs/remotes/origin:
+-rw------- 1 gruiz007 classes       3008 Nov 11 20:41 exec
+-rw------- 1 gruiz007 classes        193 Oct 20 15:18 HEAD
+-rw------- 1 gruiz007 classes       1924 Nov 11 18:46 ls
+-rw------- 1 gruiz007 classes        752 Nov 11 20:24 master
+
+
+./.git/objects:
+drwx------ 2 gruiz007 classes       4096 Oct 20 19:00 01
+drwx------ 2 gruiz007 classes       4096 Nov 10 22:20 02
+drwx------ 2 gruiz007 classes       4096 Nov 11 18:55 04
+drwx------ 2 gruiz007 classes       4096 Nov 10 22:23 06
+drwx------ 2 gruiz007 classes       4096 Oct 29 13:22 0a
+drwx------ 2 gruiz007 classes       4096 Nov 11 18:55 0d
+drwx------ 2 gruiz007 classes       4096 Oct 21 12:23 15
+drwx------ 2 gruiz007 classes       4096 Nov 11 20:24 16
+drwx------ 2 gruiz007 classes       4096 Oct 21 21:25 1c
+drwx------ 2 gruiz007 classes       4096 Nov 11 14:02 1d
+drwx------ 2 gruiz007 classes       4096 Nov 11 18:44 20
+drwx------ 2 gruiz007 classes       4096 Oct 21 21:55 21
+drwx------ 2 gruiz007 classes       4096 Oct 21 20:45 23
+drwx------ 2 gruiz007 classes       4096 Nov 11 20:24 24
+drwx------ 2 gruiz007 classes       4096 Nov 10 22:20 25
+drwx------ 2 gruiz007 classes       4096 Nov 11 20:24 26
+drwx------ 2 gruiz007 classes       4096 Nov 11 20:24 29
+drwx------ 2 gruiz007 classes       4096 Nov 09 19:38 2a
+drwx------ 2 gruiz007 classes       4096 Nov 01 20:26 2b
+drwx------ 2 gruiz007 classes       4096 Nov 11 15:36 2d
+drwx------ 2 gruiz007 classes       4096 Nov 11 20:24 2f
+drwx------ 2 gruiz007 classes       4096 Nov 11 14:02 30
+drwx------ 2 gruiz007 classes       4096 Nov 10 22:23 34
+drwx------ 2 gruiz007 classes       4096 Oct 21 21:12 35
+drwx------ 2 gruiz007 classes       4096 Nov 09 14:26 36
+drwx------ 2 gruiz007 classes       4096 Oct 21 20:45 37
+drwx------ 2 gruiz007 classes       4096 Nov 11 18:50 38
+drwx------ 2 gruiz007 classes       4096 Oct 29 13:26 39
+drwx------ 2 gruiz007 classes       4096 Oct 21 16:37 3a
+drwx------ 2 gruiz007 classes       4096 Oct 29 13:22 3c
+drwx------ 2 gruiz007 classes       4096 Oct 21 16:15 3d
+drwx------ 2 gruiz007 classes       4096 Oct 21 10:59 42
+drwx------ 2 gruiz007 classes       4096 Oct 21 16:37 46
+drwx------ 2 gruiz007 classes       4096 Oct 31 23:25 47
+drwx------ 2 gruiz007 classes       4096 Oct 30 14:30 4c
+drwx------ 2 gruiz007 classes       4096 Oct 20 18:58 4f
+drwx------ 2 gruiz007 classes       4096 Oct 20 19:00 53
+drwx------ 2 gruiz007 classes       4096 Nov 11 19:21 55
+drwx------ 2 gruiz007 classes       4096 Nov 11 20:24 56
+drwx------ 2 gruiz007 classes       4096 Oct 21 21:12 5b
+drwx------ 2 gruiz007 classes       4096 Nov 11 18:55 5c
+drwx------ 2 gruiz007 classes       4096 Oct 30 14:30 5d
+drwx------ 2 gruiz007 classes       4096 Nov 11 20:24 60
+drwx------ 2 gruiz007 classes       4096 Oct 29 13:26 63
+drwx------ 2 gruiz007 classes       4096 Oct 29 13:26 64
+drwx------ 2 gruiz007 classes       4096 Nov 09 14:26 66
+drwx------ 2 gruiz007 classes       4096 Nov 07 21:28 67
+drwx------ 2 gruiz007 classes       4096 Nov 11 14:02 68
+drwx------ 2 gruiz007 classes       4096 Oct 21 21:55 69
+drwx------ 2 gruiz007 classes       4096 Oct 20 18:20 6a
+drwx------ 2 gruiz007 classes       4096 Nov 11 15:36 6b
+drwx------ 2 gruiz007 classes       4096 Nov 11 20:35 6c
+drwx------ 2 gruiz007 classes       4096 Nov 11 18:45 6e
+drwx------ 2 gruiz007 classes       4096 Nov 07 21:28 6f
+drwx------ 2 gruiz007 classes       4096 Nov 11 19:21 71
+drwx------ 2 gruiz007 classes       4096 Nov 08 14:04 74
+drwx------ 2 gruiz007 classes       4096 Nov 11 20:38 75
+drwx------ 2 gruiz007 classes       4096 Nov 08 14:04 76
+drwx------ 2 gruiz007 classes       4096 Oct 21 23:25 77
+drwx------ 2 gruiz007 classes       4096 Oct 29 13:26 78
+drwx------ 2 gruiz007 classes       4096 Oct 21 21:11 7c
+drwx------ 2 gruiz007 classes       4096 Oct 21 09:24 7d
+drwx------ 2 gruiz007 classes       4096 Oct 31 10:35 80
+drwx------ 2 gruiz007 classes       4096 Nov 11 20:40 82
+drwx------ 2 gruiz007 classes       4096 Nov 09 19:38 83
+drwx------ 2 gruiz007 classes       4096 Nov 11 19:21 84
+drwx------ 2 gruiz007 classes       4096 Nov 11 20:24 88
+drwx------ 2 gruiz007 classes       4096 Oct 21 21:55 89
+drwx------ 2 gruiz007 classes       4096 Nov 11 20:24 8d
+drwx------ 2 gruiz007 classes       4096 Nov 11 14:02 8f
+drwx------ 2 gruiz007 classes       4096 Nov 07 21:27 90
+drwx------ 2 gruiz007 classes       4096 Nov 11 20:39 92
+drwx------ 2 gruiz007 classes       4096 Oct 21 21:21 93
+drwx------ 2 gruiz007 classes       4096 Oct 21 21:23 96
+drwx------ 2 gruiz007 classes       4096 Oct 29 13:26 98
+drwx------ 2 gruiz007 classes       4096 Oct 21 10:59 9a
+drwx------ 2 gruiz007 classes       4096 Oct 20 19:00 9d
+drwx------ 2 gruiz007 classes       4096 Oct 21 21:25 9e
+drwx------ 2 gruiz007 classes       4096 Oct 20 18:58 9f
+drwx------ 2 gruiz007 classes       4096 Nov 11 20:24 a0
+drwx------ 2 gruiz007 classes       4096 Oct 21 16:15 a1
+drwx------ 2 gruiz007 classes       4096 Nov 11 14:02 a3
+drwx------ 2 gruiz007 classes       4096 Oct 21 23:02 a4
+drwx------ 2 gruiz007 classes       4096 Oct 30 14:29 a6
+drwx------ 2 gruiz007 classes       4096 Nov 11 18:45 ab
+drwx------ 2 gruiz007 classes       4096 Nov 07 21:28 ac
+drwx------ 2 gruiz007 classes       4096 Nov 11 20:24 b2
+drwx------ 2 gruiz007 classes       4096 Nov 11 20:24 b4
+drwx------ 2 gruiz007 classes       4096 Nov 11 19:21 b5
+drwx------ 2 gruiz007 classes       4096 Nov 10 22:23 b7
+drwx------ 2 gruiz007 classes       4096 Oct 31 23:24 b8
+drwx------ 2 gruiz007 classes       4096 Oct 21 22:10 b9
+drwx------ 2 gruiz007 classes       4096 Nov 11 18:50 bb
+drwx------ 2 gruiz007 classes       4096 Nov 11 18:45 bc
+drwx------ 2 gruiz007 classes       4096 Oct 21 21:55 be
+drwx------ 2 gruiz007 classes       4096 Nov 08 14:03 bf
+drwx------ 2 gruiz007 classes       4096 Oct 20 19:00 c0
+drwx------ 2 gruiz007 classes       4096 Nov 11 20:24 c2
+drwx------ 2 gruiz007 classes       4096 Nov 11 18:55 c4
+drwx------ 2 gruiz007 classes       4096 Oct 21 23:26 c7
+drwx------ 2 gruiz007 classes       4096 Nov 11 18:49 c9
+drwx------ 2 gruiz007 classes       4096 Oct 30 14:29 cc
+drwx------ 2 gruiz007 classes       4096 Oct 21 23:26 ce
+drwx------ 2 gruiz007 classes       4096 Oct 21 21:23 cf
+drwx------ 2 gruiz007 classes       4096 Oct 20 18:58 d1
+drwx------ 2 gruiz007 classes       4096 Oct 20 18:19 d2
+drwx------ 2 gruiz007 classes       4096 Oct 20 18:57 d3
+drwx------ 2 gruiz007 classes       4096 Nov 11 20:40 d4
+drwx------ 2 gruiz007 classes       4096 Oct 21 12:23 d6
+drwx------ 2 gruiz007 classes       4096 Oct 21 16:37 d7
+drwx------ 2 gruiz007 classes       4096 Nov 09 14:25 d9
+drwx------ 2 gruiz007 classes       4096 Nov 11 20:24 db
+drwx------ 2 gruiz007 classes       4096 Nov 11 20:40 dc
+drwx------ 2 gruiz007 classes       4096 Oct 21 16:15 e0
+drwx------ 2 gruiz007 classes       4096 Oct 31 23:25 e2
+drwx------ 2 gruiz007 classes       4096 Nov 11 20:24 e3
+drwx------ 2 gruiz007 classes       4096 Nov 11 20:24 e6
+drwx------ 2 gruiz007 classes       4096 Nov 11 20:24 e9
+drwx------ 2 gruiz007 classes       4096 Nov 11 20:24 eb
+drwx------ 2 gruiz007 classes       4096 Oct 21 09:24 ed
+drwx------ 2 gruiz007 classes       4096 Oct 21 09:24 ee
+drwx------ 2 gruiz007 classes       4096 Nov 11 15:36 f0
+drwx------ 2 gruiz007 classes       4096 Nov 09 19:38 f4
+drwx------ 2 gruiz007 classes       4096 Nov 11 18:55 f7
+drwx------ 2 gruiz007 classes       4096 Oct 21 21:26 fa
+drwx------ 2 gruiz007 classes       4096 Oct 30 14:29 fc
+drwx------ 2 gruiz007 classes       4096 Nov 11 20:40 ff
+drwx------ 2 gruiz007 classes       4096 Oct 20 18:27 info
+drwx------ 2 gruiz007 classes       4096 Oct 20 15:18 pack
+
+
+./.git/objects/01:
+-r-------- 1 gruiz007 classes        178 Oct 20 19:00 f86c85b4d271e7ced6193e4a62bd9f1d7e21b8
+
+
+./.git/objects/02:
+-r-------- 1 gruiz007 classes       2227 Nov 10 22:20 163f17965fc52a79d496157cfb054d7300c5c9
+
+
+./.git/objects/04:
+-r-------- 1 gruiz007 classes       1896 Nov 11 18:55 6ea4490f9630077b02e6ac96e2bca3d4d83315
+
+
+./.git/objects/06:
+-r-------- 1 gruiz007 classes       2333 Oct 21 09:24 a91ad7b0133b4e8cfd5a2b91bc3400db37deec
+-r-------- 1 gruiz007 classes        172 Nov 10 22:23 e9f66ca602521d2f3818613cbc0820f56a3123
+-r-------- 1 gruiz007 classes        182 Oct 30 14:29 ed474a910fa8d3fdcaf83a1f8204810794a2e2
+
+
+./.git/objects/0a:
+-r-------- 1 gruiz007 classes        116 Oct 29 13:22 aa32413c979a082b0ef69f744b0e6347fd05aa
+
+
+./.git/objects/0d:
+-r-------- 1 gruiz007 classes        210 Oct 21 20:45 46273481d35e623cd85eff7695bdc6571310a7
+-r-------- 1 gruiz007 classes        758 Nov 11 18:55 6873a662050da8305cc3e663e8c77cbd96b56e
+-r-------- 1 gruiz007 classes         87 Oct 20 18:20 7124484eef47f330edcd3e73847030d4da955a
+
+
+./.git/objects/15:
+-r-------- 1 gruiz007 classes        208 Oct 21 12:23 672d0ce6c5fa0bf6f560457036c4556ab67fb8
+
+
+./.git/objects/16:
+-r-------- 1 gruiz007 classes        175 Nov 11 20:24 99f3639920bd74c64881164f827c05f5f9254f
+
+
+./.git/objects/1c:
+-r-------- 1 gruiz007 classes        179 Oct 21 21:25 28f86a7f4be5013dd00b5b1cc78d58ed74e6e1
+
+
+./.git/objects/1d:
+-r-------- 1 gruiz007 classes        116 Nov 11 14:02 b6b74efb3b6495c28d01ffa60259535062253f
+
+
+./.git/objects/20:
+-r-------- 1 gruiz007 classes       3106 Nov 11 18:44 9ebb6a7b1fa8a117e02908fccd9766e3bb8cc4
+
+
+./.git/objects/21:
+-r-------- 1 gruiz007 classes        183 Oct 21 21:55 97b9fff2e1b9ff2c6532c4a76f5941ee45cbcc
+-r-------- 1 gruiz007 classes        178 Oct 21 10:59 b0f4cebd2217d1f1e61a3739f3baad94697c4d
+
+
+./.git/objects/23:
+-r-------- 1 gruiz007 classes        137 Oct 21 20:45 5c111ca008e0134f326ba4af3c6d69c8a5bebe
+
+
+./.git/objects/24:
+-r-------- 1 gruiz007 classes        173 Oct 29 13:22 010f6df5aa4ce646699c0f655350cfa139994f
+-r-------- 1 gruiz007 classes       1480 Nov 11 20:24 9edea4e2626af6a02b7025c23d150b7ea53c60
+-r-------- 1 gruiz007 classes       2530 Nov 11 15:35 afe26f1f86772e2124136bf7b8f9fc4f798f16
+-r-------- 1 gruiz007 classes        174 Nov 09 14:26 d1838f820dc78cbb90a0091912c77bdd95d3b5
+
+
+./.git/objects/25:
+-r-------- 1 gruiz007 classes       1595 Nov 10 22:20 ac0b725a9cc1d7a6a6f7b5b8dd480ba8a51af0
+
+
+./.git/objects/26:
+-r-------- 1 gruiz007 classes        174 Nov 11 20:24 a88e925de326ef792051200decb580b5afc236
+
+
+./.git/objects/29:
+-r-------- 1 gruiz007 classes        173 Nov 11 20:24 b6259aadad2abe53a42cc3bf6de76dbbea42df
+-r-------- 1 gruiz007 classes        174 Nov 11 20:24 be4954482aca55a01c852de16e20c4b99cdc30
+-r-------- 1 gruiz007 classes        229 Oct 31 10:35 cd6a860473617ea506f570a03e621547995c29
+
+
+./.git/objects/2a:
+-r-------- 1 gruiz007 classes        194 Nov 09 19:38 c42b20815da785d5fdd675ed98d5e79502d59a
+
+
+./.git/objects/2b:
+-r-------- 1 gruiz007 classes        183 Nov 01 20:26 2c3cf1f913d24c6edef33416697914fabf3feb
+-r-------- 1 gruiz007 classes        155 Oct 21 21:26 5634d3553d8ed05e7d7d416131e37c9264fc5a
+
+
+./.git/objects/2d:
+-r-------- 1 gruiz007 classes        188 Nov 11 15:36 21fb25c0ccabd2f8c4ab659b52b7625feb67a3
+
+
+./.git/objects/2f:
+-r-------- 1 gruiz007 classes        213 Nov 11 20:24 b88fd7ba1a38f5fe81615c966bdeb0679591bb
+-r-------- 1 gruiz007 classes        173 Nov 11 20:24 ec3d483a08b613708f5395f2ba462c76a3e69b
+
+
+./.git/objects/30:
+-r-------- 1 gruiz007 classes       1876 Nov 11 14:02 a54fc7e8e7e7112dcb4fdd926772a50e63bde9
+-r-------- 1 gruiz007 classes        173 Oct 21 23:26 d7038fe236a10207cae8d58af21f8606b5b581
+
+
+./.git/objects/34:
+-r-------- 1 gruiz007 classes        116 Nov 10 22:23 a123d28e6916343cdf5f4ea52bb87a2491b5d9
+
+
+./.git/objects/35:
+-r-------- 1 gruiz007 classes         87 Oct 21 21:12 f3d243332a5c6e68f332edf21963cac0071d75
+
+
+./.git/objects/36:
+-r-------- 1 gruiz007 classes        202 Nov 09 14:26 d12528d2213977dcfa1460774ede78c82df039
+
+
+./.git/objects/37:
+-r-------- 1 gruiz007 classes        169 Oct 21 20:45 7034d2f9e1cea5b018aac1a87f15d66e6f462d
+
+
+./.git/objects/38:
+-r-------- 1 gruiz007 classes        915 Oct 29 13:21 c7e6e776b387449159435cfbffa474764a435f
+-r-------- 1 gruiz007 classes       2032 Nov 09 19:38 e781e4b24f37771f43fd62b882d70280f37496
+-r-------- 1 gruiz007 classes        173 Nov 11 18:50 f2bef456369fc305f589638a14d639ca436a66
+
+
+./.git/objects/39:
+-r-------- 1 gruiz007 classes       1530 Oct 21 22:10 1199fa6025261b43dc053e1e3090f6ea2caad3
+-r-------- 1 gruiz007 classes        799 Oct 29 13:26 ca030dd81b9debf47a070ea497e7aca8d97b89
+
+
+./.git/objects/3a:
+-r-------- 1 gruiz007 classes        178 Oct 21 16:37 156a876b5eec6c3d908e9995f2404d5248f8b7
+
+
+./.git/objects/3c:
+-r-------- 1 gruiz007 classes        196 Oct 29 13:22 0ca36d97423929ebb25a29fc2ea04d49cd044e
+
+
+./.git/objects/3d:
+-r-------- 1 gruiz007 classes        216 Oct 21 16:15 e267187ab951567faee920feab6a841ef2876b
+
+
+./.git/objects/42:
+-r-------- 1 gruiz007 classes        194 Oct 21 10:59 8047bf5dce33a2a471c584f11b3407f7de916d
+
+
+./.git/objects/46:
+-r-------- 1 gruiz007 classes       2624 Oct 21 16:37 6d14a3e510049dc0aff1258ba29b59d2e29694
+
+
+./.git/objects/47:
+-r-------- 1 gruiz007 classes        116 Oct 31 23:25 94e0399231687e51b5e7c60605e561ae048961
+
+
+./.git/objects/4c:
+-r-------- 1 gruiz007 classes        173 Oct 30 14:30 58809e3e8ec743d999984dbf3cc4e9ffbe3ef5
+
+
+./.git/objects/4f:
+-r-------- 1 gruiz007 classes        178 Oct 20 18:58 bf7237cee6e21844b6a771bc16d1da956384e7
+
+
+./.git/objects/53:
+-r-------- 1 gruiz007 classes       2064 Oct 20 19:00 4caef4c3c4d18a0e76e16a1893be73d0d956c8
+
+
+./.git/objects/55:
+-r-------- 1 gruiz007 classes       3204 Nov 11 19:21 31170f545dd11f9555a4fd19d97e3a0da3a90a
+-r-------- 1 gruiz007 classes       1113 Nov 09 14:25 cafb4b34d95f1e9f40c0d6e3dfd707d53bc7fa
+
+
+./.git/objects/56:
+-r-------- 1 gruiz007 classes        167 Nov 11 20:24 d7573050042fc3159e6e96ae560e471c225262
+-r-------- 1 gruiz007 classes        203 Nov 07 21:27 f68b6bfb37f8dbeeb979f7550b67b5f2a36ea0
+
+
+./.git/objects/5b:
+-r-------- 1 gruiz007 classes        186 Oct 21 21:12 9f4eded0274a8370ecf0bb908cf6d3cbc16307
+
+
+./.git/objects/5c:
+-r-------- 1 gruiz007 classes        173 Nov 11 18:55 1f53d2cbf0847e096686aa8e0ecc5c89e0aa61
+
+
+./.git/objects/5d:
+-r-------- 1 gruiz007 classes        148 Oct 21 21:21 0d73586bc5b7cdcb84b432d94a09b87ea23974
+-r-------- 1 gruiz007 classes        248 Oct 30 14:30 a51c16d763bdd0471ec50ff31d90d1b89e8eea
+
+
+./.git/objects/60:
+-r-------- 1 gruiz007 classes        214 Nov 11 20:24 1a44a7f701144882d8df9fd5e2ca5864d5f297
+
+
+./.git/objects/63:
+-r-------- 1 gruiz007 classes        176 Oct 21 23:03 c4cdb33a005d4842a11d825c8bd6986e715e9d
+-r-------- 1 gruiz007 classes         87 Oct 21 10:59 cedb29f361733480e7664fbcd3f8dd362b21cb
+-r-------- 1 gruiz007 classes        173 Oct 29 13:26 fa0a1922f0479854ed65be9631244e5916b5d1
+
+
+./.git/objects/64:
+-r-------- 1 gruiz007 classes        178 Oct 20 18:20 04b7f99ae3d8713164aa965b8e898deb9eb282
+-r-------- 1 gruiz007 classes        997 Oct 29 13:26 921a895869de7e607fd22fd6dec8b76877713b
+
+
+./.git/objects/66:
+-r-------- 1 gruiz007 classes        116 Nov 09 14:26 b764ac781397ec461ba940e4a80c54bf2debde
+
+
+./.git/objects/67:
+-r-------- 1 gruiz007 classes        176 Nov 07 21:28 2f4e562a8d19ed8858362ee3f2c14ba05f5b8a
+
+
+./.git/objects/68:
+-r-------- 1 gruiz007 classes       1476 Nov 09 19:38 42958432d72a078ac9e0e8f8fa3a335fe434d4
+-r-------- 1 gruiz007 classes       2206 Nov 11 14:02 924508659e05a9f052e968e7a5b9b64a5dc183
+
+
+./.git/objects/69:
+-r-------- 1 gruiz007 classes         56 Oct 21 21:55 ff9c186d4acfc5a9cf259a62db067068409111
+
+
+./.git/objects/6a:
+-r-------- 1 gruiz007 classes        275 Oct 20 18:20 d287642218f1f6ee4d60c9824966c538981c07
+
+
+./.git/objects/6b:
+-r-------- 1 gruiz007 classes         56 Oct 21 21:26 09836aefabc8164ce46bd41fc7480754b229d4
+-r-------- 1 gruiz007 classes        174 Nov 11 15:36 43a2d9c22b55fe88a8be5421e79f11ed49fbc0
+-r-------- 1 gruiz007 classes        174 Nov 08 14:04 62409942a7df1b5c933e20d08be11a2f721f40
+
+
+./.git/objects/6c:
+-r-------- 1 gruiz007 classes        158 Nov 11 20:35 4a3a3bfa8525e1e0b552e9a220a822734920b1
+
+
+./.git/objects/6e:
+-r-------- 1 gruiz007 classes        222 Nov 11 18:45 ea89b1c272c705f2cf9cd7e674adbc5c5d0fc1
+
+
+./.git/objects/6f:
+-r-------- 1 gruiz007 classes        230 Nov 07 21:28 789d4a00d97435d680a2a2ceb00e59f60ae59b
+
+
+./.git/objects/71:
+-r-------- 1 gruiz007 classes        190 Nov 11 19:21 f9822a4e856976011c18a906dc927c79d6316b
+
+
+./.git/objects/74:
+-r-------- 1 gruiz007 classes        215 Nov 08 14:04 baaebc6fa956f89e3654d4723c05119a8025dd
+
+
+./.git/objects/75:
+-r-------- 1 gruiz007 classes        207 Nov 11 20:38 3c7c59979d1d38a93b806cf2e0ee0f6e62ce23
+-r-------- 1 gruiz007 classes        145 Oct 21 22:10 4f68257f009af7750e8e5987032519abb1d726
+
+
+./.git/objects/76:
+-r-------- 1 gruiz007 classes         83 Nov 08 14:04 862ac062153cd15ad339c2329fa45faffb9df2
+
+
+./.git/objects/77:
+-r-------- 1 gruiz007 classes       3391 Oct 21 23:25 e28f3046644f437f1613547cb2fefd29b78108
+
+
+./.git/objects/78:
+-r-------- 1 gruiz007 classes        173 Oct 29 13:26 457d8609ff657aee50ba7443150960dd155060
+-r-------- 1 gruiz007 classes         88 Oct 21 12:23 ff674afdffac9d3430b8c665c5ca1db4a2bf5b
+
+
+./.git/objects/7c:
+-r-------- 1 gruiz007 classes       2541 Oct 21 21:11 ca2f4afe213d689f23b9e80949d13fabdd1137
+
+
+./.git/objects/7d:
+-r-------- 1 gruiz007 classes        179 Oct 21 09:24 5f3c096f6c4cd5d22176e973d5ed590a3192cb
+
+
+./.git/objects/80:
+-r-------- 1 gruiz007 classes        173 Oct 31 10:35 2779f8aa3ef4ab90342c6ee849229735270a4f
+
+
+./.git/objects/82:
+-r-------- 1 gruiz007 classes        173 Nov 11 20:40 8824e74b183a3a3cf0fe0fd7e61da6cbd696f9
+
+
+./.git/objects/83:
+-r-------- 1 gruiz007 classes        174 Nov 09 19:38 960d0b92b1b64c255b7353f453d30cc257bd2c
+
+
+./.git/objects/84:
+-r-------- 1 gruiz007 classes       1933 Nov 01 20:25 59e88a1fcabedcffa3e8dc1a99f8448df9c72b
+-r-------- 1 gruiz007 classes        173 Nov 11 19:21 ef64069f2e2a251be925f3085fb58eccab42c1
+
+
+./.git/objects/88:
+-r-------- 1 gruiz007 classes        224 Nov 11 20:24 2a05c714b8e44d462c7924e49f489134447c20
+
+
+./.git/objects/89:
+-r-------- 1 gruiz007 classes       2125 Oct 21 21:55 8a4398a04f46199f5257e0b745a6568a629df8
+-r-------- 1 gruiz007 classes       2566 Oct 21 16:14 a3f33aa3279f6cca902d0d29300a04a31f9360
+
+
+./.git/objects/8d:
+-r-------- 1 gruiz007 classes        173 Nov 11 20:24 44d64995b2145160a3cfe9a0320681837817c2
+-r-------- 1 gruiz007 classes       1750 Nov 11 18:44 878235263d9a2df49f3686a821e5ed813e472e
+-r-------- 1 gruiz007 classes        178 Oct 21 12:23 9887eeda60b4ad8e97fb48231a6388092cadb7
+
+
+./.git/objects/8f:
+-r-------- 1 gruiz007 classes        116 Oct 31 10:35 126e1c73974310e9a8865442ce4b8b2af1cc15
+-r-------- 1 gruiz007 classes        173 Nov 11 14:02 d4828f4bdfa2b6ffe91475c82798b032a4279b
+
+
+./.git/objects/90:
+-r-------- 1 gruiz007 classes       1434 Nov 07 21:27 00e335fc5be9d11ae820ab44a58cbd6f0ae411
+-r-------- 1 gruiz007 classes        210 Oct 21 21:12 6c542d6b9b6de3e7b31f1b6f153bdba4f87dd0
+
+
+./.git/objects/92:
+-r-------- 1 gruiz007 classes        173 Oct 31 23:25 29bcf2801da3eb4e1b9763e5747f4c6819d409
+-r-------- 1 gruiz007 classes        812 Nov 11 20:39 8feec7de9c630003241d6f483feb12ac016900
+
+
+./.git/objects/93:
+-r-------- 1 gruiz007 classes        178 Oct 21 21:21 55ef3f37a435081ab7719b43a7194fa1f0b205
+
+
+./.git/objects/96:
+-r-------- 1 gruiz007 classes        162 Oct 21 21:23 acd3e27bcb657e37f2ae37199820efcf0de32e
+
+
+./.git/objects/98:
+-r-------- 1 gruiz007 classes        171 Oct 29 13:26 daa2c73a7d0c54d32cbac9bb6c8c597cdce196
+
+
+./.git/objects/9a:
+-r-------- 1 gruiz007 classes       2210 Oct 21 10:59 1e4e607d1fa1900cf15f48efa2dd9ce4995395
+
+
+./.git/objects/9d:
+-r-------- 1 gruiz007 classes         87 Oct 20 19:00 a663a125a90800bc674ce06cbdd8faa3260bb5
+
+
+./.git/objects/9e:
+-r-------- 1 gruiz007 classes        145 Oct 21 21:25 d3c78edea41fac0dbb5536f8833ab6ff1101b4
+
+
+./.git/objects/9f:
+-r-------- 1 gruiz007 classes         87 Oct 20 18:58 46c938cf12ee985a7e294516fe505c6050d6e8
+
+
+./.git/objects/a0:
+-r-------- 1 gruiz007 classes        243 Nov 11 20:24 a8c9dd5cad85bfb58256d0a8bd6455aee58ed3
+
+
+./.git/objects/a1:
+-r-------- 1 gruiz007 classes         87 Oct 21 16:15 9a6c45a0695a4db5ef37d7a4190342e7ba7690
+
+
+./.git/objects/a3:
+-r-------- 1 gruiz007 classes        184 Nov 11 14:02 05b2a5e7b91558d0941e0082ffc4d2e80f2761
+-r-------- 1 gruiz007 classes        173 Nov 07 21:29 4f0ff443795e76258d7a3a0707fcb9feaa5d99
+-r-------- 1 gruiz007 classes        174 Nov 07 21:28 beb0a1576542aeb0330bb94e2458d99b044fa4
+
+
+./.git/objects/a4:
+-r-------- 1 gruiz007 classes       1009 Oct 21 23:02 15574efa6d194d6a9d6014492c0e47721aa9d9
+
+
+./.git/objects/a6:
+-r-------- 1 gruiz007 classes        116 Oct 30 14:29 de78586b5e136dc0fb27ff196e8f85a175d331
+
+
+./.git/objects/ab:
+-r-------- 1 gruiz007 classes        116 Nov 11 18:45 2bb4ae30ebe41a0163612fd0f4073140c0dc33
+
+
+./.git/objects/ac:
+-r-------- 1 gruiz007 classes         83 Nov 07 21:28 c698b6d1bdaa3f4a7fcb74017a48b23fb046c1
+
+
+./.git/objects/b2:
+-r-------- 1 gruiz007 classes        174 Nov 11 20:24 92d02eac0af00d257324acd8611aab29217bb7
+
+
+./.git/objects/b4:
+-r-------- 1 gruiz007 classes        173 Nov 11 20:24 0c3fa870ddf3a0a15d9025760e883b3abec555
+
+
+./.git/objects/b5:
+-r-------- 1 gruiz007 classes        173 Nov 11 19:21 1360c64b2ec7049605c129c3c50445a5962087
+
+
+./.git/objects/b7:
+-r-------- 1 gruiz007 classes        236 Nov 10 22:23 932e94b00d32a0e98aa5831a4afc74bbfc7e9a
+
+
+./.git/objects/b8:
+-r-------- 1 gruiz007 classes       1879 Oct 31 23:24 880a60fedbfca230ee5d23dcd46e2d407979e8
+
+
+./.git/objects/b9:
+-r-------- 1 gruiz007 classes        166 Oct 21 22:10 33df01890770f08d22bd122776a20854c60fca
+
+
+./.git/objects/bb:
+-r-------- 1 gruiz007 classes        116 Nov 01 20:26 36d2d51bee40f9fc72ee8c6bda86e19edbe4c3
+-r-------- 1 gruiz007 classes        164 Nov 11 18:50 65967dfab303060e09b31fd89eaa5a2c010bbe
+
+
+./.git/objects/bc:
+-r-------- 1 gruiz007 classes        174 Nov 11 18:45 6b0b0b6a7d1704a3e31e7f3e2281a70dd02daf
+
+
+./.git/objects/be:
+-r-------- 1 gruiz007 classes        145 Oct 21 21:55 1d1a9569018e9412f9e85aea468b652f32732a
+-r-------- 1 gruiz007 classes        983 Oct 21 16:14 91807a43189d9d34b149cda5acbdbfff107cec
+
+
+./.git/objects/bf:
+-r-------- 1 gruiz007 classes       1419 Nov 08 14:03 edc0d2584aa794c91cf99ec4726d250a6b54be
+
+
+./.git/objects/c0:
+-r-------- 1 gruiz007 classes        175 Oct 20 19:00 6424777988057aee8b18209bba200246722efb
+
+
+./.git/objects/c2:
+-r-------- 1 gruiz007 classes        143 Nov 11 20:24 5c10850f2b328d256e24ae00e30c1d61bca2bd
+
+
+./.git/objects/c4:
+-r-------- 1 gruiz007 classes        173 Nov 11 18:55 8f6335543b4b7de4675fe02b7fd3f0cfcc3c93
+-r-------- 1 gruiz007 classes        453 Oct 29 13:21 c821dfb6c9703715a134f26b92d1a608b78317
+
+
+./.git/objects/c7:
+-r-------- 1 gruiz007 classes        185 Oct 21 23:26 e06b0d69c700a3ec7ef3eb2f7932fa21ccbbca
+
+
+./.git/objects/c9:
+-r-------- 1 gruiz007 classes        167 Oct 29 13:26 1b1b631ecf614c299d568ec48a4035f27bc6f9
+-r-------- 1 gruiz007 classes        212 Nov 11 18:49 380af372b16d6d5132fd0a8c29008b87235169
+
+
+./.git/objects/cc:
+-r-------- 1 gruiz007 classes       1049 Oct 30 14:29 2d59fc231999a9dba4f292364e0d0c83499257
+
+
+./.git/objects/ce:
+-r-------- 1 gruiz007 classes         55 Oct 21 23:26 ba5592526df4daea18fc473e1d8e2bd5fc2101
+
+
+./.git/objects/cf:
+-r-------- 1 gruiz007 classes        112 Oct 21 21:23 56ed0e9ba90ea586e11794f11d2aa7c05cdfa5
+
+
+./.git/objects/d1:
+-r-------- 1 gruiz007 classes        204 Oct 20 18:58 c1b4213d3bb382e1d296f05c5c356ac571304f
+
+
+./.git/objects/d2:
+-r-------- 1 gruiz007 classes       1849 Oct 20 18:19 081c9df45208a7e0a2a41b71abc78f36d75f10
+
+
+./.git/objects/d3:
+-r-------- 1 gruiz007 classes       2060 Oct 20 18:57 80472625ae05f1d4e8d38673dd5050d41aee84
+
+
+./.git/objects/d4:
+-r-------- 1 gruiz007 classes        190 Nov 11 20:40 40020a658b7d6dbc73fad15bd6569aa1a5341e
+
+
+./.git/objects/d6:
+-r-------- 1 gruiz007 classes       2521 Oct 21 12:23 e552cc04f286cf6bff305891d4cfbfcde084a0
+
+
+./.git/objects/d7:
+-r-------- 1 gruiz007 classes         87 Oct 21 16:37 7a3277ca79aa3ffeba686fbf09352abe0d1a18
+
+
+./.git/objects/d9:
+-r-------- 1 gruiz007 classes        177 Oct 21 21:19 4e66918f636f702af1457df40cbe99a809a47a
+-r-------- 1 gruiz007 classes       1631 Nov 09 14:25 ca330a223eb8363f0ff604a0a809befa188a1a
+
+
+./.git/objects/db:
+-r-------- 1 gruiz007 classes        173 Nov 11 20:24 d71754d4fac322569b5114278e04826d499930
+
+
+./.git/objects/dc:
+-r-------- 1 gruiz007 classes        221 Oct 21 16:37 37719562467b4799e969c40157254b78044475
+-r-------- 1 gruiz007 classes        173 Nov 11 20:40 472cdb6ed63c486e0d1ac2103907237bea0625
+
+
+./.git/objects/e0:
+-r-------- 1 gruiz007 classes        179 Oct 21 16:15 36b98c84921fe19a94b2b48d1efe5bd58dd43a
+
+
+./.git/objects/e2:
+-r-------- 1 gruiz007 classes        144 Oct 21 23:03 3a9098d4f9568c1342788d344178929b25d980
+-r-------- 1 gruiz007 classes        206 Oct 31 23:25 f58dc79cc9f43ec4e0e9ae7087fdf2858c7d27
+
+
+./.git/objects/e3:
+-r-------- 1 gruiz007 classes        173 Nov 11 20:24 78a065e848bc310764eada2de214ef88e81437
+
+
+./.git/objects/e6:
+-r-------- 1 gruiz007 classes        175 Nov 11 20:24 0d67b1ecb5d828983584164f9cf642db9492a9
+-r-------- 1 gruiz007 classes        168 Oct 21 21:19 c05b070bf0ca5bbdf28277865b1f8be48f0729
+
+
+./.git/objects/e9:
+-r-------- 1 gruiz007 classes       2089 Nov 11 20:24 877e0a4268a2269a0b850d8b5da901c4612008
+
+
+./.git/objects/eb:
+-r-------- 1 gruiz007 classes        173 Nov 11 20:24 9bcdb8df05e0c955ae61237ef9571bd10a2b21
+-r-------- 1 gruiz007 classes       1218 Oct 31 10:35 e4a587b09a69eeafef5347d176a3e3541c06df
+
+
+./.git/objects/ed:
+-r-------- 1 gruiz007 classes         87 Oct 21 09:24 c1c0f4508df005fd1895ed34393f07db7ad833
+
+
+./.git/objects/ee:
+-r-------- 1 gruiz007 classes        178 Oct 21 09:24 8b2a94b61a583c180c2fae666714d2c37d6491
+
+
+./.git/objects/f0:
+-r-------- 1 gruiz007 classes        116 Nov 11 15:36 309b3f75c29c5ab861b3fddff8683aef68969b
+-r-------- 1 gruiz007 classes        174 Nov 01 20:26 83f5daa470d7bd9ff7c10e6feafad9639c0e2f
+
+
+./.git/objects/f4:
+-r-------- 1 gruiz007 classes        116 Nov 09 19:38 27674a434e70aa592f409cd9d35f0f99eac4fa
+-r-------- 1 gruiz007 classes        927 Oct 21 22:59 68e8f65a077802329f4aa7cb464321934fb4db
+
+
+./.git/objects/f7:
+-r-------- 1 gruiz007 classes        169 Nov 11 18:55 917d2786c148f2e1ef88156cb5859a42438154
+
+
+./.git/objects/fa:
+-r-------- 1 gruiz007 classes        145 Oct 21 21:26 03d8e7c0ead7a15140f05dbdba443148b4b9d4
+
+
+./.git/objects/fc:
+-r-------- 1 gruiz007 classes        173 Oct 30 14:29 73917dea269fab50f61bfdbd1423ca33a55cbb
+
+
+./.git/objects/ff:
+-r-------- 1 gruiz007 classes        767 Nov 11 20:40 f9d78fa9fdbbd0f061d6ead041f9e02982b15f
+
+
+./.git/objects/info:
+-rw------- 1 gruiz007 classes         54 Oct 20 18:27 packs
+
+
+./.git/objects/pack:
+-r-------- 1 gruiz007 classes      38340 Oct 20 15:18 pack-51be7dce109f6f745ca701bb6b9fcefbc1fe7ec8.idx
+-r-------- 1 gruiz007 classes   12469599 Oct 20 15:18 pack-51be7dce109f6f745ca701bb6b9fcefbc1fe7ec8.pack
+
+
+./.git/refs:
+drwx------ 2 gruiz007 classes       4096 Nov 11 20:40 heads
+drwx------ 3 gruiz007 classes       4096 Oct 20 15:18 remotes
+drwx------ 2 gruiz007 classes       4096 Oct 21 23:33 tags
+
+
+./.git/refs/heads:
+-rw------- 1 gruiz007 classes         41 Nov 11 20:40 exec
+-rw------- 1 gruiz007 classes         41 Nov 11 18:50 ls
+-rw------- 1 gruiz007 classes         41 Nov 07 15:27 ls-2
+-rw------- 1 gruiz007 classes         41 Nov 11 20:35 master
+
+
+./.git/refs/remotes:
+drwx------ 2 gruiz007 classes       4096 Nov 11 20:41 origin
+
+
+./.git/refs/remotes/origin:
+-rw------- 1 gruiz007 classes         41 Nov 11 20:41 exec
+-rw------- 1 gruiz007 classes         30 Oct 20 15:18 HEAD
+-rw------- 1 gruiz007 classes         41 Nov 11 18:46 ls
+-rw------- 1 gruiz007 classes         41 Nov 11 20:24 master
+
+
+./.git/refs/tags:
+-rw------- 1 gruiz007 classes         41 Oct 21 23:33 hw0
+
+
+./bin:
+-rwx------ 1 gruiz007 classes      38374 Oct 28 15:25 a.out
+-rwx------ 1 gruiz007 classes      58562 Nov 11 21:36 cp
+-rwx------ 1 gruiz007 classes     127735 Nov 11 21:35 ls
+-rwx------ 1 gruiz007 classes     116286 Nov 11 21:35 rshell
+
+
+./src:
+-rwx------ 1 gruiz007 classes      13930 Nov 08 17:21 a.out
+-rw------- 1 gruiz007 classes       5224 Nov 11 20:36 cp.cpp
+-rw------- 1 gruiz007 classes       4069 Nov 11 20:36 ls.cpp
+-rw------- 1 gruiz007 classes       5097 Oct 30 14:49 rschell.cpp
+-rw------- 1 gruiz007 classes       9116 Nov 11 20:36 Status.h
+-rw------- 1 gruiz007 classes    2881264 Nov 08 17:21 Status.h.gch
+-rw------- 1 gruiz007 classes       2715 Nov 11 20:40 Timer.h
+
+
+./SRC:
+-rwx------ 1 gruiz007 classes      13930 Nov 08 17:21 a.out
+-rw------- 1 gruiz007 classes       5224 Nov 11 20:36 cp.cpp
+-rw------- 1 gruiz007 classes       4069 Nov 11 20:36 ls.cpp
+-rw------- 1 gruiz007 classes       5097 Oct 30 14:49 rschell.cpp
+-rw------- 1 gruiz007 classes       9116 Nov 11 20:36 Status.h
+-rw------- 1 gruiz007 classes    2881264 Nov 08 17:21 Status.h.gch
+-rw------- 1 gruiz007 classes       2715 Nov 11 20:40 Timer.h
+
+
+./tests:
+-rw------- 1 gruiz007 classes      16105 Oct 21 23:28 exec.script
+-rw------- 1 gruiz007 classes      98304 Nov 11 21:57 ls.script
+
+
+~/rshell
+gruiz007@hammer $ bin/ls -laR[K[KRa
+.:
+drwx------ 8 gruiz007 classes       4096 Nov 11 20:40 .git
+-rwx------ 1 gruiz007 classes      10617 Nov 10 21:02 a.out
+drwx------ 2 gruiz007 classes       4096 Nov 11 21:36 bin
+-rw------- 1 gruiz007 classes       1483 Nov 11 20:39 LICENSE
+-rw------- 1 gruiz007 classes        654 Nov 11 20:36 Makefile
+-rw------- 1 gruiz007 classes       4180 Nov 11 20:36 README
+lrwxrwxrwx 1 gruiz007 classes          6 Nov 11 14:08 readme -> README
+drwx------ 2 gruiz007 classes       4096 Nov 11 20:40 src
+lrwxrwxrwx 1 gruiz007 classes          3 Nov 11 14:08 SRC -> src
+drwx------ 2 gruiz007 classes       4096 Nov 11 21:35 tests
+
+
+./.git:
+-rw------- 1 gruiz007 classes        267 Nov 11 20:36 #MERGE_MSG#
+drwx------ 2 gruiz007 classes       4096 Oct 20 15:17 branches
+-rw------- 1 gruiz007 classes          9 Nov 11 20:40 COMMIT_EDITMSG
+-rw------- 1 gruiz007 classes        322 Oct 21 23:26 config
+-rw------- 1 gruiz007 classes         73 Oct 20 15:17 description
+-rw------- 1 gruiz007 classes        311 Nov 11 20:40 FETCH_HEAD
+-rw------- 1 gruiz007 classes         21 Nov 11 20:37 HEAD
+drwx------ 2 gruiz007 classes       4096 Oct 20 15:17 hooks
+-rw------- 1 gruiz007 classes        895 Nov 11 20:40 index
+drwx------ 2 gruiz007 classes       4096 Oct 20 18:27 info
+drwx------ 3 gruiz007 classes       4096 Oct 20 15:18 logs
+drwx------ 131 gruiz007 classes       8192 Nov 11 20:40 objects
+-rw------- 1 gruiz007 classes         41 Nov 11 20:40 ORIG_HEAD
+-rw------- 1 gruiz007 classes        173 Oct 20 15:18 packed-refs
+drwx------ 5 gruiz007 classes       4096 Oct 20 15:18 refs
+
+
+./.git/branches:
+
+
+./.git/hooks:
+-rwx------ 1 gruiz007 classes        452 Oct 20 15:17 applypatch-msg.sample
+-rwx------ 1 gruiz007 classes        896 Oct 20 15:17 commit-msg.sample
+-rwx------ 1 gruiz007 classes        189 Oct 20 15:17 post-update.sample
+-rwx------ 1 gruiz007 classes        398 Oct 20 15:17 pre-applypatch.sample
+-rwx------ 1 gruiz007 classes       1635 Oct 20 15:17 pre-commit.sample
+-rwx------ 1 gruiz007 classes       1348 Oct 20 15:17 pre-push.sample
+-rwx------ 1 gruiz007 classes       4951 Oct 20 15:17 pre-rebase.sample
+-rwx------ 1 gruiz007 classes       1239 Oct 20 15:17 prepare-commit-msg.sample
+-rwx------ 1 gruiz007 classes       3611 Oct 20 15:17 update.sample
+
+
+./.git/info:
+-rw------- 1 gruiz007 classes        240 Oct 20 15:17 exclude
+-rw------- 1 gruiz007 classes        257 Oct 20 18:27 refs
+
+
+./.git/logs:
+-rw------- 1 gruiz007 classes       9350 Nov 11 20:40 HEAD
+drwx------ 4 gruiz007 classes       4096 Oct 20 15:18 refs
+
+
+./.git/logs/refs:
+drwx------ 2 gruiz007 classes       4096 Nov 07 15:27 heads
+drwx------ 3 gruiz007 classes       4096 Oct 20 15:18 remotes
+
+
+./.git/logs/refs/heads:
+-rw------- 1 gruiz007 classes       4120 Nov 11 20:40 exec
+-rw------- 1 gruiz007 classes       2848 Nov 11 18:50 ls
+-rw------- 1 gruiz007 classes        157 Nov 07 15:27 ls-2
+-rw------- 1 gruiz007 classes       1212 Nov 11 20:35 master
+
+
+./.git/logs/refs/remotes:
+drwx------ 2 gruiz007 classes       4096 Oct 29 13:28 origin
+
+
+./.git/logs/refs/remotes/origin:
+-rw------- 1 gruiz007 classes       3008 Nov 11 20:41 exec
+-rw------- 1 gruiz007 classes        193 Oct 20 15:18 HEAD
+-rw------- 1 gruiz007 classes       1924 Nov 11 18:46 ls
+-rw------- 1 gruiz007 classes        752 Nov 11 20:24 master
+
+
+./.git/objects:
+drwx------ 2 gruiz007 classes       4096 Oct 20 19:00 01
+drwx------ 2 gruiz007 classes       4096 Nov 10 22:20 02
+drwx------ 2 gruiz007 classes       4096 Nov 11 18:55 04
+drwx------ 2 gruiz007 classes       4096 Nov 10 22:23 06
+drwx------ 2 gruiz007 classes       4096 Oct 29 13:22 0a
+drwx------ 2 gruiz007 classes       4096 Nov 11 18:55 0d
+drwx------ 2 gruiz007 classes       4096 Oct 21 12:23 15
+drwx------ 2 gruiz007 classes       4096 Nov 11 20:24 16
+drwx------ 2 gruiz007 classes       4096 Oct 21 21:25 1c
+drwx------ 2 gruiz007 classes       4096 Nov 11 14:02 1d
+drwx------ 2 gruiz007 classes       4096 Nov 11 18:44 20
+drwx------ 2 gruiz007 classes       4096 Oct 21 21:55 21
+drwx------ 2 gruiz007 classes       4096 Oct 21 20:45 23
+drwx------ 2 gruiz007 classes       4096 Nov 11 20:24 24
+drwx------ 2 gruiz007 classes       4096 Nov 10 22:20 25
+drwx------ 2 gruiz007 classes       4096 Nov 11 20:24 26
+drwx------ 2 gruiz007 classes       4096 Nov 11 20:24 29
+drwx------ 2 gruiz007 classes       4096 Nov 09 19:38 2a
+drwx------ 2 gruiz007 classes       4096 Nov 01 20:26 2b
+drwx------ 2 gruiz007 classes       4096 Nov 11 15:36 2d
+drwx------ 2 gruiz007 classes       4096 Nov 11 20:24 2f
+drwx------ 2 gruiz007 classes       4096 Nov 11 14:02 30
+drwx------ 2 gruiz007 classes       4096 Nov 10 22:23 34
+drwx------ 2 gruiz007 classes       4096 Oct 21 21:12 35
+drwx------ 2 gruiz007 classes       4096 Nov 09 14:26 36
+drwx------ 2 gruiz007 classes       4096 Oct 21 20:45 37
+drwx------ 2 gruiz007 classes       4096 Nov 11 18:50 38
+drwx------ 2 gruiz007 classes       4096 Oct 29 13:26 39
+drwx------ 2 gruiz007 classes       4096 Oct 21 16:37 3a
+drwx------ 2 gruiz007 classes       4096 Oct 29 13:22 3c
+drwx------ 2 gruiz007 classes       4096 Oct 21 16:15 3d
+drwx------ 2 gruiz007 classes       4096 Oct 21 10:59 42
+drwx------ 2 gruiz007 classes       4096 Oct 21 16:37 46
+drwx------ 2 gruiz007 classes       4096 Oct 31 23:25 47
+drwx------ 2 gruiz007 classes       4096 Oct 30 14:30 4c
+drwx------ 2 gruiz007 classes       4096 Oct 20 18:58 4f
+drwx------ 2 gruiz007 classes       4096 Oct 20 19:00 53
+drwx------ 2 gruiz007 classes       4096 Nov 11 19:21 55
+drwx------ 2 gruiz007 classes       4096 Nov 11 20:24 56
+drwx------ 2 gruiz007 classes       4096 Oct 21 21:12 5b
+drwx------ 2 gruiz007 classes       4096 Nov 11 18:55 5c
+drwx------ 2 gruiz007 classes       4096 Oct 30 14:30 5d
+drwx------ 2 gruiz007 classes       4096 Nov 11 20:24 60
+drwx------ 2 gruiz007 classes       4096 Oct 29 13:26 63
+drwx------ 2 gruiz007 classes       4096 Oct 29 13:26 64
+drwx------ 2 gruiz007 classes       4096 Nov 09 14:26 66
+drwx------ 2 gruiz007 classes       4096 Nov 07 21:28 67
+drwx------ 2 gruiz007 classes       4096 Nov 11 14:02 68
+drwx------ 2 gruiz007 classes       4096 Oct 21 21:55 69
+drwx------ 2 gruiz007 classes       4096 Oct 20 18:20 6a
+drwx------ 2 gruiz007 classes       4096 Nov 11 15:36 6b
+drwx------ 2 gruiz007 classes       4096 Nov 11 20:35 6c
+drwx------ 2 gruiz007 classes       4096 Nov 11 18:45 6e
+drwx------ 2 gruiz007 classes       4096 Nov 07 21:28 6f
+drwx------ 2 gruiz007 classes       4096 Nov 11 19:21 71
+drwx------ 2 gruiz007 classes       4096 Nov 08 14:04 74
+drwx------ 2 gruiz007 classes       4096 Nov 11 20:38 75
+drwx------ 2 gruiz007 classes       4096 Nov 08 14:04 76
+drwx------ 2 gruiz007 classes       4096 Oct 21 23:25 77
+drwx------ 2 gruiz007 classes       4096 Oct 29 13:26 78
+drwx------ 2 gruiz007 classes       4096 Oct 21 21:11 7c
+drwx------ 2 gruiz007 classes       4096 Oct 21 09:24 7d
+drwx------ 2 gruiz007 classes       4096 Oct 31 10:35 80
+drwx------ 2 gruiz007 classes       4096 Nov 11 20:40 82
+drwx------ 2 gruiz007 classes       4096 Nov 09 19:38 83
+drwx------ 2 gruiz007 classes       4096 Nov 11 19:21 84
+drwx------ 2 gruiz007 classes       4096 Nov 11 20:24 88
+drwx------ 2 gruiz007 classes       4096 Oct 21 21:55 89
+drwx------ 2 gruiz007 classes       4096 Nov 11 20:24 8d
+drwx------ 2 gruiz007 classes       4096 Nov 11 14:02 8f
+drwx------ 2 gruiz007 classes       4096 Nov 07 21:27 90
+drwx------ 2 gruiz007 classes       4096 Nov 11 20:39 92
+drwx------ 2 gruiz007 classes       4096 Oct 21 21:21 93
+drwx------ 2 gruiz007 classes       4096 Oct 21 21:23 96
+drwx------ 2 gruiz007 classes       4096 Oct 29 13:26 98
+drwx------ 2 gruiz007 classes       4096 Oct 21 10:59 9a
+drwx------ 2 gruiz007 classes       4096 Oct 20 19:00 9d
+drwx------ 2 gruiz007 classes       4096 Oct 21 21:25 9e
+drwx------ 2 gruiz007 classes       4096 Oct 20 18:58 9f
+drwx------ 2 gruiz007 classes       4096 Nov 11 20:24 a0
+drwx------ 2 gruiz007 classes       4096 Oct 21 16:15 a1
+drwx------ 2 gruiz007 classes       4096 Nov 11 14:02 a3
+drwx------ 2 gruiz007 classes       4096 Oct 21 23:02 a4
+drwx------ 2 gruiz007 classes       4096 Oct 30 14:29 a6
+drwx------ 2 gruiz007 classes       4096 Nov 11 18:45 ab
+drwx------ 2 gruiz007 classes       4096 Nov 07 21:28 ac
+drwx------ 2 gruiz007 classes       4096 Nov 11 20:24 b2
+drwx------ 2 gruiz007 classes       4096 Nov 11 20:24 b4
+drwx------ 2 gruiz007 classes       4096 Nov 11 19:21 b5
+drwx------ 2 gruiz007 classes       4096 Nov 10 22:23 b7
+drwx------ 2 gruiz007 classes       4096 Oct 31 23:24 b8
+drwx------ 2 gruiz007 classes       4096 Oct 21 22:10 b9
+drwx------ 2 gruiz007 classes       4096 Nov 11 18:50 bb
+drwx------ 2 gruiz007 classes       4096 Nov 11 18:45 bc
+drwx------ 2 gruiz007 classes       4096 Oct 21 21:55 be
+drwx------ 2 gruiz007 classes       4096 Nov 08 14:03 bf
+drwx------ 2 gruiz007 classes       4096 Oct 20 19:00 c0
+drwx------ 2 gruiz007 classes       4096 Nov 11 20:24 c2
+drwx------ 2 gruiz007 classes       4096 Nov 11 18:55 c4
+drwx------ 2 gruiz007 classes       4096 Oct 21 23:26 c7
+drwx------ 2 gruiz007 classes       4096 Nov 11 18:49 c9
+drwx------ 2 gruiz007 classes       4096 Oct 30 14:29 cc
+drwx------ 2 gruiz007 classes       4096 Oct 21 23:26 ce
+drwx------ 2 gruiz007 classes       4096 Oct 21 21:23 cf
+drwx------ 2 gruiz007 classes       4096 Oct 20 18:58 d1
+drwx------ 2 gruiz007 classes       4096 Oct 20 18:19 d2
+drwx------ 2 gruiz007 classes       4096 Oct 20 18:57 d3
+drwx------ 2 gruiz007 classes       4096 Nov 11 20:40 d4
+drwx------ 2 gruiz007 classes       4096 Oct 21 12:23 d6
+drwx------ 2 gruiz007 classes       4096 Oct 21 16:37 d7
+drwx------ 2 gruiz007 classes       4096 Nov 09 14:25 d9
+drwx------ 2 gruiz007 classes       4096 Nov 11 20:24 db
+drwx------ 2 gruiz007 classes       4096 Nov 11 20:40 dc
+drwx------ 2 gruiz007 classes       4096 Oct 21 16:15 e0
+drwx------ 2 gruiz007 classes       4096 Oct 31 23:25 e2
+drwx------ 2 gruiz007 classes       4096 Nov 11 20:24 e3
+drwx------ 2 gruiz007 classes       4096 Nov 11 20:24 e6
+drwx------ 2 gruiz007 classes       4096 Nov 11 20:24 e9
+drwx------ 2 gruiz007 classes       4096 Nov 11 20:24 eb
+drwx------ 2 gruiz007 classes       4096 Oct 21 09:24 ed
+drwx------ 2 gruiz007 classes       4096 Oct 21 09:24 ee
+drwx------ 2 gruiz007 classes       4096 Nov 11 15:36 f0
+drwx------ 2 gruiz007 classes       4096 Nov 09 19:38 f4
+drwx------ 2 gruiz007 classes       4096 Nov 11 18:55 f7
+drwx------ 2 gruiz007 classes       4096 Oct 21 21:26 fa
+drwx------ 2 gruiz007 classes       4096 Oct 30 14:29 fc
+drwx------ 2 gruiz007 classes       4096 Nov 11 20:40 ff
+drwx------ 2 gruiz007 classes       4096 Oct 20 18:27 info
+drwx------ 2 gruiz007 classes       4096 Oct 20 15:18 pack
+
+
+./.git/objects/01:
+-r-------- 1 gruiz007 classes        178 Oct 20 19:00 f86c85b4d271e7ced6193e4a62bd9f1d7e21b8
+
+
+./.git/objects/02:
+-r-------- 1 gruiz007 classes       2227 Nov 10 22:20 163f17965fc52a79d496157cfb054d7300c5c9
+
+
+./.git/objects/04:
+-r-------- 1 gruiz007 classes       1896 Nov 11 18:55 6ea4490f9630077b02e6ac96e2bca3d4d83315
+
+
+./.git/objects/06:
+-r-------- 1 gruiz007 classes       2333 Oct 21 09:24 a91ad7b0133b4e8cfd5a2b91bc3400db37deec
+-r-------- 1 gruiz007 classes        172 Nov 10 22:23 e9f66ca602521d2f3818613cbc0820f56a3123
+-r-------- 1 gruiz007 classes        182 Oct 30 14:29 ed474a910fa8d3fdcaf83a1f8204810794a2e2
+
+
+./.git/objects/0a:
+-r-------- 1 gruiz007 classes        116 Oct 29 13:22 aa32413c979a082b0ef69f744b0e6347fd05aa
+
+
+./.git/objects/0d:
+-r-------- 1 gruiz007 classes        210 Oct 21 20:45 46273481d35e623cd85eff7695bdc6571310a7
+-r-------- 1 gruiz007 classes        758 Nov 11 18:55 6873a662050da8305cc3e663e8c77cbd96b56e
+-r-------- 1 gruiz007 classes         87 Oct 20 18:20 7124484eef47f330edcd3e73847030d4da955a
+
+
+./.git/objects/15:
+-r-------- 1 gruiz007 classes        208 Oct 21 12:23 672d0ce6c5fa0bf6f560457036c4556ab67fb8
+
+
+./.git/objects/16:
+-r-------- 1 gruiz007 classes        175 Nov 11 20:24 99f3639920bd74c64881164f827c05f5f9254f
+
+
+./.git/objects/1c:
+-r-------- 1 gruiz007 classes        179 Oct 21 21:25 28f86a7f4be5013dd00b5b1cc78d58ed74e6e1
+
+
+./.git/objects/1d:
+-r-------- 1 gruiz007 classes        116 Nov 11 14:02 b6b74efb3b6495c28d01ffa60259535062253f
+
+
+./.git/objects/20:
+-r-------- 1 gruiz007 classes       3106 Nov 11 18:44 9ebb6a7b1fa8a117e02908fccd9766e3bb8cc4
+
+
+./.git/objects/21:
+-r-------- 1 gruiz007 classes        183 Oct 21 21:55 97b9fff2e1b9ff2c6532c4a76f5941ee45cbcc
+-r-------- 1 gruiz007 classes        178 Oct 21 10:59 b0f4cebd2217d1f1e61a3739f3baad94697c4d
+
+
+./.git/objects/23:
+-r-------- 1 gruiz007 classes        137 Oct 21 20:45 5c111ca008e0134f326ba4af3c6d69c8a5bebe
+
+
+./.git/objects/24:
+-r-------- 1 gruiz007 classes        173 Oct 29 13:22 010f6df5aa4ce646699c0f655350cfa139994f
+-r-------- 1 gruiz007 classes       1480 Nov 11 20:24 9edea4e2626af6a02b7025c23d150b7ea53c60
+-r-------- 1 gruiz007 classes       2530 Nov 11 15:35 afe26f1f86772e2124136bf7b8f9fc4f798f16
+-r-------- 1 gruiz007 classes        174 Nov 09 14:26 d1838f820dc78cbb90a0091912c77bdd95d3b5
+
+
+./.git/objects/25:
+-r-------- 1 gruiz007 classes       1595 Nov 10 22:20 ac0b725a9cc1d7a6a6f7b5b8dd480ba8a51af0
+
+
+./.git/objects/26:
+-r-------- 1 gruiz007 classes        174 Nov 11 20:24 a88e925de326ef792051200decb580b5afc236
+
+
+./.git/objects/29:
+-r-------- 1 gruiz007 classes        173 Nov 11 20:24 b6259aadad2abe53a42cc3bf6de76dbbea42df
+-r-------- 1 gruiz007 classes        174 Nov 11 20:24 be4954482aca55a01c852de16e20c4b99cdc30
+-r-------- 1 gruiz007 classes        229 Oct 31 10:35 cd6a860473617ea506f570a03e621547995c29
+
+
+./.git/objects/2a:
+-r-------- 1 gruiz007 classes        194 Nov 09 19:38 c42b20815da785d5fdd675ed98d5e79502d59a
+
+
+./.git/objects/2b:
+-r-------- 1 gruiz007 classes        183 Nov 01 20:26 2c3cf1f913d24c6edef33416697914fabf3feb
+-r-------- 1 gruiz007 classes        155 Oct 21 21:26 5634d3553d8ed05e7d7d416131e37c9264fc5a
+
+
+./.git/objects/2d:
+-r-------- 1 gruiz007 classes        188 Nov 11 15:36 21fb25c0ccabd2f8c4ab659b52b7625feb67a3
+
+
+./.git/objects/2f:
+-r-------- 1 gruiz007 classes        213 Nov 11 20:24 b88fd7ba1a38f5fe81615c966bdeb0679591bb
+-r-------- 1 gruiz007 classes        173 Nov 11 20:24 ec3d483a08b613708f5395f2ba462c76a3e69b
+
+
+./.git/objects/30:
+-r-------- 1 gruiz007 classes       1876 Nov 11 14:02 a54fc7e8e7e7112dcb4fdd926772a50e63bde9
+-r-------- 1 gruiz007 classes        173 Oct 21 23:26 d7038fe236a10207cae8d58af21f8606b5b581
+
+
+./.git/objects/34:
+-r-------- 1 gruiz007 classes        116 Nov 10 22:23 a123d28e6916343cdf5f4ea52bb87a2491b5d9
+
+
+./.git/objects/35:
+-r-------- 1 gruiz007 classes         87 Oct 21 21:12 f3d243332a5c6e68f332edf21963cac0071d75
+
+
+./.git/objects/36:
+-r-------- 1 gruiz007 classes        202 Nov 09 14:26 d12528d2213977dcfa1460774ede78c82df039
+
+
+./.git/objects/37:
+-r-------- 1 gruiz007 classes        169 Oct 21 20:45 7034d2f9e1cea5b018aac1a87f15d66e6f462d
+
+
+./.git/objects/38:
+-r-------- 1 gruiz007 classes        915 Oct 29 13:21 c7e6e776b387449159435cfbffa474764a435f
+-r-------- 1 gruiz007 classes       2032 Nov 09 19:38 e781e4b24f37771f43fd62b882d70280f37496
+-r-------- 1 gruiz007 classes        173 Nov 11 18:50 f2bef456369fc305f589638a14d639ca436a66
+
+
+./.git/objects/39:
+-r-------- 1 gruiz007 classes       1530 Oct 21 22:10 1199fa6025261b43dc053e1e3090f6ea2caad3
+-r-------- 1 gruiz007 classes        799 Oct 29 13:26 ca030dd81b9debf47a070ea497e7aca8d97b89
+
+
+./.git/objects/3a:
+-r-------- 1 gruiz007 classes        178 Oct 21 16:37 156a876b5eec6c3d908e9995f2404d5248f8b7
+
+
+./.git/objects/3c:
+-r-------- 1 gruiz007 classes        196 Oct 29 13:22 0ca36d97423929ebb25a29fc2ea04d49cd044e
+
+
+./.git/objects/3d:
+-r-------- 1 gruiz007 classes        216 Oct 21 16:15 e267187ab951567faee920feab6a841ef2876b
+
+
+./.git/objects/42:
+-r-------- 1 gruiz007 classes        194 Oct 21 10:59 8047bf5dce33a2a471c584f11b3407f7de916d
+
+
+./.git/objects/46:
+-r-------- 1 gruiz007 classes       2624 Oct 21 16:37 6d14a3e510049dc0aff1258ba29b59d2e29694
+
+
+./.git/objects/47:
+-r-------- 1 gruiz007 classes        116 Oct 31 23:25 94e0399231687e51b5e7c60605e561ae048961
+
+
+./.git/objects/4c:
+-r-------- 1 gruiz007 classes        173 Oct 30 14:30 58809e3e8ec743d999984dbf3cc4e9ffbe3ef5
+
+
+./.git/objects/4f:
+-r-------- 1 gruiz007 classes        178 Oct 20 18:58 bf7237cee6e21844b6a771bc16d1da956384e7
+
+
+./.git/objects/53:
+-r-------- 1 gruiz007 classes       2064 Oct 20 19:00 4caef4c3c4d18a0e76e16a1893be73d0d956c8
+
+
+./.git/objects/55:
+-r-------- 1 gruiz007 classes       3204 Nov 11 19:21 31170f545dd11f9555a4fd19d97e3a0da3a90a
+-r-------- 1 gruiz007 classes       1113 Nov 09 14:25 cafb4b34d95f1e9f40c0d6e3dfd707d53bc7fa
+
+
+./.git/objects/56:
+-r-------- 1 gruiz007 classes        167 Nov 11 20:24 d7573050042fc3159e6e96ae560e471c225262
+-r-------- 1 gruiz007 classes        203 Nov 07 21:27 f68b6bfb37f8dbeeb979f7550b67b5f2a36ea0
+
+
+./.git/objects/5b:
+-r-------- 1 gruiz007 classes        186 Oct 21 21:12 9f4eded0274a8370ecf0bb908cf6d3cbc16307
+
+
+./.git/objects/5c:
+-r-------- 1 gruiz007 classes        173 Nov 11 18:55 1f53d2cbf0847e096686aa8e0ecc5c89e0aa61
+
+
+./.git/objects/5d:
+-r-------- 1 gruiz007 classes        148 Oct 21 21:21 0d73586bc5b7cdcb84b432d94a09b87ea23974
+-r-------- 1 gruiz007 classes        248 Oct 30 14:30 a51c16d763bdd0471ec50ff31d90d1b89e8eea
+
+
+./.git/objects/60:
+-r-------- 1 gruiz007 classes        214 Nov 11 20:24 1a44a7f701144882d8df9fd5e2ca5864d5f297
+
+
+./.git/objects/63:
+-r-------- 1 gruiz007 classes        176 Oct 21 23:03 c4cdb33a005d4842a11d825c8bd6986e715e9d
+-r-------- 1 gruiz007 classes         87 Oct 21 10:59 cedb29f361733480e7664fbcd3f8dd362b21cb
+-r-------- 1 gruiz007 classes        173 Oct 29 13:26 fa0a1922f0479854ed65be9631244e5916b5d1
+
+
+./.git/objects/64:
+-r-------- 1 gruiz007 classes        178 Oct 20 18:20 04b7f99ae3d8713164aa965b8e898deb9eb282
+-r-------- 1 gruiz007 classes        997 Oct 29 13:26 921a895869de7e607fd22fd6dec8b76877713b
+
+
+./.git/objects/66:
+-r-------- 1 gruiz007 classes        116 Nov 09 14:26 b764ac781397ec461ba940e4a80c54bf2debde
+
+
+./.git/objects/67:
+-r-------- 1 gruiz007 classes        176 Nov 07 21:28 2f4e562a8d19ed8858362ee3f2c14ba05f5b8a
+
+
+./.git/objects/68:
+-r-------- 1 gruiz007 classes       1476 Nov 09 19:38 42958432d72a078ac9e0e8f8fa3a335fe434d4
+-r-------- 1 gruiz007 classes       2206 Nov 11 14:02 924508659e05a9f052e968e7a5b9b64a5dc183
+
+
+./.git/objects/69:
+-r-------- 1 gruiz007 classes         56 Oct 21 21:55 ff9c186d4acfc5a9cf259a62db067068409111
+
+
+./.git/objects/6a:
+-r-------- 1 gruiz007 classes        275 Oct 20 18:20 d287642218f1f6ee4d60c9824966c538981c07
+
+
+./.git/objects/6b:
+-r-------- 1 gruiz007 classes         56 Oct 21 21:26 09836aefabc8164ce46bd41fc7480754b229d4
+-r-------- 1 gruiz007 classes        174 Nov 11 15:36 43a2d9c22b55fe88a8be5421e79f11ed49fbc0
+-r-------- 1 gruiz007 classes        174 Nov 08 14:04 62409942a7df1b5c933e20d08be11a2f721f40
+
+
+./.git/objects/6c:
+-r-------- 1 gruiz007 classes        158 Nov 11 20:35 4a3a3bfa8525e1e0b552e9a220a822734920b1
+
+
+./.git/objects/6e:
+-r-------- 1 gruiz007 classes        222 Nov 11 18:45 ea89b1c272c705f2cf9cd7e674adbc5c5d0fc1
+
+
+./.git/objects/6f:
+-r-------- 1 gruiz007 classes        230 Nov 07 21:28 789d4a00d97435d680a2a2ceb00e59f60ae59b
+
+
+./.git/objects/71:
+-r-------- 1 gruiz007 classes        190 Nov 11 19:21 f9822a4e856976011c18a906dc927c79d6316b
+
+
+./.git/objects/74:
+-r-------- 1 gruiz007 classes        215 Nov 08 14:04 baaebc6fa956f89e3654d4723c05119a8025dd
+
+
+./.git/objects/75:
+-r-------- 1 gruiz007 classes        207 Nov 11 20:38 3c7c59979d1d38a93b806cf2e0ee0f6e62ce23
+-r-------- 1 gruiz007 classes        145 Oct 21 22:10 4f68257f009af7750e8e5987032519abb1d726
+
+
+./.git/objects/76:
+-r-------- 1 gruiz007 classes         83 Nov 08 14:04 862ac062153cd15ad339c2329fa45faffb9df2
+
+
+./.git/objects/77:
+-r-------- 1 gruiz007 classes       3391 Oct 21 23:25 e28f3046644f437f1613547cb2fefd29b78108
+
+
+./.git/objects/78:
+-r-------- 1 gruiz007 classes        173 Oct 29 13:26 457d8609ff657aee50ba7443150960dd155060
+-r-------- 1 gruiz007 classes         88 Oct 21 12:23 ff674afdffac9d3430b8c665c5ca1db4a2bf5b
+
+
+./.git/objects/7c:
+-r-------- 1 gruiz007 classes       2541 Oct 21 21:11 ca2f4afe213d689f23b9e80949d13fabdd1137
+
+
+./.git/objects/7d:
+-r-------- 1 gruiz007 classes        179 Oct 21 09:24 5f3c096f6c4cd5d22176e973d5ed590a3192cb
+
+
+./.git/objects/80:
+-r-------- 1 gruiz007 classes        173 Oct 31 10:35 2779f8aa3ef4ab90342c6ee849229735270a4f
+
+
+./.git/objects/82:
+-r-------- 1 gruiz007 classes        173 Nov 11 20:40 8824e74b183a3a3cf0fe0fd7e61da6cbd696f9
+
+
+./.git/objects/83:
+-r-------- 1 gruiz007 classes        174 Nov 09 19:38 960d0b92b1b64c255b7353f453d30cc257bd2c
+
+
+./.git/objects/84:
+-r-------- 1 gruiz007 classes       1933 Nov 01 20:25 59e88a1fcabedcffa3e8dc1a99f8448df9c72b
+-r-------- 1 gruiz007 classes        173 Nov 11 19:21 ef64069f2e2a251be925f3085fb58eccab42c1
+
+
+./.git/objects/88:
+-r-------- 1 gruiz007 classes        224 Nov 11 20:24 2a05c714b8e44d462c7924e49f489134447c20
+
+
+./.git/objects/89:
+-r-------- 1 gruiz007 classes       2125 Oct 21 21:55 8a4398a04f46199f5257e0b745a6568a629df8
+-r-------- 1 gruiz007 classes       2566 Oct 21 16:14 a3f33aa3279f6cca902d0d29300a04a31f9360
+
+
+./.git/objects/8d:
+-r-------- 1 gruiz007 classes        173 Nov 11 20:24 44d64995b2145160a3cfe9a0320681837817c2
+-r-------- 1 gruiz007 classes       1750 Nov 11 18:44 878235263d9a2df49f3686a821e5ed813e472e
+-r-------- 1 gruiz007 classes        178 Oct 21 12:23 9887eeda60b4ad8e97fb48231a6388092cadb7
+
+
+./.git/objects/8f:
+-r-------- 1 gruiz007 classes        116 Oct 31 10:35 126e1c73974310e9a8865442ce4b8b2af1cc15
+-r-------- 1 gruiz007 classes        173 Nov 11 14:02 d4828f4bdfa2b6ffe91475c82798b032a4279b
+
+
+./.git/objects/90:
+-r-------- 1 gruiz007 classes       1434 Nov 07 21:27 00e335fc5be9d11ae820ab44a58cbd6f0ae411
+-r-------- 1 gruiz007 classes        210 Oct 21 21:12 6c542d6b9b6de3e7b31f1b6f153bdba4f87dd0
+
+
+./.git/objects/92:
+-r-------- 1 gruiz007 classes        173 Oct 31 23:25 29bcf2801da3eb4e1b9763e5747f4c6819d409
+-r-------- 1 gruiz007 classes        812 Nov 11 20:39 8feec7de9c630003241d6f483feb12ac016900
+
+
+./.git/objects/93:
+-r-------- 1 gruiz007 classes        178 Oct 21 21:21 55ef3f37a435081ab7719b43a7194fa1f0b205
+
+
+./.git/objects/96:
+-r-------- 1 gruiz007 classes        162 Oct 21 21:23 acd3e27bcb657e37f2ae37199820efcf0de32e
+
+
+./.git/objects/98:
+-r-------- 1 gruiz007 classes        171 Oct 29 13:26 daa2c73a7d0c54d32cbac9bb6c8c597cdce196
+
+
+./.git/objects/9a:
+-r-------- 1 gruiz007 classes       2210 Oct 21 10:59 1e4e607d1fa1900cf15f48efa2dd9ce4995395
+
+
+./.git/objects/9d:
+-r-------- 1 gruiz007 classes         87 Oct 20 19:00 a663a125a90800bc674ce06cbdd8faa3260bb5
+
+
+./.git/objects/9e:
+-r-------- 1 gruiz007 classes        145 Oct 21 21:25 d3c78edea41fac0dbb5536f8833ab6ff1101b4
+
+
+./.git/objects/9f:
+-r-------- 1 gruiz007 classes         87 Oct 20 18:58 46c938cf12ee985a7e294516fe505c6050d6e8
+
+
+./.git/objects/a0:
+-r-------- 1 gruiz007 classes        243 Nov 11 20:24 a8c9dd5cad85bfb58256d0a8bd6455aee58ed3
+
+
+./.git/objects/a1:
+-r-------- 1 gruiz007 classes         87 Oct 21 16:15 9a6c45a0695a4db5ef37d7a4190342e7ba7690
+
+
+./.git/objects/a3:
+-r-------- 1 gruiz007 classes        184 Nov 11 14:02 05b2a5e7b91558d0941e0082ffc4d2e80f2761
+-r-------- 1 gruiz007 classes        173 Nov 07 21:29 4f0ff443795e76258d7a3a0707fcb9feaa5d99
+-r-------- 1 gruiz007 classes        174 Nov 07 21:28 beb0a1576542aeb0330bb94e2458d99b044fa4
+
+
+./.git/objects/a4:
+-r-------- 1 gruiz007 classes       1009 Oct 21 23:02 15574efa6d194d6a9d6014492c0e47721aa9d9
+
+
+./.git/objects/a6:
+-r-------- 1 gruiz007 classes        116 Oct 30 14:29 de78586b5e136dc0fb27ff196e8f85a175d331
+
+
+./.git/objects/ab:
+-r-------- 1 gruiz007 classes        116 Nov 11 18:45 2bb4ae30ebe41a0163612fd0f4073140c0dc33
+
+
+./.git/objects/ac:
+-r-------- 1 gruiz007 classes         83 Nov 07 21:28 c698b6d1bdaa3f4a7fcb74017a48b23fb046c1
+
+
+./.git/objects/b2:
+-r-------- 1 gruiz007 classes        174 Nov 11 20:24 92d02eac0af00d257324acd8611aab29217bb7
+
+
+./.git/objects/b4:
+-r-------- 1 gruiz007 classes        173 Nov 11 20:24 0c3fa870ddf3a0a15d9025760e883b3abec555
+
+
+./.git/objects/b5:
+-r-------- 1 gruiz007 classes        173 Nov 11 19:21 1360c64b2ec7049605c129c3c50445a5962087
+
+
+./.git/objects/b7:
+-r-------- 1 gruiz007 classes        236 Nov 10 22:23 932e94b00d32a0e98aa5831a4afc74bbfc7e9a
+
+
+./.git/objects/b8:
+-r-------- 1 gruiz007 classes       1879 Oct 31 23:24 880a60fedbfca230ee5d23dcd46e2d407979e8
+
+
+./.git/objects/b9:
+-r-------- 1 gruiz007 classes        166 Oct 21 22:10 33df01890770f08d22bd122776a20854c60fca
+
+
+./.git/objects/bb:
+-r-------- 1 gruiz007 classes        116 Nov 01 20:26 36d2d51bee40f9fc72ee8c6bda86e19edbe4c3
+-r-------- 1 gruiz007 classes        164 Nov 11 18:50 65967dfab303060e09b31fd89eaa5a2c010bbe
+
+
+./.git/objects/bc:
+-r-------- 1 gruiz007 classes        174 Nov 11 18:45 6b0b0b6a7d1704a3e31e7f3e2281a70dd02daf
+
+
+./.git/objects/be:
+-r-------- 1 gruiz007 classes        145 Oct 21 21:55 1d1a9569018e9412f9e85aea468b652f32732a
+-r-------- 1 gruiz007 classes        983 Oct 21 16:14 91807a43189d9d34b149cda5acbdbfff107cec
+
+
+./.git/objects/bf:
+-r-------- 1 gruiz007 classes       1419 Nov 08 14:03 edc0d2584aa794c91cf99ec4726d250a6b54be
+
+
+./.git/objects/c0:
+-r-------- 1 gruiz007 classes        175 Oct 20 19:00 6424777988057aee8b18209bba200246722efb
+
+
+./.git/objects/c2:
+-r-------- 1 gruiz007 classes        143 Nov 11 20:24 5c10850f2b328d256e24ae00e30c1d61bca2bd
+
+
+./.git/objects/c4:
+-r-------- 1 gruiz007 classes        173 Nov 11 18:55 8f6335543b4b7de4675fe02b7fd3f0cfcc3c93
+-r-------- 1 gruiz007 classes        453 Oct 29 13:21 c821dfb6c9703715a134f26b92d1a608b78317
+
+
+./.git/objects/c7:
+-r-------- 1 gruiz007 classes        185 Oct 21 23:26 e06b0d69c700a3ec7ef3eb2f7932fa21ccbbca
+
+
+./.git/objects/c9:
+-r-------- 1 gruiz007 classes        167 Oct 29 13:26 1b1b631ecf614c299d568ec48a4035f27bc6f9
+-r-------- 1 gruiz007 classes        212 Nov 11 18:49 380af372b16d6d5132fd0a8c29008b87235169
+
+
+./.git/objects/cc:
+-r-------- 1 gruiz007 classes       1049 Oct 30 14:29 2d59fc231999a9dba4f292364e0d0c83499257
+
+
+./.git/objects/ce:
+-r-------- 1 gruiz007 classes         55 Oct 21 23:26 ba5592526df4daea18fc473e1d8e2bd5fc2101
+
+
+./.git/objects/cf:
+-r-------- 1 gruiz007 classes        112 Oct 21 21:23 56ed0e9ba90ea586e11794f11d2aa7c05cdfa5
+
+
+./.git/objects/d1:
+-r-------- 1 gruiz007 classes        204 Oct 20 18:58 c1b4213d3bb382e1d296f05c5c356ac571304f
+
+
+./.git/objects/d2:
+-r-------- 1 gruiz007 classes       1849 Oct 20 18:19 081c9df45208a7e0a2a41b71abc78f36d75f10
+
+
+./.git/objects/d3:
+-r-------- 1 gruiz007 classes       2060 Oct 20 18:57 80472625ae05f1d4e8d38673dd5050d41aee84
+
+
+./.git/objects/d4:
+-r-------- 1 gruiz007 classes        190 Nov 11 20:40 40020a658b7d6dbc73fad15bd6569aa1a5341e
+
+
+./.git/objects/d6:
+-r-------- 1 gruiz007 classes       2521 Oct 21 12:23 e552cc04f286cf6bff305891d4cfbfcde084a0
+
+
+./.git/objects/d7:
+-r-------- 1 gruiz007 classes         87 Oct 21 16:37 7a3277ca79aa3ffeba686fbf09352abe0d1a18
+
+
+./.git/objects/d9:
+-r-------- 1 gruiz007 classes        177 Oct 21 21:19 4e66918f636f702af1457df40cbe99a809a47a
+-r-------- 1 gruiz007 classes       1631 Nov 09 14:25 ca330a223eb8363f0ff604a0a809befa188a1a
+
+
+./.git/objects/db:
+-r-------- 1 gruiz007 classes        173 Nov 11 20:24 d71754d4fac322569b5114278e04826d499930
+
+
+./.git/objects/dc:
+-r-------- 1 gruiz007 classes        221 Oct 21 16:37 37719562467b4799e969c40157254b78044475
+-r-------- 1 gruiz007 classes        173 Nov 11 20:40 472cdb6ed63c486e0d1ac2103907237bea0625
+
+
+./.git/objects/e0:
+-r-------- 1 gruiz007 classes        179 Oct 21 16:15 36b98c84921fe19a94b2b48d1efe5bd58dd43a
+
+
+./.git/objects/e2:
+-r-------- 1 gruiz007 classes        144 Oct 21 23:03 3a9098d4f9568c1342788d344178929b25d980
+-r-------- 1 gruiz007 classes        206 Oct 31 23:25 f58dc79cc9f43ec4e0e9ae7087fdf2858c7d27
+
+
+./.git/objects/e3:
+-r-------- 1 gruiz007 classes        173 Nov 11 20:24 78a065e848bc310764eada2de214ef88e81437
+
+
+./.git/objects/e6:
+-r-------- 1 gruiz007 classes        175 Nov 11 20:24 0d67b1ecb5d828983584164f9cf642db9492a9
+-r-------- 1 gruiz007 classes        168 Oct 21 21:19 c05b070bf0ca5bbdf28277865b1f8be48f0729
+
+
+./.git/objects/e9:
+-r-------- 1 gruiz007 classes       2089 Nov 11 20:24 877e0a4268a2269a0b850d8b5da901c4612008
+
+
+./.git/objects/eb:
+-r-------- 1 gruiz007 classes        173 Nov 11 20:24 9bcdb8df05e0c955ae61237ef9571bd10a2b21
+-r-------- 1 gruiz007 classes       1218 Oct 31 10:35 e4a587b09a69eeafef5347d176a3e3541c06df
+
+
+./.git/objects/ed:
+-r-------- 1 gruiz007 classes         87 Oct 21 09:24 c1c0f4508df005fd1895ed34393f07db7ad833
+
+
+./.git/objects/ee:
+-r-------- 1 gruiz007 classes        178 Oct 21 09:24 8b2a94b61a583c180c2fae666714d2c37d6491
+
+
+./.git/objects/f0:
+-r-------- 1 gruiz007 classes        116 Nov 11 15:36 309b3f75c29c5ab861b3fddff8683aef68969b
+-r-------- 1 gruiz007 classes        174 Nov 01 20:26 83f5daa470d7bd9ff7c10e6feafad9639c0e2f
+
+
+./.git/objects/f4:
+-r-------- 1 gruiz007 classes        116 Nov 09 19:38 27674a434e70aa592f409cd9d35f0f99eac4fa
+-r-------- 1 gruiz007 classes        927 Oct 21 22:59 68e8f65a077802329f4aa7cb464321934fb4db
+
+
+./.git/objects/f7:
+-r-------- 1 gruiz007 classes        169 Nov 11 18:55 917d2786c148f2e1ef88156cb5859a42438154
+
+
+./.git/objects/fa:
+-r-------- 1 gruiz007 classes        145 Oct 21 21:26 03d8e7c0ead7a15140f05dbdba443148b4b9d4
+
+
+./.git/objects/fc:
+-r-------- 1 gruiz007 classes        173 Oct 30 14:29 73917dea269fab50f61bfdbd1423ca33a55cbb
+
+
+./.git/objects/ff:
+-r-------- 1 gruiz007 classes        767 Nov 11 20:40 f9d78fa9fdbbd0f061d6ead041f9e02982b15f
+
+
+./.git/objects/info:
+-rw------- 1 gruiz007 classes         54 Oct 20 18:27 packs
+
+
+./.git/objects/pack:
+-r-------- 1 gruiz007 classes      38340 Oct 20 15:18 pack-51be7dce109f6f745ca701bb6b9fcefbc1fe7ec8.idx
+-r-------- 1 gruiz007 classes   12469599 Oct 20 15:18 pack-51be7dce109f6f745ca701bb6b9fcefbc1fe7ec8.pack
+
+
+./.git/refs:
+drwx------ 2 gruiz007 classes       4096 Nov 11 20:40 heads
+drwx------ 3 gruiz007 classes       4096 Oct 20 15:18 remotes
+drwx------ 2 gruiz007 classes       4096 Oct 21 23:33 tags
+
+
+./.git/refs/heads:
+-rw------- 1 gruiz007 classes         41 Nov 11 20:40 exec
+-rw------- 1 gruiz007 classes         41 Nov 11 18:50 ls
+-rw------- 1 gruiz007 classes         41 Nov 07 15:27 ls-2
+-rw------- 1 gruiz007 classes         41 Nov 11 20:35 master
+
+
+./.git/refs/remotes:
+drwx------ 2 gruiz007 classes       4096 Nov 11 20:41 origin
+
+
+./.git/refs/remotes/origin:
+-rw------- 1 gruiz007 classes         41 Nov 11 20:41 exec
+-rw------- 1 gruiz007 classes         30 Oct 20 15:18 HEAD
+-rw------- 1 gruiz007 classes         41 Nov 11 18:46 ls
+-rw------- 1 gruiz007 classes         41 Nov 11 20:24 master
+
+
+./.git/refs/tags:
+-rw------- 1 gruiz007 classes         41 Oct 21 23:33 hw0
+
+
+./bin:
+-rwx------ 1 gruiz007 classes      38374 Oct 28 15:25 a.out
+-rwx------ 1 gruiz007 classes      58562 Nov 11 21:36 cp
+-rwx------ 1 gruiz007 classes     127735 Nov 11 21:35 ls
+-rwx------ 1 gruiz007 classes     116286 Nov 11 21:35 rshell
+
+
+./src:
+-rwx------ 1 gruiz007 classes      13930 Nov 08 17:21 a.out
+-rw------- 1 gruiz007 classes       5224 Nov 11 20:36 cp.cpp
+-rw------- 1 gruiz007 classes       4069 Nov 11 20:36 ls.cpp
+-rw------- 1 gruiz007 classes       5097 Oct 30 14:49 rschell.cpp
+-rw------- 1 gruiz007 classes       9116 Nov 11 20:36 Status.h
+-rw------- 1 gruiz007 classes    2881264 Nov 08 17:21 Status.h.gch
+-rw------- 1 gruiz007 classes       2715 Nov 11 20:40 Timer.h
+
+
+./SRC:
+-rwx------ 1 gruiz007 classes      13930 Nov 08 17:21 a.out
+-rw------- 1 gruiz007 classes       5224 Nov 11 20:36 cp.cpp
+-rw------- 1 gruiz007 classes       4069 Nov 11 20:36 ls.cpp
+-rw------- 1 gruiz007 classes       5097 Oct 30 14:49 rschell.cpp
+-rw------- 1 gruiz007 classes       9116 Nov 11 20:36 Status.h
+-rw------- 1 gruiz007 classes    2881264 Nov 08 17:21 Status.h.gch
+-rw------- 1 gruiz007 classes       2715 Nov 11 20:40 Timer.h
+
+
+./tests:
+-rw------- 1 gruiz007 classes      16105 Oct 21 23:28 exec.script
+-rw------- 1 gruiz007 classes     131072 Nov 11 21:57 ls.script
+
+
+~/rshell
+gruiz007@hammer $ bin/ls -lRa[K[K [K[KR -l -a -RLA[K[Kal -lrA[K[KRa
+.:
+drwx------ 8 gruiz007 classes       4096 Nov 11 20:40 .git
+-rwx------ 1 gruiz007 classes      10617 Nov 10 21:02 a.out
+drwx------ 2 gruiz007 classes       4096 Nov 11 21:36 bin
+-rw------- 1 gruiz007 classes       1483 Nov 11 20:39 LICENSE
+-rw------- 1 gruiz007 classes        654 Nov 11 20:36 Makefile
+-rw------- 1 gruiz007 classes       4180 Nov 11 20:36 README
+lrwxrwxrwx 1 gruiz007 classes          6 Nov 11 14:08 readme -> README
+drwx------ 2 gruiz007 classes       4096 Nov 11 20:40 src
+lrwxrwxrwx 1 gruiz007 classes          3 Nov 11 14:08 SRC -> src
+drwx------ 2 gruiz007 classes       4096 Nov 11 21:35 tests
+
+
+./.git:
+-rw------- 1 gruiz007 classes        267 Nov 11 20:36 #MERGE_MSG#
+drwx------ 2 gruiz007 classes       4096 Oct 20 15:17 branches
+-rw------- 1 gruiz007 classes          9 Nov 11 20:40 COMMIT_EDITMSG
+-rw------- 1 gruiz007 classes        322 Oct 21 23:26 config
+-rw------- 1 gruiz007 classes         73 Oct 20 15:17 description
+-rw------- 1 gruiz007 classes        311 Nov 11 20:40 FETCH_HEAD
+-rw------- 1 gruiz007 classes         21 Nov 11 20:37 HEAD
+drwx------ 2 gruiz007 classes       4096 Oct 20 15:17 hooks
+-rw------- 1 gruiz007 classes        895 Nov 11 20:40 index
+drwx------ 2 gruiz007 classes       4096 Oct 20 18:27 info
+drwx------ 3 gruiz007 classes       4096 Oct 20 15:18 logs
+drwx------ 131 gruiz007 classes       8192 Nov 11 20:40 objects
+-rw------- 1 gruiz007 classes         41 Nov 11 20:40 ORIG_HEAD
+-rw------- 1 gruiz007 classes        173 Oct 20 15:18 packed-refs
+drwx------ 5 gruiz007 classes       4096 Oct 20 15:18 refs
+
+
+./.git/branches:
+
+
+./.git/hooks:
+-rwx------ 1 gruiz007 classes        452 Oct 20 15:17 applypatch-msg.sample
+-rwx------ 1 gruiz007 classes        896 Oct 20 15:17 commit-msg.sample
+-rwx------ 1 gruiz007 classes        189 Oct 20 15:17 post-update.sample
+-rwx------ 1 gruiz007 classes        398 Oct 20 15:17 pre-applypatch.sample
+-rwx------ 1 gruiz007 classes       1635 Oct 20 15:17 pre-commit.sample
+-rwx------ 1 gruiz007 classes       1348 Oct 20 15:17 pre-push.sample
+-rwx------ 1 gruiz007 classes       4951 Oct 20 15:17 pre-rebase.sample
+-rwx------ 1 gruiz007 classes       1239 Oct 20 15:17 prepare-commit-msg.sample
+-rwx------ 1 gruiz007 classes       3611 Oct 20 15:17 update.sample
+
+
+./.git/info:
+-rw------- 1 gruiz007 classes        240 Oct 20 15:17 exclude
+-rw------- 1 gruiz007 classes        257 Oct 20 18:27 refs
+
+
+./.git/logs:
+-rw------- 1 gruiz007 classes       9350 Nov 11 20:40 HEAD
+drwx------ 4 gruiz007 classes       4096 Oct 20 15:18 refs
+
+
+./.git/logs/refs:
+drwx------ 2 gruiz007 classes       4096 Nov 07 15:27 heads
+drwx------ 3 gruiz007 classes       4096 Oct 20 15:18 remotes
+
+
+./.git/logs/refs/heads:
+-rw------- 1 gruiz007 classes       4120 Nov 11 20:40 exec
+-rw------- 1 gruiz007 classes       2848 Nov 11 18:50 ls
+-rw------- 1 gruiz007 classes        157 Nov 07 15:27 ls-2
+-rw------- 1 gruiz007 classes       1212 Nov 11 20:35 master
+
+
+./.git/logs/refs/remotes:
+drwx------ 2 gruiz007 classes       4096 Oct 29 13:28 origin
+
+
+./.git/logs/refs/remotes/origin:
+-rw------- 1 gruiz007 classes       3008 Nov 11 20:41 exec
+-rw------- 1 gruiz007 classes        193 Oct 20 15:18 HEAD
+-rw------- 1 gruiz007 classes       1924 Nov 11 18:46 ls
+-rw------- 1 gruiz007 classes        752 Nov 11 20:24 master
+
+
+./.git/objects:
+drwx------ 2 gruiz007 classes       4096 Oct 20 19:00 01
+drwx------ 2 gruiz007 classes       4096 Nov 10 22:20 02
+drwx------ 2 gruiz007 classes       4096 Nov 11 18:55 04
+drwx------ 2 gruiz007 classes       4096 Nov 10 22:23 06
+drwx------ 2 gruiz007 classes       4096 Oct 29 13:22 0a
+drwx------ 2 gruiz007 classes       4096 Nov 11 18:55 0d
+drwx------ 2 gruiz007 classes       4096 Oct 21 12:23 15
+drwx------ 2 gruiz007 classes       4096 Nov 11 20:24 16
+drwx------ 2 gruiz007 classes       4096 Oct 21 21:25 1c
+drwx------ 2 gruiz007 classes       4096 Nov 11 14:02 1d
+drwx------ 2 gruiz007 classes       4096 Nov 11 18:44 20
+drwx------ 2 gruiz007 classes       4096 Oct 21 21:55 21
+drwx------ 2 gruiz007 classes       4096 Oct 21 20:45 23
+drwx------ 2 gruiz007 classes       4096 Nov 11 20:24 24
+drwx------ 2 gruiz007 classes       4096 Nov 10 22:20 25
+drwx------ 2 gruiz007 classes       4096 Nov 11 20:24 26
+drwx------ 2 gruiz007 classes       4096 Nov 11 20:24 29
+drwx------ 2 gruiz007 classes       4096 Nov 09 19:38 2a
+drwx------ 2 gruiz007 classes       4096 Nov 01 20:26 2b
+drwx------ 2 gruiz007 classes       4096 Nov 11 15:36 2d
+drwx------ 2 gruiz007 classes       4096 Nov 11 20:24 2f
+drwx------ 2 gruiz007 classes       4096 Nov 11 14:02 30
+drwx------ 2 gruiz007 classes       4096 Nov 10 22:23 34
+drwx------ 2 gruiz007 classes       4096 Oct 21 21:12 35
+drwx------ 2 gruiz007 classes       4096 Nov 09 14:26 36
+drwx------ 2 gruiz007 classes       4096 Oct 21 20:45 37
+drwx------ 2 gruiz007 classes       4096 Nov 11 18:50 38
+drwx------ 2 gruiz007 classes       4096 Oct 29 13:26 39
+drwx------ 2 gruiz007 classes       4096 Oct 21 16:37 3a
+drwx------ 2 gruiz007 classes       4096 Oct 29 13:22 3c
+drwx------ 2 gruiz007 classes       4096 Oct 21 16:15 3d
+drwx------ 2 gruiz007 classes       4096 Oct 21 10:59 42
+drwx------ 2 gruiz007 classes       4096 Oct 21 16:37 46
+drwx------ 2 gruiz007 classes       4096 Oct 31 23:25 47
+drwx------ 2 gruiz007 classes       4096 Oct 30 14:30 4c
+drwx------ 2 gruiz007 classes       4096 Oct 20 18:58 4f
+drwx------ 2 gruiz007 classes       4096 Oct 20 19:00 53
+drwx------ 2 gruiz007 classes       4096 Nov 11 19:21 55
+drwx------ 2 gruiz007 classes       4096 Nov 11 20:24 56
+drwx------ 2 gruiz007 classes       4096 Oct 21 21:12 5b
+drwx------ 2 gruiz007 classes       4096 Nov 11 18:55 5c
+drwx------ 2 gruiz007 classes       4096 Oct 30 14:30 5d
+drwx------ 2 gruiz007 classes       4096 Nov 11 20:24 60
+drwx------ 2 gruiz007 classes       4096 Oct 29 13:26 63
+drwx------ 2 gruiz007 classes       4096 Oct 29 13:26 64
+drwx------ 2 gruiz007 classes       4096 Nov 09 14:26 66
+drwx------ 2 gruiz007 classes       4096 Nov 07 21:28 67
+drwx------ 2 gruiz007 classes       4096 Nov 11 14:02 68
+drwx------ 2 gruiz007 classes       4096 Oct 21 21:55 69
+drwx------ 2 gruiz007 classes       4096 Oct 20 18:20 6a
+drwx------ 2 gruiz007 classes       4096 Nov 11 15:36 6b
+drwx------ 2 gruiz007 classes       4096 Nov 11 20:35 6c
+drwx------ 2 gruiz007 classes       4096 Nov 11 18:45 6e
+drwx------ 2 gruiz007 classes       4096 Nov 07 21:28 6f
+drwx------ 2 gruiz007 classes       4096 Nov 11 19:21 71
+drwx------ 2 gruiz007 classes       4096 Nov 08 14:04 74
+drwx------ 2 gruiz007 classes       4096 Nov 11 20:38 75
+drwx------ 2 gruiz007 classes       4096 Nov 08 14:04 76
+drwx------ 2 gruiz007 classes       4096 Oct 21 23:25 77
+drwx------ 2 gruiz007 classes       4096 Oct 29 13:26 78
+drwx------ 2 gruiz007 classes       4096 Oct 21 21:11 7c
+drwx------ 2 gruiz007 classes       4096 Oct 21 09:24 7d
+drwx------ 2 gruiz007 classes       4096 Oct 31 10:35 80
+drwx------ 2 gruiz007 classes       4096 Nov 11 20:40 82
+drwx------ 2 gruiz007 classes       4096 Nov 09 19:38 83
+drwx------ 2 gruiz007 classes       4096 Nov 11 19:21 84
+drwx------ 2 gruiz007 classes       4096 Nov 11 20:24 88
+drwx------ 2 gruiz007 classes       4096 Oct 21 21:55 89
+drwx------ 2 gruiz007 classes       4096 Nov 11 20:24 8d
+drwx------ 2 gruiz007 classes       4096 Nov 11 14:02 8f
+drwx------ 2 gruiz007 classes       4096 Nov 07 21:27 90
+drwx------ 2 gruiz007 classes       4096 Nov 11 20:39 92
+drwx------ 2 gruiz007 classes       4096 Oct 21 21:21 93
+drwx------ 2 gruiz007 classes       4096 Oct 21 21:23 96
+drwx------ 2 gruiz007 classes       4096 Oct 29 13:26 98
+drwx------ 2 gruiz007 classes       4096 Oct 21 10:59 9a
+drwx------ 2 gruiz007 classes       4096 Oct 20 19:00 9d
+drwx------ 2 gruiz007 classes       4096 Oct 21 21:25 9e
+drwx------ 2 gruiz007 classes       4096 Oct 20 18:58 9f
+drwx------ 2 gruiz007 classes       4096 Nov 11 20:24 a0
+drwx------ 2 gruiz007 classes       4096 Oct 21 16:15 a1
+drwx------ 2 gruiz007 classes       4096 Nov 11 14:02 a3
+drwx------ 2 gruiz007 classes       4096 Oct 21 23:02 a4
+drwx------ 2 gruiz007 classes       4096 Oct 30 14:29 a6
+drwx------ 2 gruiz007 classes       4096 Nov 11 18:45 ab
+drwx------ 2 gruiz007 classes       4096 Nov 07 21:28 ac
+drwx------ 2 gruiz007 classes       4096 Nov 11 20:24 b2
+drwx------ 2 gruiz007 classes       4096 Nov 11 20:24 b4
+drwx------ 2 gruiz007 classes       4096 Nov 11 19:21 b5
+drwx------ 2 gruiz007 classes       4096 Nov 10 22:23 b7
+drwx------ 2 gruiz007 classes       4096 Oct 31 23:24 b8
+drwx------ 2 gruiz007 classes       4096 Oct 21 22:10 b9
+drwx------ 2 gruiz007 classes       4096 Nov 11 18:50 bb
+drwx------ 2 gruiz007 classes       4096 Nov 11 18:45 bc
+drwx------ 2 gruiz007 classes       4096 Oct 21 21:55 be
+drwx------ 2 gruiz007 classes       4096 Nov 08 14:03 bf
+drwx------ 2 gruiz007 classes       4096 Oct 20 19:00 c0
+drwx------ 2 gruiz007 classes       4096 Nov 11 20:24 c2
+drwx------ 2 gruiz007 classes       4096 Nov 11 18:55 c4
+drwx------ 2 gruiz007 classes       4096 Oct 21 23:26 c7
+drwx------ 2 gruiz007 classes       4096 Nov 11 18:49 c9
+drwx------ 2 gruiz007 classes       4096 Oct 30 14:29 cc
+drwx------ 2 gruiz007 classes       4096 Oct 21 23:26 ce
+drwx------ 2 gruiz007 classes       4096 Oct 21 21:23 cf
+drwx------ 2 gruiz007 classes       4096 Oct 20 18:58 d1
+drwx------ 2 gruiz007 classes       4096 Oct 20 18:19 d2
+drwx------ 2 gruiz007 classes       4096 Oct 20 18:57 d3
+drwx------ 2 gruiz007 classes       4096 Nov 11 20:40 d4
+drwx------ 2 gruiz007 classes       4096 Oct 21 12:23 d6
+drwx------ 2 gruiz007 classes       4096 Oct 21 16:37 d7
+drwx------ 2 gruiz007 classes       4096 Nov 09 14:25 d9
+drwx------ 2 gruiz007 classes       4096 Nov 11 20:24 db
+drwx------ 2 gruiz007 classes       4096 Nov 11 20:40 dc
+drwx------ 2 gruiz007 classes       4096 Oct 21 16:15 e0
+drwx------ 2 gruiz007 classes       4096 Oct 31 23:25 e2
+drwx------ 2 gruiz007 classes       4096 Nov 11 20:24 e3
+drwx------ 2 gruiz007 classes       4096 Nov 11 20:24 e6
+drwx------ 2 gruiz007 classes       4096 Nov 11 20:24 e9
+drwx------ 2 gruiz007 classes       4096 Nov 11 20:24 eb
+drwx------ 2 gruiz007 classes       4096 Oct 21 09:24 ed
+drwx------ 2 gruiz007 classes       4096 Oct 21 09:24 ee
+drwx------ 2 gruiz007 classes       4096 Nov 11 15:36 f0
+drwx------ 2 gruiz007 classes       4096 Nov 09 19:38 f4
+drwx------ 2 gruiz007 classes       4096 Nov 11 18:55 f7
+drwx------ 2 gruiz007 classes       4096 Oct 21 21:26 fa
+drwx------ 2 gruiz007 classes       4096 Oct 30 14:29 fc
+drwx------ 2 gruiz007 classes       4096 Nov 11 20:40 ff
+drwx------ 2 gruiz007 classes       4096 Oct 20 18:27 info
+drwx------ 2 gruiz007 classes       4096 Oct 20 15:18 pack
+
+
+./.git/objects/01:
+-r-------- 1 gruiz007 classes        178 Oct 20 19:00 f86c85b4d271e7ced6193e4a62bd9f1d7e21b8
+
+
+./.git/objects/02:
+-r-------- 1 gruiz007 classes       2227 Nov 10 22:20 163f17965fc52a79d496157cfb054d7300c5c9
+
+
+./.git/objects/04:
+-r-------- 1 gruiz007 classes       1896 Nov 11 18:55 6ea4490f9630077b02e6ac96e2bca3d4d83315
+
+
+./.git/objects/06:
+-r-------- 1 gruiz007 classes       2333 Oct 21 09:24 a91ad7b0133b4e8cfd5a2b91bc3400db37deec
+-r-------- 1 gruiz007 classes        172 Nov 10 22:23 e9f66ca602521d2f3818613cbc0820f56a3123
+-r-------- 1 gruiz007 classes        182 Oct 30 14:29 ed474a910fa8d3fdcaf83a1f8204810794a2e2
+
+
+./.git/objects/0a:
+-r-------- 1 gruiz007 classes        116 Oct 29 13:22 aa32413c979a082b0ef69f744b0e6347fd05aa
+
+
+./.git/objects/0d:
+-r-------- 1 gruiz007 classes        210 Oct 21 20:45 46273481d35e623cd85eff7695bdc6571310a7
+-r-------- 1 gruiz007 classes        758 Nov 11 18:55 6873a662050da8305cc3e663e8c77cbd96b56e
+-r-------- 1 gruiz007 classes         87 Oct 20 18:20 7124484eef47f330edcd3e73847030d4da955a
+
+
+./.git/objects/15:
+-r-------- 1 gruiz007 classes        208 Oct 21 12:23 672d0ce6c5fa0bf6f560457036c4556ab67fb8
+
+
+./.git/objects/16:
+-r-------- 1 gruiz007 classes        175 Nov 11 20:24 99f3639920bd74c64881164f827c05f5f9254f
+
+
+./.git/objects/1c:
+-r-------- 1 gruiz007 classes        179 Oct 21 21:25 28f86a7f4be5013dd00b5b1cc78d58ed74e6e1
+
+
+./.git/objects/1d:
+-r-------- 1 gruiz007 classes        116 Nov 11 14:02 b6b74efb3b6495c28d01ffa60259535062253f
+
+
+./.git/objects/20:
+-r-------- 1 gruiz007 classes       3106 Nov 11 18:44 9ebb6a7b1fa8a117e02908fccd9766e3bb8cc4
+
+
+./.git/objects/21:
+-r-------- 1 gruiz007 classes        183 Oct 21 21:55 97b9fff2e1b9ff2c6532c4a76f5941ee45cbcc
+-r-------- 1 gruiz007 classes        178 Oct 21 10:59 b0f4cebd2217d1f1e61a3739f3baad94697c4d
+
+
+./.git/objects/23:
+-r-------- 1 gruiz007 classes        137 Oct 21 20:45 5c111ca008e0134f326ba4af3c6d69c8a5bebe
+
+
+./.git/objects/24:
+-r-------- 1 gruiz007 classes        173 Oct 29 13:22 010f6df5aa4ce646699c0f655350cfa139994f
+-r-------- 1 gruiz007 classes       1480 Nov 11 20:24 9edea4e2626af6a02b7025c23d150b7ea53c60
+-r-------- 1 gruiz007 classes       2530 Nov 11 15:35 afe26f1f86772e2124136bf7b8f9fc4f798f16
+-r-------- 1 gruiz007 classes        174 Nov 09 14:26 d1838f820dc78cbb90a0091912c77bdd95d3b5
+
+
+./.git/objects/25:
+-r-------- 1 gruiz007 classes       1595 Nov 10 22:20 ac0b725a9cc1d7a6a6f7b5b8dd480ba8a51af0
+
+
+./.git/objects/26:
+-r-------- 1 gruiz007 classes        174 Nov 11 20:24 a88e925de326ef792051200decb580b5afc236
+
+
+./.git/objects/29:
+-r-------- 1 gruiz007 classes        173 Nov 11 20:24 b6259aadad2abe53a42cc3bf6de76dbbea42df
+-r-------- 1 gruiz007 classes        174 Nov 11 20:24 be4954482aca55a01c852de16e20c4b99cdc30
+-r-------- 1 gruiz007 classes        229 Oct 31 10:35 cd6a860473617ea506f570a03e621547995c29
+
+
+./.git/objects/2a:
+-r-------- 1 gruiz007 classes        194 Nov 09 19:38 c42b20815da785d5fdd675ed98d5e79502d59a
+
+
+./.git/objects/2b:
+-r-------- 1 gruiz007 classes        183 Nov 01 20:26 2c3cf1f913d24c6edef33416697914fabf3feb
+-r-------- 1 gruiz007 classes        155 Oct 21 21:26 5634d3553d8ed05e7d7d416131e37c9264fc5a
+
+
+./.git/objects/2d:
+-r-------- 1 gruiz007 classes        188 Nov 11 15:36 21fb25c0ccabd2f8c4ab659b52b7625feb67a3
+
+
+./.git/objects/2f:
+-r-------- 1 gruiz007 classes        213 Nov 11 20:24 b88fd7ba1a38f5fe81615c966bdeb0679591bb
+-r-------- 1 gruiz007 classes        173 Nov 11 20:24 ec3d483a08b613708f5395f2ba462c76a3e69b
+
+
+./.git/objects/30:
+-r-------- 1 gruiz007 classes       1876 Nov 11 14:02 a54fc7e8e7e7112dcb4fdd926772a50e63bde9
+-r-------- 1 gruiz007 classes        173 Oct 21 23:26 d7038fe236a10207cae8d58af21f8606b5b581
+
+
+./.git/objects/34:
+-r-------- 1 gruiz007 classes        116 Nov 10 22:23 a123d28e6916343cdf5f4ea52bb87a2491b5d9
+
+
+./.git/objects/35:
+-r-------- 1 gruiz007 classes         87 Oct 21 21:12 f3d243332a5c6e68f332edf21963cac0071d75
+
+
+./.git/objects/36:
+-r-------- 1 gruiz007 classes        202 Nov 09 14:26 d12528d2213977dcfa1460774ede78c82df039
+
+
+./.git/objects/37:
+-r-------- 1 gruiz007 classes        169 Oct 21 20:45 7034d2f9e1cea5b018aac1a87f15d66e6f462d
+
+
+./.git/objects/38:
+-r-------- 1 gruiz007 classes        915 Oct 29 13:21 c7e6e776b387449159435cfbffa474764a435f
+-r-------- 1 gruiz007 classes       2032 Nov 09 19:38 e781e4b24f37771f43fd62b882d70280f37496
+-r-------- 1 gruiz007 classes        173 Nov 11 18:50 f2bef456369fc305f589638a14d639ca436a66
+
+
+./.git/objects/39:
+-r-------- 1 gruiz007 classes       1530 Oct 21 22:10 1199fa6025261b43dc053e1e3090f6ea2caad3
+-r-------- 1 gruiz007 classes        799 Oct 29 13:26 ca030dd81b9debf47a070ea497e7aca8d97b89
+
+
+./.git/objects/3a:
+-r-------- 1 gruiz007 classes        178 Oct 21 16:37 156a876b5eec6c3d908e9995f2404d5248f8b7
+
+
+./.git/objects/3c:
+-r-------- 1 gruiz007 classes        196 Oct 29 13:22 0ca36d97423929ebb25a29fc2ea04d49cd044e
+
+
+./.git/objects/3d:
+-r-------- 1 gruiz007 classes        216 Oct 21 16:15 e267187ab951567faee920feab6a841ef2876b
+
+
+./.git/objects/42:
+-r-------- 1 gruiz007 classes        194 Oct 21 10:59 8047bf5dce33a2a471c584f11b3407f7de916d
+
+
+./.git/objects/46:
+-r-------- 1 gruiz007 classes       2624 Oct 21 16:37 6d14a3e510049dc0aff1258ba29b59d2e29694
+
+
+./.git/objects/47:
+-r-------- 1 gruiz007 classes        116 Oct 31 23:25 94e0399231687e51b5e7c60605e561ae048961
+
+
+./.git/objects/4c:
+-r-------- 1 gruiz007 classes        173 Oct 30 14:30 58809e3e8ec743d999984dbf3cc4e9ffbe3ef5
+
+
+./.git/objects/4f:
+-r-------- 1 gruiz007 classes        178 Oct 20 18:58 bf7237cee6e21844b6a771bc16d1da956384e7
+
+
+./.git/objects/53:
+-r-------- 1 gruiz007 classes       2064 Oct 20 19:00 4caef4c3c4d18a0e76e16a1893be73d0d956c8
+
+
+./.git/objects/55:
+-r-------- 1 gruiz007 classes       3204 Nov 11 19:21 31170f545dd11f9555a4fd19d97e3a0da3a90a
+-r-------- 1 gruiz007 classes       1113 Nov 09 14:25 cafb4b34d95f1e9f40c0d6e3dfd707d53bc7fa
+
+
+./.git/objects/56:
+-r-------- 1 gruiz007 classes        167 Nov 11 20:24 d7573050042fc3159e6e96ae560e471c225262
+-r-------- 1 gruiz007 classes        203 Nov 07 21:27 f68b6bfb37f8dbeeb979f7550b67b5f2a36ea0
+
+
+./.git/objects/5b:
+-r-------- 1 gruiz007 classes        186 Oct 21 21:12 9f4eded0274a8370ecf0bb908cf6d3cbc16307
+
+
+./.git/objects/5c:
+-r-------- 1 gruiz007 classes        173 Nov 11 18:55 1f53d2cbf0847e096686aa8e0ecc5c89e0aa61
+
+
+./.git/objects/5d:
+-r-------- 1 gruiz007 classes        148 Oct 21 21:21 0d73586bc5b7cdcb84b432d94a09b87ea23974
+-r-------- 1 gruiz007 classes        248 Oct 30 14:30 a51c16d763bdd0471ec50ff31d90d1b89e8eea
+
+
+./.git/objects/60:
+-r-------- 1 gruiz007 classes        214 Nov 11 20:24 1a44a7f701144882d8df9fd5e2ca5864d5f297
+
+
+./.git/objects/63:
+-r-------- 1 gruiz007 classes        176 Oct 21 23:03 c4cdb33a005d4842a11d825c8bd6986e715e9d
+-r-------- 1 gruiz007 classes         87 Oct 21 10:59 cedb29f361733480e7664fbcd3f8dd362b21cb
+-r-------- 1 gruiz007 classes        173 Oct 29 13:26 fa0a1922f0479854ed65be9631244e5916b5d1
+
+
+./.git/objects/64:
+-r-------- 1 gruiz007 classes        178 Oct 20 18:20 04b7f99ae3d8713164aa965b8e898deb9eb282
+-r-------- 1 gruiz007 classes        997 Oct 29 13:26 921a895869de7e607fd22fd6dec8b76877713b
+
+
+./.git/objects/66:
+-r-------- 1 gruiz007 classes        116 Nov 09 14:26 b764ac781397ec461ba940e4a80c54bf2debde
+
+
+./.git/objects/67:
+-r-------- 1 gruiz007 classes        176 Nov 07 21:28 2f4e562a8d19ed8858362ee3f2c14ba05f5b8a
+
+
+./.git/objects/68:
+-r-------- 1 gruiz007 classes       1476 Nov 09 19:38 42958432d72a078ac9e0e8f8fa3a335fe434d4
+-r-------- 1 gruiz007 classes       2206 Nov 11 14:02 924508659e05a9f052e968e7a5b9b64a5dc183
+
+
+./.git/objects/69:
+-r-------- 1 gruiz007 classes         56 Oct 21 21:55 ff9c186d4acfc5a9cf259a62db067068409111
+
+
+./.git/objects/6a:
+-r-------- 1 gruiz007 classes        275 Oct 20 18:20 d287642218f1f6ee4d60c9824966c538981c07
+
+
+./.git/objects/6b:
+-r-------- 1 gruiz007 classes         56 Oct 21 21:26 09836aefabc8164ce46bd41fc7480754b229d4
+-r-------- 1 gruiz007 classes        174 Nov 11 15:36 43a2d9c22b55fe88a8be5421e79f11ed49fbc0
+-r-------- 1 gruiz007 classes        174 Nov 08 14:04 62409942a7df1b5c933e20d08be11a2f721f40
+
+
+./.git/objects/6c:
+-r-------- 1 gruiz007 classes        158 Nov 11 20:35 4a3a3bfa8525e1e0b552e9a220a822734920b1
+
+
+./.git/objects/6e:
+-r-------- 1 gruiz007 classes        222 Nov 11 18:45 ea89b1c272c705f2cf9cd7e674adbc5c5d0fc1
+
+
+./.git/objects/6f:
+-r-------- 1 gruiz007 classes        230 Nov 07 21:28 789d4a00d97435d680a2a2ceb00e59f60ae59b
+
+
+./.git/objects/71:
+-r-------- 1 gruiz007 classes        190 Nov 11 19:21 f9822a4e856976011c18a906dc927c79d6316b
+
+
+./.git/objects/74:
+-r-------- 1 gruiz007 classes        215 Nov 08 14:04 baaebc6fa956f89e3654d4723c05119a8025dd
+
+
+./.git/objects/75:
+-r-------- 1 gruiz007 classes        207 Nov 11 20:38 3c7c59979d1d38a93b806cf2e0ee0f6e62ce23
+-r-------- 1 gruiz007 classes        145 Oct 21 22:10 4f68257f009af7750e8e5987032519abb1d726
+
+
+./.git/objects/76:
+-r-------- 1 gruiz007 classes         83 Nov 08 14:04 862ac062153cd15ad339c2329fa45faffb9df2
+
+
+./.git/objects/77:
+-r-------- 1 gruiz007 classes       3391 Oct 21 23:25 e28f3046644f437f1613547cb2fefd29b78108
+
+
+./.git/objects/78:
+-r-------- 1 gruiz007 classes        173 Oct 29 13:26 457d8609ff657aee50ba7443150960dd155060
+-r-------- 1 gruiz007 classes         88 Oct 21 12:23 ff674afdffac9d3430b8c665c5ca1db4a2bf5b
+
+
+./.git/objects/7c:
+-r-------- 1 gruiz007 classes       2541 Oct 21 21:11 ca2f4afe213d689f23b9e80949d13fabdd1137
+
+
+./.git/objects/7d:
+-r-------- 1 gruiz007 classes        179 Oct 21 09:24 5f3c096f6c4cd5d22176e973d5ed590a3192cb
+
+
+./.git/objects/80:
+-r-------- 1 gruiz007 classes        173 Oct 31 10:35 2779f8aa3ef4ab90342c6ee849229735270a4f
+
+
+./.git/objects/82:
+-r-------- 1 gruiz007 classes        173 Nov 11 20:40 8824e74b183a3a3cf0fe0fd7e61da6cbd696f9
+
+
+./.git/objects/83:
+-r-------- 1 gruiz007 classes        174 Nov 09 19:38 960d0b92b1b64c255b7353f453d30cc257bd2c
+
+
+./.git/objects/84:
+-r-------- 1 gruiz007 classes       1933 Nov 01 20:25 59e88a1fcabedcffa3e8dc1a99f8448df9c72b
+-r-------- 1 gruiz007 classes        173 Nov 11 19:21 ef64069f2e2a251be925f3085fb58eccab42c1
+
+
+./.git/objects/88:
+-r-------- 1 gruiz007 classes        224 Nov 11 20:24 2a05c714b8e44d462c7924e49f489134447c20
+
+
+./.git/objects/89:
+-r-------- 1 gruiz007 classes       2125 Oct 21 21:55 8a4398a04f46199f5257e0b745a6568a629df8
+-r-------- 1 gruiz007 classes       2566 Oct 21 16:14 a3f33aa3279f6cca902d0d29300a04a31f9360
+
+
+./.git/objects/8d:
+-r-------- 1 gruiz007 classes        173 Nov 11 20:24 44d64995b2145160a3cfe9a0320681837817c2
+-r-------- 1 gruiz007 classes       1750 Nov 11 18:44 878235263d9a2df49f3686a821e5ed813e472e
+-r-------- 1 gruiz007 classes        178 Oct 21 12:23 9887eeda60b4ad8e97fb48231a6388092cadb7
+
+
+./.git/objects/8f:
+-r-------- 1 gruiz007 classes        116 Oct 31 10:35 126e1c73974310e9a8865442ce4b8b2af1cc15
+-r-------- 1 gruiz007 classes        173 Nov 11 14:02 d4828f4bdfa2b6ffe91475c82798b032a4279b
+
+
+./.git/objects/90:
+-r-------- 1 gruiz007 classes       1434 Nov 07 21:27 00e335fc5be9d11ae820ab44a58cbd6f0ae411
+-r-------- 1 gruiz007 classes        210 Oct 21 21:12 6c542d6b9b6de3e7b31f1b6f153bdba4f87dd0
+
+
+./.git/objects/92:
+-r-------- 1 gruiz007 classes        173 Oct 31 23:25 29bcf2801da3eb4e1b9763e5747f4c6819d409
+-r-------- 1 gruiz007 classes        812 Nov 11 20:39 8feec7de9c630003241d6f483feb12ac016900
+
+
+./.git/objects/93:
+-r-------- 1 gruiz007 classes        178 Oct 21 21:21 55ef3f37a435081ab7719b43a7194fa1f0b205
+
+
+./.git/objects/96:
+-r-------- 1 gruiz007 classes        162 Oct 21 21:23 acd3e27bcb657e37f2ae37199820efcf0de32e
+
+
+./.git/objects/98:
+-r-------- 1 gruiz007 classes        171 Oct 29 13:26 daa2c73a7d0c54d32cbac9bb6c8c597cdce196
+
+
+./.git/objects/9a:
+-r-------- 1 gruiz007 classes       2210 Oct 21 10:59 1e4e607d1fa1900cf15f48efa2dd9ce4995395
+
+
+./.git/objects/9d:
+-r-------- 1 gruiz007 classes         87 Oct 20 19:00 a663a125a90800bc674ce06cbdd8faa3260bb5
+
+
+./.git/objects/9e:
+-r-------- 1 gruiz007 classes        145 Oct 21 21:25 d3c78edea41fac0dbb5536f8833ab6ff1101b4
+
+
+./.git/objects/9f:
+-r-------- 1 gruiz007 classes         87 Oct 20 18:58 46c938cf12ee985a7e294516fe505c6050d6e8
+
+
+./.git/objects/a0:
+-r-------- 1 gruiz007 classes        243 Nov 11 20:24 a8c9dd5cad85bfb58256d0a8bd6455aee58ed3
+
+
+./.git/objects/a1:
+-r-------- 1 gruiz007 classes         87 Oct 21 16:15 9a6c45a0695a4db5ef37d7a4190342e7ba7690
+
+
+./.git/objects/a3:
+-r-------- 1 gruiz007 classes        184 Nov 11 14:02 05b2a5e7b91558d0941e0082ffc4d2e80f2761
+-r-------- 1 gruiz007 classes        173 Nov 07 21:29 4f0ff443795e76258d7a3a0707fcb9feaa5d99
+-r-------- 1 gruiz007 classes        174 Nov 07 21:28 beb0a1576542aeb0330bb94e2458d99b044fa4
+
+
+./.git/objects/a4:
+-r-------- 1 gruiz007 classes       1009 Oct 21 23:02 15574efa6d194d6a9d6014492c0e47721aa9d9
+
+
+./.git/objects/a6:
+-r-------- 1 gruiz007 classes        116 Oct 30 14:29 de78586b5e136dc0fb27ff196e8f85a175d331
+
+
+./.git/objects/ab:
+-r-------- 1 gruiz007 classes        116 Nov 11 18:45 2bb4ae30ebe41a0163612fd0f4073140c0dc33
+
+
+./.git/objects/ac:
+-r-------- 1 gruiz007 classes         83 Nov 07 21:28 c698b6d1bdaa3f4a7fcb74017a48b23fb046c1
+
+
+./.git/objects/b2:
+-r-------- 1 gruiz007 classes        174 Nov 11 20:24 92d02eac0af00d257324acd8611aab29217bb7
+
+
+./.git/objects/b4:
+-r-------- 1 gruiz007 classes        173 Nov 11 20:24 0c3fa870ddf3a0a15d9025760e883b3abec555
+
+
+./.git/objects/b5:
+-r-------- 1 gruiz007 classes        173 Nov 11 19:21 1360c64b2ec7049605c129c3c50445a5962087
+
+
+./.git/objects/b7:
+-r-------- 1 gruiz007 classes        236 Nov 10 22:23 932e94b00d32a0e98aa5831a4afc74bbfc7e9a
+
+
+./.git/objects/b8:
+-r-------- 1 gruiz007 classes       1879 Oct 31 23:24 880a60fedbfca230ee5d23dcd46e2d407979e8
+
+
+./.git/objects/b9:
+-r-------- 1 gruiz007 classes        166 Oct 21 22:10 33df01890770f08d22bd122776a20854c60fca
+
+
+./.git/objects/bb:
+-r-------- 1 gruiz007 classes        116 Nov 01 20:26 36d2d51bee40f9fc72ee8c6bda86e19edbe4c3
+-r-------- 1 gruiz007 classes        164 Nov 11 18:50 65967dfab303060e09b31fd89eaa5a2c010bbe
+
+
+./.git/objects/bc:
+-r-------- 1 gruiz007 classes        174 Nov 11 18:45 6b0b0b6a7d1704a3e31e7f3e2281a70dd02daf
+
+
+./.git/objects/be:
+-r-------- 1 gruiz007 classes        145 Oct 21 21:55 1d1a9569018e9412f9e85aea468b652f32732a
+-r-------- 1 gruiz007 classes        983 Oct 21 16:14 91807a43189d9d34b149cda5acbdbfff107cec
+
+
+./.git/objects/bf:
+-r-------- 1 gruiz007 classes       1419 Nov 08 14:03 edc0d2584aa794c91cf99ec4726d250a6b54be
+
+
+./.git/objects/c0:
+-r-------- 1 gruiz007 classes        175 Oct 20 19:00 6424777988057aee8b18209bba200246722efb
+
+
+./.git/objects/c2:
+-r-------- 1 gruiz007 classes        143 Nov 11 20:24 5c10850f2b328d256e24ae00e30c1d61bca2bd
+
+
+./.git/objects/c4:
+-r-------- 1 gruiz007 classes        173 Nov 11 18:55 8f6335543b4b7de4675fe02b7fd3f0cfcc3c93
+-r-------- 1 gruiz007 classes        453 Oct 29 13:21 c821dfb6c9703715a134f26b92d1a608b78317
+
+
+./.git/objects/c7:
+-r-------- 1 gruiz007 classes        185 Oct 21 23:26 e06b0d69c700a3ec7ef3eb2f7932fa21ccbbca
+
+
+./.git/objects/c9:
+-r-------- 1 gruiz007 classes        167 Oct 29 13:26 1b1b631ecf614c299d568ec48a4035f27bc6f9
+-r-------- 1 gruiz007 classes        212 Nov 11 18:49 380af372b16d6d5132fd0a8c29008b87235169
+
+
+./.git/objects/cc:
+-r-------- 1 gruiz007 classes       1049 Oct 30 14:29 2d59fc231999a9dba4f292364e0d0c83499257
+
+
+./.git/objects/ce:
+-r-------- 1 gruiz007 classes         55 Oct 21 23:26 ba5592526df4daea18fc473e1d8e2bd5fc2101
+
+
+./.git/objects/cf:
+-r-------- 1 gruiz007 classes        112 Oct 21 21:23 56ed0e9ba90ea586e11794f11d2aa7c05cdfa5
+
+
+./.git/objects/d1:
+-r-------- 1 gruiz007 classes        204 Oct 20 18:58 c1b4213d3bb382e1d296f05c5c356ac571304f
+
+
+./.git/objects/d2:
+-r-------- 1 gruiz007 classes       1849 Oct 20 18:19 081c9df45208a7e0a2a41b71abc78f36d75f10
+
+
+./.git/objects/d3:
+-r-------- 1 gruiz007 classes       2060 Oct 20 18:57 80472625ae05f1d4e8d38673dd5050d41aee84
+
+
+./.git/objects/d4:
+-r-------- 1 gruiz007 classes        190 Nov 11 20:40 40020a658b7d6dbc73fad15bd6569aa1a5341e
+
+
+./.git/objects/d6:
+-r-------- 1 gruiz007 classes       2521 Oct 21 12:23 e552cc04f286cf6bff305891d4cfbfcde084a0
+
+
+./.git/objects/d7:
+-r-------- 1 gruiz007 classes         87 Oct 21 16:37 7a3277ca79aa3ffeba686fbf09352abe0d1a18
+
+
+./.git/objects/d9:
+-r-------- 1 gruiz007 classes        177 Oct 21 21:19 4e66918f636f702af1457df40cbe99a809a47a
+-r-------- 1 gruiz007 classes       1631 Nov 09 14:25 ca330a223eb8363f0ff604a0a809befa188a1a
+
+
+./.git/objects/db:
+-r-------- 1 gruiz007 classes        173 Nov 11 20:24 d71754d4fac322569b5114278e04826d499930
+
+
+./.git/objects/dc:
+-r-------- 1 gruiz007 classes        221 Oct 21 16:37 37719562467b4799e969c40157254b78044475
+-r-------- 1 gruiz007 classes        173 Nov 11 20:40 472cdb6ed63c486e0d1ac2103907237bea0625
+
+
+./.git/objects/e0:
+-r-------- 1 gruiz007 classes        179 Oct 21 16:15 36b98c84921fe19a94b2b48d1efe5bd58dd43a
+
+
+./.git/objects/e2:
+-r-------- 1 gruiz007 classes        144 Oct 21 23:03 3a9098d4f9568c1342788d344178929b25d980
+-r-------- 1 gruiz007 classes        206 Oct 31 23:25 f58dc79cc9f43ec4e0e9ae7087fdf2858c7d27
+
+
+./.git/objects/e3:
+-r-------- 1 gruiz007 classes        173 Nov 11 20:24 78a065e848bc310764eada2de214ef88e81437
+
+
+./.git/objects/e6:
+-r-------- 1 gruiz007 classes        175 Nov 11 20:24 0d67b1ecb5d828983584164f9cf642db9492a9
+-r-------- 1 gruiz007 classes        168 Oct 21 21:19 c05b070bf0ca5bbdf28277865b1f8be48f0729
+
+
+./.git/objects/e9:
+-r-------- 1 gruiz007 classes       2089 Nov 11 20:24 877e0a4268a2269a0b850d8b5da901c4612008
+
+
+./.git/objects/eb:
+-r-------- 1 gruiz007 classes        173 Nov 11 20:24 9bcdb8df05e0c955ae61237ef9571bd10a2b21
+-r-------- 1 gruiz007 classes       1218 Oct 31 10:35 e4a587b09a69eeafef5347d176a3e3541c06df
+
+
+./.git/objects/ed:
+-r-------- 1 gruiz007 classes         87 Oct 21 09:24 c1c0f4508df005fd1895ed34393f07db7ad833
+
+
+./.git/objects/ee:
+-r-------- 1 gruiz007 classes        178 Oct 21 09:24 8b2a94b61a583c180c2fae666714d2c37d6491
+
+
+./.git/objects/f0:
+-r-------- 1 gruiz007 classes        116 Nov 11 15:36 309b3f75c29c5ab861b3fddff8683aef68969b
+-r-------- 1 gruiz007 classes        174 Nov 01 20:26 83f5daa470d7bd9ff7c10e6feafad9639c0e2f
+
+
+./.git/objects/f4:
+-r-------- 1 gruiz007 classes        116 Nov 09 19:38 27674a434e70aa592f409cd9d35f0f99eac4fa
+-r-------- 1 gruiz007 classes        927 Oct 21 22:59 68e8f65a077802329f4aa7cb464321934fb4db
+
+
+./.git/objects/f7:
+-r-------- 1 gruiz007 classes        169 Nov 11 18:55 917d2786c148f2e1ef88156cb5859a42438154
+
+
+./.git/objects/fa:
+-r-------- 1 gruiz007 classes        145 Oct 21 21:26 03d8e7c0ead7a15140f05dbdba443148b4b9d4
+
+
+./.git/objects/fc:
+-r-------- 1 gruiz007 classes        173 Oct 30 14:29 73917dea269fab50f61bfdbd1423ca33a55cbb
+
+
+./.git/objects/ff:
+-r-------- 1 gruiz007 classes        767 Nov 11 20:40 f9d78fa9fdbbd0f061d6ead041f9e02982b15f
+
+
+./.git/objects/info:
+-rw------- 1 gruiz007 classes         54 Oct 20 18:27 packs
+
+
+./.git/objects/pack:
+-r-------- 1 gruiz007 classes      38340 Oct 20 15:18 pack-51be7dce109f6f745ca701bb6b9fcefbc1fe7ec8.idx
+-r-------- 1 gruiz007 classes   12469599 Oct 20 15:18 pack-51be7dce109f6f745ca701bb6b9fcefbc1fe7ec8.pack
+
+
+./.git/refs:
+drwx------ 2 gruiz007 classes       4096 Nov 11 20:40 heads
+drwx------ 3 gruiz007 classes       4096 Oct 20 15:18 remotes
+drwx------ 2 gruiz007 classes       4096 Oct 21 23:33 tags
+
+
+./.git/refs/heads:
+-rw------- 1 gruiz007 classes         41 Nov 11 20:40 exec
+-rw------- 1 gruiz007 classes         41 Nov 11 18:50 ls
+-rw------- 1 gruiz007 classes         41 Nov 07 15:27 ls-2
+-rw------- 1 gruiz007 classes         41 Nov 11 20:35 master
+
+
+./.git/refs/remotes:
+drwx------ 2 gruiz007 classes       4096 Nov 11 20:41 origin
+
+
+./.git/refs/remotes/origin:
+-rw------- 1 gruiz007 classes         41 Nov 11 20:41 exec
+-rw------- 1 gruiz007 classes         30 Oct 20 15:18 HEAD
+-rw------- 1 gruiz007 classes         41 Nov 11 18:46 ls
+-rw------- 1 gruiz007 classes         41 Nov 11 20:24 master
+
+
+./.git/refs/tags:
+-rw------- 1 gruiz007 classes         41 Oct 21 23:33 hw0
+
+
+./bin:
+-rwx------ 1 gruiz007 classes      38374 Oct 28 15:25 a.out
+-rwx------ 1 gruiz007 classes      58562 Nov 11 21:36 cp
+-rwx------ 1 gruiz007 classes     127735 Nov 11 21:35 ls
+-rwx------ 1 gruiz007 classes     116286 Nov 11 21:35 rshell
+
+
+./src:
+-rwx------ 1 gruiz007 classes      13930 Nov 08 17:21 a.out
+-rw------- 1 gruiz007 classes       5224 Nov 11 20:36 cp.cpp
+-rw------- 1 gruiz007 classes       4069 Nov 11 20:36 ls.cpp
+-rw------- 1 gruiz007 classes       5097 Oct 30 14:49 rschell.cpp
+-rw------- 1 gruiz007 classes       9116 Nov 11 20:36 Status.h
+-rw------- 1 gruiz007 classes    2881264 Nov 08 17:21 Status.h.gch
+-rw------- 1 gruiz007 classes       2715 Nov 11 20:40 Timer.h
+
+
+./SRC:
+-rwx------ 1 gruiz007 classes      13930 Nov 08 17:21 a.out
+-rw------- 1 gruiz007 classes       5224 Nov 11 20:36 cp.cpp
+-rw------- 1 gruiz007 classes       4069 Nov 11 20:36 ls.cpp
+-rw------- 1 gruiz007 classes       5097 Oct 30 14:49 rschell.cpp
+-rw------- 1 gruiz007 classes       9116 Nov 11 20:36 Status.h
+-rw------- 1 gruiz007 classes    2881264 Nov 08 17:21 Status.h.gch
+-rw------- 1 gruiz007 classes       2715 Nov 11 20:40 Timer.h
+
+
+./tests:
+-rw------- 1 gruiz007 classes      16105 Oct 21 23:28 exec.script
+-rw------- 1 gruiz007 classes     163840 Nov 11 21:57 ls.script
+
+
+~/rshell
+gruiz007@hammer $ bin/ls -Rl[C[C -Rls -Rlr -Rlc -Rl/ -Rls -Rlt -Rla -Rlt -Rlu -Rls -Rl. -Rlh -Rl[C[C[C[C SRC -a bin
+stat: No such file or directory
+ls: cannot access src/status.h -- bin:
+-rwx------ 1 gruiz007 classes      38374 Oct 28 15:25 a.out
+-rwx------ 1 gruiz007 classes      58562 Nov 11 21:36 cp
+-rwx------ 1 gruiz007 classes     127735 Nov 11 21:35 ls
+-rwx------ 1 gruiz007 classes     116286 Nov 11 21:35 rshell
+
+
+SRC:
+-rwx------ 1 gruiz007 classes      13930 Nov 08 17:21 a.out
+-rw------- 1 gruiz007 classes       5224 Nov 11 20:36 cp.cpp
+-rw------- 1 gruiz007 classes       4069 Nov 11 20:36 ls.cpp
+-rw------- 1 gruiz007 classes       5097 Oct 30 14:49 rschell.cpp
+-rw------- 1 gruiz007 classes       9116 Nov 11 20:36 Status.h
+-rw------- 1 gruiz007 classes    2881264 Nov 08 17:21 Status.h.gch
+-rw------- 1 gruiz007 classes       2715 Nov 11 20:40 Timer.h
+
+
+~/rshell
+gruiz007@hammer $ bin/ls src/status.h -Rl SRC -a bin[1P[4hS[4l
+-rw------- 1 gruiz007 classes       9116 Nov 11 20:36 src/Status.h
+
+
+bin:
+-rwx------ 1 gruiz007 classes      38374 Oct 28 15:25 a.out
+-rwx------ 1 gruiz007 classes      58562 Nov 11 21:36 cp
+-rwx------ 1 gruiz007 classes     127735 Nov 11 21:35 ls
+-rwx------ 1 gruiz007 classes     116286 Nov 11 21:35 rshell
+
+
+SRC:
+-rwx------ 1 gruiz007 classes      13930 Nov 08 17:21 a.out
+-rw------- 1 gruiz007 classes       5224 Nov 11 20:36 cp.cpp
+-rw------- 1 gruiz007 classes       4069 Nov 11 20:36 ls.cpp
+-rw------- 1 gruiz007 classes       5097 Oct 30 14:49 rschell.cpp
+-rw------- 1 gruiz007 classes       9116 Nov 11 20:36 Status.h
+-rw------- 1 gruiz007 classes    2881264 Nov 08 17:21 Status.h.gch
+-rw------- 1 gruiz007 classes       2715 Nov 11 20:40 Timer.h
+
+
+~/rshell
+gruiz007@hammer $ ##misple[K[Kelled S[K"Status.h" LOL####
+~/rshell
+gruiz007@hammer $ ####TESTING Error Messages!!####
+~/rshell
+gruiz007@hammer $ bin/ls ROFL OMG bin[1Pbin[1Pbin[1Pbin[1Pbin[1Pbin[1Pbin[1Pbin[1Pbin[1Pbin[C[C[C ROFLE[KMFAO src s[KOMG
+stat: No such file or directory
+stat: No such file or directory
+ls: cannot access ROFLMFAO -- ls: cannot access OMG -- a.out  cp  ls  rshell  
+a.out  cp.cpp  ls.cpp  rschell.cpp  Status.h  Status.h.gch  Timer.h  
+~/rshell
+gruiz007@hammer $ ##sorry aob[K[Kbout the newline fp[K[Kproblem###
+~/rshell
+gruiz007@hammer $ bin/ls -aGR ##uknow [Kn flags/options e[Kmessage
+ls: invalid option -- 'G'.
+Try 'a', 'l', 'R'
+Aborted
+~/rshell
+gruiz007@hammer $ ##eix[K[K[Kaborts program 
+~/rshell
+gruiz007@hammer $ bin/ls -l -aR -SMH ##:[K :D
+ls: invalid option -- 'S'.
+Try 'a', 'l', 'R'
+Aborted
+~/rshell
+gruiz007@hammer $ exit
+exit
+
+Script done on Tue 11 Nov 2014 10:02:54 PM PST
