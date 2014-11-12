@@ -1,3 +1,33 @@
+-Project Summary (3 parts):
+    1. `rshell`
+	- A basic bash terminal that is able to run any command with any arguments passed that are in ./bin
+	- There are a few cases where this program fails (namely those listed below under rshell's bugs)
+	- Code: 
+		~ user inputs commands into pseudo-terminal. Input is saved in c++ std::string
+		~ Input is then parsed accordingly, using " &&;||" as delimiters
+		~ Program then runs for child/parent processes
+		~ commands are executed in execvp, which is called during child process
+		~ parent process waits for child
+		~ Fork is called in a loop so after child exits, the parent continues the looping
+		~ Fork is in loop to handle case of multiple args w/connectors && || ;
+		~ Entire program is in a while loop, which keeps the "$" prompt going
+			to keep receiving user input. 
+		~ Program is terminated with input of "exit" (see bugs for this special case)
+    2. `cp`
+	- Designed to be a basic version of the `cp` terminal command in Unix
+	- HOW IT WORKS:
+		- In the rshell folder, run `make cp` followed by `bin/cp srcfile destfile [-all (optional)]`
+			~IMPORTANT: optional flag `-all` MUST BE LAST ARGUMENT (see bugs)
+		- As long as srcfile is not a directory, and destfile does not exit, program will keep running
+		- If optional flag is passes in, will show run times of three file copying methods.
+		- If no flag, then will choose fastest method for copying the file
+    3. `ls`
+    	- Designed to be a small version of Unix's `ls` command. 
+    	- Takes in any combination of optional flags `a`, `l`, or `R`
+    	- Takes in any combination of optional file and directory arguments (see bugs for reservations)
+    	- HOW IT WORKS: 
+    		- In the rshell folder, run `make` or `make ls` followed by `bin/ls` with any arguments/options passed in
+    		- See `info ls` for further details on how to use ls with these three flags.
 -list known bugs: 
 	- Pretty bad, last minute issue: During "random" inputted cmds, my program crashes w/
 		error message: "make: *** [all] Error 1"
@@ -15,23 +45,6 @@
 	- when I run a command with echo followed by a long output plus a comment afterward, I get a perror
 		~ example: "echo will cmd after comment symbol work? # ; pwd"
 
-
-
-
--summarize project:
-	- A basic bash terminal that is able to run any command with any arguments passed that are in ./bin
-	- There are a few cases where this program fails (namely those listed above)
-	- Code: 
-		~ user inputs commands into pseudo-terminal. Input is saved in c++ std::string
-		~ Input is then parsed accordingly, using " &&;||" as delimiters
-		~ Program then runs for child/parent processes
-		~ commands are executed in execvp, which is called during child process
-		~ parent process waits for child
-		~ Fork is called in a loop so after child exits, the parent continues the looping
-		~ Fork is in loop to handle case of multiple args w/connectors && || ;
-		~ Entire program is in a while loop, which keeps the "$" prompt going
-			to keep receiving user input. 
-		~ Program is terminated with input of "exit" (see bugs for this special case)
 
 
 
