@@ -1,4 +1,35 @@
--list known bugs: 
+-Project Summary (3 parts):
+    1. `rshell`
+	- A basic bash terminal that is able to run any command with any arguments passed that are in ./bin
+	- There are a few cases where this program fails (namely those listed below under rshell's bugs)
+	- Code: 
+		~ user inputs commands into pseudo-terminal. Input is saved in c++ std::string
+		~ Input is then parsed accordingly, using " &&;||" as delimiters
+		~ Program then runs for child/parent processes
+		~ commands are executed in execvp, which is called during child process
+		~ parent process waits for child
+		~ Fork is called in a loop so after child exits, the parent continues the looping
+		~ Fork is in loop to handle case of multiple args w/connectors && || ;
+		~ Entire program is in a while loop, which keeps the "$" prompt going
+			to keep receiving user input. 
+		~ Program is terminated with input of "exit" (see bugs for this special case)
+    2. `cp`
+	- Designed to be a basic version of the `cp` terminal command in Unix
+	- HOW IT WORKS:
+		- In the rshell folder, run `make cp` followed by `bin/cp srcfile destfile [-all (optional)]`
+			~IMPORTANT: optional flag `-all` MUST BE LAST ARGUMENT (see bugs)
+		- As long as srcfile is not a directory, and destfile does not exit, program will keep running
+		- If optional flag is passes in, will show run times of three file copying methods.
+		- If no flag, then will choose fastest method for copying the file
+    3. `ls`
+    	- Designed to be a small version of Unix's `ls` command. 
+    	- Takes in any combination of optional flags `a`, `l`, or `R`
+    	- Takes in any combination of optional file and directory arguments (see bugs for reservations)
+    	- HOW IT WORKS: 
+    		- In the rshell folder, run `make` or `make ls` followed by `bin/ls` with any arguments/options passed in
+    		- See `info ls` for further details on how to use ls with these three flags.
+-Known Bugs: 
+    1. `rshell`
 	- Pretty bad, last minute issue: During "random" inputted cmds, my program crashes w/
 		error message: "make: *** [all] Error 1"
 		~ input known to cause this: "&&" and any commands with "||" as a connector
@@ -14,32 +45,24 @@
 		~ So Did not test this.
 	- when I run a command with echo followed by a long output plus a comment afterward, I get a perror
 		~ example: "echo will cmd after comment symbol work? # ; pwd"
-
-
-
-
--summarize project:
-	- A basic bash terminal that is able to run any command with any arguments passed that are in ./bin
-	- There are a few cases where this program fails (namely those listed above)
-	- Code: 
-		~ user inputs commands into pseudo-terminal. Input is saved in c++ std::string
-		~ Input is then parsed accordingly, using " &&;||" as delimiters
-		~ Program then runs for child/parent processes
-		~ commands are executed in execvp, which is called during child process
-		~ parent process waits for child
-		~ Fork is called in a loop so after child exits, the parent continues the looping
-		~ Fork is in loop to handle case of multiple args w/connectors && || ;
-		~ Entire program is in a while loop, which keeps the "$" prompt going
-			to keep receiving user input. 
-		~ Program is terminated with input of "exit" (see bugs for this special case)
-
-
-
-
-
-
-
-
-
-
-
+    2. `cp`
+    	- IMPORTANT: when using optional flag `-all`, this flags NEEDS to be last argument. i.e. after `destfile`
+    		~ neither `cp -all srcfile destfile` nor `cp srcfile -all destfile` will work.
+    3. `ls`
+    	- output (general case): 
+    		- (minor bug): Alphabetical sorting (for alphabetical output) gives no precedence to `A` over `a` 
+    		  visa versa
+    			~ i.e. There is no explicit order defined between outputting directories `DIR` and `dIr`
+	- `l` flag: 
+		- Spacing with this flag is pretty wide in between the user group column and file size column
+			but still readable.
+		- This flag does not print out the `total `BLOCKS`` at beginning of output for a directory
+	- `R` flag: 
+		- Another bug having to do with Alphabetical Sorting: when given `bin/ls BIG_dir -R` 
+		(where `BIG_dir` is any big directory, like `~`), the program execution takes a VERY long time.
+		 However, it still outputs everything correctly!
+			~ reason: the sorting algorithm I created (for simplicity) for handling special cases
+			   is a greater than O(N^2) runtime. 
+		- Symbolic Links: when symbolic links to directories are present, program goes into these symbolic
+		  links, hence going into same directory multiple times (shouldn't be doing this).
+	
