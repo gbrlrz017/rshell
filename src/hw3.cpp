@@ -13,7 +13,7 @@ using namespace std;
 #include <errno.h>
 #include <cstdlib>
 #include <vector>
-
+#include <stdlib.h>
 
 //modifies input to remove comments
 void rm_comment(string & input)
@@ -105,13 +105,64 @@ unsigned count_args_space( const char input[] ) {
 	return count; 
 }
 
+//vector<string> 
+vector <char*> path()
+{
+	char *p = getenv("PATH");	
+	if(p == NULL)
+	{
+		cerr << "error: PATH is null\n";
+		cerr << "exiting program....\n";
+		exit(1);
+	}
+	
+	//tokenizing PATH at ':'
+	//using paths vector to store paths
+	//vector <string> 
+	vector <char*> paths;
+	char * tmp;
+	tmp = strtok(p,":");
+	if(tmp != NULL)
+	{
+		paths.resize(paths.size()+1); 
+		paths.at(0) = new char[strlen(tmp) +1]; 
+		strcpy( paths.at(0) , tmp ); //copying first token 
+		//paths.push_back( string(tmp) );
+	}
+
+	//further parses with connectors as delims
+	while (tmp != NULL)
+	{
+		//argc +=1; // argument count increases. 
+		tmp = strtok (NULL,":");  
+		if(tmp != NULL){
+			paths.resize(paths.size()+1); 
+			paths.at(paths.size()-1) = new char[strlen(tmp) +1];
+			strcpy(paths.at(paths.size()-1), tmp);
+			//paths.at(paths.size()-1) = tmp; 
+			// copying tokens into argv one at a time 
+			//paths.push_back( string(tmp) );
+		}
+	}
+/*
+	for(unsigned i = 0; i < paths.size(); ++i)
+	{
+		cout << paths.at(i) << " ";
+	}
+	cout << endl;
+*/
+	return paths;
+}
+
 
 int main()
 {
+    vector<char*> paths = path(); 
+
     string input; 
 	    //taking input as a c++ string; will convert to c_str later
 
-    cout << "$ "; //command prompt
+    cout << get_current_dir_name() << " $ "; //command prompt
     getline (cin,input);
 
 while ( input != "exit" ) //bug if enters: "     exit" ->anything with exit and spaces
@@ -200,11 +251,23 @@ while ( input != "exit" ) //bug if enters: "     exit" ->anything with exit and 
 		//child process
 		if (pid==0) {
 		
-			if(-1 == execvp(argv.at(i)[0] ,  argv.at(i) )  )
+			
+			//if(-1 == execvp(argv.at(i)[0] ,  argv.at(i) )  )
+			for(unsigned j=0; j<paths.size(); ++j)
 			{
-				perror("Error: execvp didn't run as expected. Command may not exist.");
-				exit(1); //avoid zombies    
+				string p = string(paths.at(j))+"/"+string(argv.at(i)[0]);
+				char *p2 = const_cast<char*>(p.c_str());
+				execv(p2, argv.at(i)); 
+				//cout << "not path." << endl;
+				//(-1==execve(argv.at(i)[0], argv.at(i), &paths[0]))
+			
 			}
+			
+			//{
+				perror("execv");
+				//perror("Error: execvp didn't run as expected. Command may not exist.");
+				exit(1); //avoid zombies    
+			//}
 		}
 		
 		//pid now > 0 so we are in parent process. 

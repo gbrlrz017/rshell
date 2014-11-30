@@ -12,9 +12,7 @@ all:
 
 rshell:
 	@if [ ! -d bin ]; then mkdir bin; fi
-	g++ -g -Werror -ansi -pedantic -Wall src/rschell.cpp -o rshell 
-	mv rshell ./bin
-	./bin/rshell		
+	g++ -g -Werror -ansi -pedantic -Wall src/rschell.cpp -o ./bin/rshell 
 
 ls: 
 	@if [ ! -d bin ]; then mkdir bin; fi
@@ -26,6 +24,7 @@ cp:
 	mv cp ./bin
 
 hw3:
+	@if [ ! -d bin ]; then mkdir bin; fi
 	g++ -g -Werror -ansi -pedantic -Wall src/hw3.cpp -o ./bin/rshell
 
 clean: 
