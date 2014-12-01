@@ -154,6 +154,31 @@ vector <char*> path()
 	return paths;
 }
 
+void cd(char ** argv)
+{
+	unsigned argc = 0;
+	for(; argv[argc]!= NULL; argc++);//counts args
+	if(argc <= unsigned(1))
+	{
+		cerr << "error: too few arguments: expecting \"cd directory_name\"\n";
+		//exit(1);	
+	}
+	else if(argc > unsigned(2))
+	{
+		cerr << "error: too many arguments: expecting \"\
+			cd directory_name\"\n";
+		//exit(1);	
+	}
+	if( chdir(argv[1])==-1)
+	{
+		cerr << "bash: cd: " << argv[1] << \
+		": No such file or derectory\n";
+		perror("chdir");
+		//exit(1);
+	}
+	//at this point, chdir changed directory successfully.
+}
+
 
 int main()
 {
@@ -162,7 +187,9 @@ int main()
     string input; 
 	    //taking input as a c++ string; will convert to c_str later
 
-    cout << get_current_dir_name() << " $ "; //command prompt
+char * cwd = get_current_dir_name();
+	if(cwd == NULL){ perror("get_current_dir_name"); }
+    cout << cwd << " $ "; //command prompt
     getline (cin,input);
 
 while ( input != "exit" ) //bug if enters: "     exit" ->anything with exit and spaces
@@ -241,6 +268,11 @@ while ( input != "exit" ) //bug if enters: "     exit" ->anything with exit and 
 	//execute multiple commands through for loop (similar to lab02)
 	for(unsigned i = 0; i < argv.size(); ++i )
 	{ 
+		if( strcmp(argv.at(i)[0], "cd") == 0)
+		{
+			cd(argv.at(i));
+			continue;
+		} 
 		int status; 
 		int pid=fork(); //stores child's pid .. will use for connector cases in parent!
 		if(pid == -1)
@@ -296,8 +328,10 @@ while ( input != "exit" ) //bug if enters: "     exit" ->anything with exit and 
 		}
 	
 	}
-
-    cout << "$ "; //command prompt
+	
+	char * cwd = get_current_dir_name();
+	if(cwd == NULL){ perror("get_current_dir_name"); }
+    cout << cwd  << " $ "; //command prompt
     getline (cin,input);
 
 
