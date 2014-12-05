@@ -132,7 +132,7 @@ vector <char*> path()
 	{
 		paths.resize(paths.size()+1); 
 		paths.at(1) = new char[strlen(tmp) +1]; 
-		strcpy( paths.at(0) , tmp ); //copying first token 
+		strcpy( paths.at(1) , tmp ); //copying first token 
 		//paths.push_back( string(tmp) );
 	}
 
@@ -221,25 +221,18 @@ void sig_handler(int signum)
 //needs to be in child scope 
 //need to store paths each time
 //b/c what if change directories (former dir paths stored ow) 
-vector<char*> paths = path(); 
-
-void print_paths()
-{
-	for(unsigned i = 0; i < paths.size(); ++i)
-	{
-		cout << paths.at(i) << "   ";
-	}
-	cout << endl;
-}
 
 
+vector<char*> paths = path();
 
 int main()
 {
-	signal(SIGINT, sig_handler);
+	if(signal(SIGINT, sig_handler)==SIG_ERR)
+	{
+		perror("signal");
+	}
 	//signal(SIGQUIT, sig_parent);
 	//signal(SIGTSTP, sig_parent);
-
 
 
     string input; 
@@ -254,7 +247,7 @@ while ( input != "exit" ) //bug if enters: "     exit" ->anything with exit and 
 {
 
 	//cout << "getenv (while loop): " << getenv("PATH") << endl;
-	print_paths();
+	//print_paths();
 	//removing comments
 	rm_comment (input); 
 
@@ -334,7 +327,7 @@ while ( input != "exit" ) //bug if enters: "     exit" ->anything with exit and 
 			continue;
 		} 
 		int status; 
-		int pid=fork(); //stores child's pid .. will use for connector cases in parent!
+		int pid=vfork(); //stores child's pid .. will use for connector cases in parent!
 		if(pid == -1)
 		{
 			perror("There was an error with fork(). Go back and check. " ); 
