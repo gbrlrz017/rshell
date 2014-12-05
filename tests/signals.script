@@ -1,0 +1,42 @@
+Script started on Thu 04 Dec 2014 11:47:37 PM PST
+~
+gruiz007@hammer $ cd rshell
+~/rshell
+gruiz007@hammer $ make 
+g++ -g -Werror -ansi -pedantic -Wall src/hw3.cpp -o ./bin/rshell 	
+#g++ -g -Werror -ansi -pedantic -Wall src/rschell.cpp -o rshell 
+#mv rshell ./bin
+g++ -g -Werror -ansi -pedantic -Wall src/ls.cpp src/Status.h -o ls
+mv ls ./bin
+g++ -g -Werror -ansi -pedantic -Wall src/cp.cpp -o cp
+mv cp ./bin
+~/rshell
+gruiz007@hammer $ bin/rshell
+/class/classes/gruiz007/rshell $ ls
+bin  LICENSE  Makefile	README	src  tests  tmp
+/class/classes/gruiz007/rshell $ pwd
+/class/classes/gruiz007/rshell
+/class/classes/gruiz007/rshell $ cd bin
+/class/classes/gruiz007/rshell/bin $ cd ..
+/class/classes/gruiz007/rshell $ cd src; bin   ls
+cp.cpp	hw3.cpp  ls.cpp  rschell.cpp  Status.h	Timer.h
+/class/classes/gruiz007/rshell/src $ cd ..; pwd^[[D^[[D        ^[[D              pwd; cd ..; pwd
+/class/classes/gruiz007/rshell/src
+/class/classes/gruiz007/rshell
+/class/classes/gruiz007/rshell $ ^C
+/class/classes/gruiz007/rshell $ ^C
+/class/classes/gruiz007/rshell $ ^C
+/class/classes/gruiz007/rshell $ ^C
+/class/classes/gruiz007/rshell $ ^C
+/class/classes/gruiz007/rshell $ clear
+[H[2J/class/classes/gruiz007/rshell $ cat
+^C/class/classes/gruiz007/rshell $ cat
+^C/class/classes/gruiz007/rshell $ vim ls.c        ^C
+/class/classes/gruiz007/rshell $ ls
+bin  LICENSE  Makefile	README	src  tests  tmp
+/class/classes/gruiz007/rshell $ exit
+~/rshell
+gruiz007@hammer $ c[Kexit
+exit
+
+Script done on Thu 04 Dec 2014 11:50:01 PM PST
